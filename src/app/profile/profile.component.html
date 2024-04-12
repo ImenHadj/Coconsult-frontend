@@ -1,21 +1,27 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
-  </header>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+<div class="profile-container">
+  <td>
+    <img [src]="currentUser.image" alt="Avatar" width="50" height="50">
+  </td>
+  <h2>Modifier le profil</h2>
+    <div class="form-group">
+      <label for="username">Nom d'utilisateur:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="currentUser.username" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="currentUser.email" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" name="image" [(ngModel)]="currentUser.image" class="form-control">
+    </div>
+
+   
+    
+
+    
+
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
 </div>
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>

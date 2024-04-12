@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { StorageService } from '../_services/storage.service';
 import { EventBusService } from '../_shared/event-bus.service';
 import { EventData } from '../_shared/event.class';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
@@ -46,6 +47,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   }
 }
 
+
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
 ];
+

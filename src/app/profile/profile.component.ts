@@ -13,5 +13,17 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
+  } 
+
+ updateProfile(): void {
+    this.storageService.updateProfile(this.currentUser).subscribe(
+      (response: any) => {
+        console.log('Profil mis à jour avec succès');
+      },
+      (error: any) => {
+        console.error('Erreur lors de la mise à jour du profil:', error);
+      }
+    );
   }
 }
+

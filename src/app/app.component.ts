@@ -17,6 +17,7 @@ export class AppComponent {
   username?: string;
 
   eventBusSub?: Subscription;
+  currentUser: any;
 
   constructor(
     private storageService: StorageService,
@@ -25,7 +26,11 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
+    this.isLoggedIn = !!this.storageService.getToken();
+
+    this.currentUser = this.storageService.getUser();
+
+
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
@@ -42,7 +47,7 @@ export class AppComponent {
     });
   }
 
-  logout(): void {
+ logout(): void {
     this.authService.logout().subscribe({
       next: res => {
         console.log(res);
@@ -55,4 +60,5 @@ export class AppComponent {
       }
     });
   }
+  
 }
