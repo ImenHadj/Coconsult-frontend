@@ -1,0 +1,36 @@
+ngb-rating{
+    color: hsl(45, 100%, 51%);
+    font-size: 50px;
+}
+/* Ajouter des marges et de l'espacement */
+.custom-block {
+    margin-bottom: 20px;
+  }
+  
+  /* Ajouter une bordure autour des blocs */
+  .custom-block {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style des boutons d'action */
+  .btn {
+    margin-right: 10px;
+  }
+  
+  /* Style des boutons d'action pour les différencier */
+  .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+  }
+  
+  /* Style des boutons au survol */
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
