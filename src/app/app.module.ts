@@ -29,6 +29,23 @@ import {MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordComponent } from './password/password.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ResourceComponent } from './BackOffice/Resources/resource/resource.component';
+import { EditResourceComponent } from './BackOffice/Resources/edit-resource/edit-resource.component';
+import { AddResourceComponent } from './BackOffice/Resources/add-resource/add-resource.component';
+import { AfficherStockComponent } from './BackOffice/Stock/afficher-stock/afficher-stock.component';
+import { EditStockComponent } from './BackOffice/Stock/edit-stock/edit-stock.component';
+import { AddStockComponent } from './BackOffice/Stock/add-stock/add-stock.component';
+import { AfficherFournisseurComponent } from './BackOffice/Fournisseur/afficher-fournisseur/afficher-fournisseur.component';
+import { EditFournisseurComponent } from './BackOffice/Fournisseur/edit-fournisseur/edit-fournisseur.component';
+import { AddFournisseurComponent } from './BackOffice/Fournisseur/add-fournisseur/add-fournisseur.component';
+import { AfficherCommandeComponent } from './BackOffice/commande/afficher-commande/afficher-commande.component';
+import { AddCommandeComponent } from './BackOffice/commande/add-commande/add-commande.component';
+import { AffecterResProjComponent } from './BackOffice/Resources/affecter-res-proj/affecter-res-proj.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { ReclamationComponent } from './BackOffice/Reclamation/reclamation/reclamation.component';
+import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamation/show-reclamation.component';
 
 
 @NgModule({
@@ -49,7 +66,21 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TemplateBComponent,
     NavbarBackComponent,
     HomeBackComponent,
-    PasswordComponent
+    PasswordComponent,
+    ResourceComponent,
+    EditResourceComponent,
+    AddResourceComponent,
+    AfficherStockComponent,
+    EditStockComponent,
+    AddStockComponent,
+    AfficherFournisseurComponent,
+    EditFournisseurComponent,
+    AddFournisseurComponent,
+    AfficherCommandeComponent,
+    AddCommandeComponent,
+    AffecterResProjComponent,
+    ReclamationComponent,
+    ShowReclamationComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +92,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatGridListModule,
     MatListModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatToolbarModule,
+    MatIconModule,
+    CommonModule,
 
     
   ],

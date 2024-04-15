@@ -37,6 +37,63 @@
                               <a mat-list-item routerLink="/admin/addclient">add Clients</a>
                             </div>
                           </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleResourceList()"  [ngClass]="{'active': isRouteActive('/admin/resources') || isRouteActive('/admin/addResource') || isRouteActive('/admin/affectResource')}">
+                              <i class="bi-person me-2"></i>
+                              Resources
+                            </a>
+                            <div *ngIf="resource">
+                              <a mat-list-item routerLink="/admin/resources">All Resources</a>
+                              <a mat-list-item routerLink="/admin/addResource">Add resource</a>
+                              <a mat-list-item routerLink="/admin/affectResource">Assign resources</a>
+                            </div>
+                             </li>
+
+                             <li class="nav-item">
+                              <a class="nav-link" aria-current="page" mat-button (click)="toggleStockList()"  [ngClass]="{'active': isRouteActive('/admin/stock') }">
+                                <i class="bi-person me-2"></i>
+                                Stock
+                              </a>
+                              <div *ngIf="stock">
+                                <a mat-list-item routerLink="/admin/stock">All Stocks</a>
+                                
+                              </div>
+                               </li>
+
+                               <li class="nav-item">
+                                <a class="nav-link" aria-current="page" mat-button (click)="toggleFournisseurList()"  [ngClass]="{'active': isRouteActive('/admin/fournisseur') || isRouteActive('/admin/addFournisseur')}">
+                                  <i class="bi-person me-2"></i>
+                                  Suppliers
+                                </a>
+                                <div *ngIf="fournisseur">
+                                  <a mat-list-item routerLink="/admin/fournisseur">All Suppliers</a>
+                                  <a mat-list-item routerLink="/admin/addFournisseur">Add Suppliers</a>
+                                </div>
+                                 </li>
+
+                                 <li class="nav-item">
+                                  <a class="nav-link" aria-current="page" mat-button (click)="toggleCommandeList()"  [ngClass]="{'active': isRouteActive('/admin/commande') || isRouteActive('/admin/addCommande')}">
+                                    <i class="bi-person me-2"></i>
+                                    Order
+                                  </a>
+                                  <div *ngIf="commande">
+                                    <a mat-list-item routerLink="/admin/commande">All Orders</a>
+                                    <a mat-list-item routerLink="/admin/addCommande">Add Order</a>
+                                  </div>
+                                   </li>
+
+                                   <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" mat-button (click)="toggleReclamationList()"  [ngClass]="{'active': isRouteActive('/admin/reclamation') }">
+                                      <i class="bi-person me-2"></i>
+                                      Complaints
+                                    </a>
+                                    <div *ngIf="reclamation">
+                                      <a mat-list-item routerLink="/admin/reclamation">Show Complaints</a>
+                                      
+                                    </div>
+                                     </li>
+
                           <li class="nav-item">
                             <a class="nav-link" aria-current="page" mat-button (click)="togglewalletList()">
                                 <i class="bi-wallet me-2"></i>

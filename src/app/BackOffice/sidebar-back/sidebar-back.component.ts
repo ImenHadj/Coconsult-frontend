@@ -17,6 +17,11 @@ export class SidebarBackComponent {
   isDashboardListExpanded = false;
   user = false;
   wallet = false;
+  resource = false;
+  stock = false;
+  fournisseur = false;
+  commande = false ;
+  reclamation = false ;
 
   // Function to toggle the Dashboard list expansion
   toggleDashboardList() {
@@ -24,6 +29,22 @@ export class SidebarBackComponent {
   }
   toggleUserList() {
     this.user = !this.user;
+  }
+
+  toggleStockList() {
+    this.stock = !this.stock;
+  }
+
+  toggleResourceList() {
+    this.resource = !this.resource;
+  }
+
+  toggleFournisseurList() {
+    this.fournisseur = !this.fournisseur;
+  }
+  
+  toggleCommandeList() {
+    this.commande = !this.commande;
   }
   togglewalletList(){
     this.wallet = !this.wallet;
@@ -33,6 +54,9 @@ export class SidebarBackComponent {
     return this.router.isActive(route, true);
   }
 
+  toggleReclamationList() {
+    this.reclamation = !this.reclamation;
+  }
 
   ngOnInit(): void {}
   

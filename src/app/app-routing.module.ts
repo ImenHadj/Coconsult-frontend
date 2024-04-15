@@ -17,6 +17,20 @@ import { NavbarBackComponent } from './BackOffice/navbar-back/navbar-back.compon
 import { TemplateBComponent } from './BackOffice/template-b/template-b.component';
 import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { PasswordComponent } from './password/password.component';
+import { EditResourceComponent } from './BackOffice/Resources/edit-resource/edit-resource.component';
+import { ResourceComponent } from './BackOffice/Resources/resource/resource.component';
+import { AddResourceComponent } from './BackOffice/Resources/add-resource/add-resource.component';
+import { AfficherStockComponent } from './BackOffice/Stock/afficher-stock/afficher-stock.component';
+import { EditStockComponent } from './BackOffice/Stock/edit-stock/edit-stock.component';
+import { AddStockComponent } from './BackOffice/Stock/add-stock/add-stock.component';
+import { AddFournisseurComponent } from './BackOffice/Fournisseur/add-fournisseur/add-fournisseur.component';
+import { AfficherFournisseurComponent } from './BackOffice/Fournisseur/afficher-fournisseur/afficher-fournisseur.component';
+import { EditFournisseurComponent } from './BackOffice/Fournisseur/edit-fournisseur/edit-fournisseur.component';
+import { AfficherCommandeComponent } from './BackOffice/commande/afficher-commande/afficher-commande.component';
+import { AddCommandeComponent } from './BackOffice/commande/add-commande/add-commande.component';
+import { AffecterResProjComponent } from './BackOffice/Resources/affecter-res-proj/affecter-res-proj.component';
+import { ReclamationComponent } from './BackOffice/Reclamation/reclamation/reclamation.component';
+import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamation/show-reclamation.component';
 
 
 
@@ -44,7 +58,22 @@ const routes: Routes = [
   path:"admin",
   component:TemplateBComponent,
   children: [
-    { path: 'homeb', component: HomeBackComponent },]}
+    { path: 'homeb', component: HomeBackComponent },
+    { path: 'edit-resource/:id', component: EditResourceComponent },
+    { path: 'resources', component: ResourceComponent },
+    { path: 'addResource', component: AddResourceComponent },
+    { path: 'affectResource', component: AffecterResProjComponent },
+    { path: 'stock', component: AfficherStockComponent },
+    { path: 'edit-stock/:id', component: EditStockComponent },
+    { path: 'addStock', component: AddStockComponent },
+    { path: 'addFournisseur', component: AddFournisseurComponent },
+    { path: 'fournisseur', component: AfficherFournisseurComponent },
+    { path: 'edit-fournisseur/:id', component: EditFournisseurComponent },
+    { path: 'commande', component: AfficherCommandeComponent },
+    { path: 'addCommande', component: AddCommandeComponent },
+    { path: 'addReclamation', component: ReclamationComponent },
+    { path: 'reclamation', component: ShowReclamationComponent }
+  ]},
   
 ];
 
