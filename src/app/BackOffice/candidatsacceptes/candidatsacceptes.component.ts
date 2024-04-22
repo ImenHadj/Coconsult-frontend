@@ -53,9 +53,10 @@ export class CandidatsacceptesComponent  implements OnInit {
 
   proposerDateEntretien(candidat: Candidat): void {
     const dialogRef = this.dialog.open(DetailsRecrutementModalComponent, {
-      width: '400px', // Définissez la largeur souhaitée pour votre modal
-      data: { candidat: candidat } // Vous pouvez transmettre des données au composant modal si nécessaire
+      panelClass: 'custom-dialog', // Utiliser la classe CSS définie pour le style de la boîte de dialogue
+      data: { candidat: candidat }
     });
+    
   
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result && result.dateEntretien) {

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicerecrutementService } from '../servicerecrutement.service';
 import { Recrutement } from '../recrutement.model';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TypeRecrutement } from '../addrecrutement/typeRecrutement.enum';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modifier-recrutement',
@@ -14,41 +12,48 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 
 export class ModifierRecrutementComponent implements OnInit {
- constructor(private route: ActivatedRoute,private fb: FormBuilder, private recrutementservice:ServicerecrutementService){}
+  
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private recrutementService: ServicerecrutementService
+  ) {}
 
-  idRec: number | undefined ;
+  idRec: number | undefined;
   recrutementForm!: FormGroup;
 
- typeRecrutementOptions = [TypeRecrutement.OFFRE_EMPLOI, TypeRecrutement.ETUDIANT]; 
+  typeRecrutementOptions = [TypeRecrutement.OFFRE_EMPLOI, TypeRecrutement.ETUDIANT]; 
 
   ngOnInit(): void {
     this.initForm();
-    this.route.queryParams.subscribe(params => {
-      this.idRec = +params['id'];
-      
+    this.route.params.subscribe(params => {
+      this.idRec = +params['idRec']; 
     });
-  } 
-onSubmit(): void {
-  if (!this.recrutementForm.valid) {
-    return; 
   }
-  const formData = this.recrutementForm.value;  
-  this.recrutementservice.updateRecrut(formData).subscribe(
-    (candidat: any) => {
-      console.log('candidat added successfully with ID:', candidat);
-      window.alert('ur update is done ');
-      this.recrutementForm.reset();
-    },
-    (error: any) => {
-      console.error('Error adding candidat:', error);
-    })
+  
+
+  onSubmit(): void {
+    if (!this.recrutementForm.valid) {
+      return; 
+    }
+    const formData = this.recrutementForm.value;  
+    this.recrutementService.updateRecrut(formData).subscribe(
+      (recrutement: Recrutement) => {
+        console.log('Recrutement mis à jour avec succès:', recrutement);
+        window.alert('Votre mise à jour est effectuée.');
+        this.recrutementForm.reset();
+      },
+      (error: any) => {
+        console.error('Erreur lors de la mise à jour du recrutement:', error);
+      }
+    );
   }
 
   private initForm(): void {
     this.recrutementForm = this.fb.group({
       poste: [''],
       lieu: ['', Validators.required],
-      typeRecrutement: ['',Validators.required],
+      typeRecrutement: ['', Validators.required],
       objectifs: ['', Validators.required], 
       problematique: ['', Validators.required],
       travailDemande: ['', Validators.required],
@@ -65,9 +70,7 @@ onSubmit(): void {
       statut: ['', Validators.required],
       criteresSelection: ['', Validators.required],
       motsCles: ['', Validators.required],
-   
     });
-   console.log(JSON.stringify(this.recrutementForm.value));
-
+    console.log(JSON.stringify(this.recrutementForm.value));
   }
 }

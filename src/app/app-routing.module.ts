@@ -36,14 +36,13 @@ const routes: Routes = [
     { path: 'user', component: BoardUserComponent },
     { path: 'mod', component: BoardModeratorComponent },
     { path: 'admin', component: TemplateBComponent },
-  
+    { path: 'recrutement', component: RecrutementComponent},
     { path: 'password', component: PasswordComponent },
     { path: 'allrecrutement.html', component: AllrecrutementComponent },
-    { path: 'candidat', component: CandidatComponent },
-    { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
-    { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
-    { path: 'candidat/:idRec', component: CandidatComponent },
     { path: 'allrecrutement', component: AllrecrutementComponent }, 
+    { path: 'candidat/:idRec', component: CandidatComponent },
+
+
     { path: '', redirectTo: 'home', pathMatch: 'full' },
   ]
   
@@ -52,12 +51,17 @@ const routes: Routes = [
   path:"admin",
   component:TemplateBComponent,
   children: [
+   
     { path: 'homeb', component: HomeBackComponent },
-    { path: 'addrecrutement', component: AddrecrutementComponent},
-    { path: 'recrutement', component: RecrutementComponent},
     { path: 'modifier-recrutement/:id', component:  ModifierRecrutementComponent },
     { path: 'allcandidat', component: AllcandidatComponent },
     { path: 'rendezvous', component: RendezvousComponent },
+    { path: 'recrutement', component: RecrutementComponent },
+    { path: 'addrecrutement', component: AddrecrutementComponent},
+    { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
+    { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
+   
+  
 
   ]}
   

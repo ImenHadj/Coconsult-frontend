@@ -37,6 +37,12 @@ export class ServicerecrutementService {
 
     updateRecrut(recrutement: Recrutement): Observable<Recrutement> {
       return this.http.put<Recrutement>(`${this.apiUrl}/updateRecrutement`, recrutement);
+    } /*
+    updateRecrut(recrutement: Recrutement): Observable<Recrutement> {
+      return this.http.put<Recrutement>(`${this.apiUrl}/updateRecrutement/${recrutement.idRec}`, recrutement);
     }
+     */
+    
+
    
 }

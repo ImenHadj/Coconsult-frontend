@@ -17,6 +17,6 @@
             <p class="card-text"> {{ recrutement.lieu }}</p>
             <p class="card-text"> {{ recrutement.salaire }} dt</p>
             <p class="card-text">postes Vacants : {{ recrutement.postesVacants }}</p>
-            <a [routerLink]="['/candidat', recrutement.idRec]" class="btn btn-primary">postuler</a>
+            <a [routerLink]="['/accueil/candidat', recrutement.idRec]" class="btn btn-primary">postuler</a>
         </div>
       </div>

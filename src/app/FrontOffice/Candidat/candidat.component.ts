@@ -22,7 +22,7 @@ export class CandidatComponent  implements OnInit {
       this.idRecrutement = +params['idRec']; 
       console.log('ID du recrutement:', this.idRecrutement); // Vérifiez ici si l'ID est correctement récupéré
     });
-    // Initialiser le formulaire
+   
     this.initForm();
   }
 
