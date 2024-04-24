@@ -85,25 +85,41 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 //
 //    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 //  }
-  
+
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.csrf(csrf -> csrf.disable())
-        .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> 
-          auth.requestMatchers("/api/auth/**").permitAll()
-              .requestMatchers("/api/test/**").permitAll()
-                  .requestMatchers("/api/users/**").permitAll()
-                  .requestMatchers("/api/users/forgotPassword").permitAll() // Autoriser l'accès sans authentification
+            .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth ->
+                    auth.requestMatchers("/api/auth/**").permitAll()
+                            .requestMatchers("/api/test/**").permitAll()
+                            .requestMatchers("/api/users/**").permitAll()
+                            .requestMatchers("/api/users/forgotPassword").permitAll()
+                            .requestMatchers("/recrutement/**").permitAll()
+                            .requestMatchers("/DetailsRect/**").permitAll()
 
-                  .anyRequest().authenticated()
-        );
-    
+
+                            .requestMatchers("/", "/static/**").permitAll()
+
+                    .requestMatchers("/","/favicon.ico").permitAll()
+                    .requestMatchers("/", "/index.html", "/static/**").permitAll()
+                     .requestMatchers("/", "/login.html", "/static/**").permitAll()
+                      .requestMatchers("/", "/register.html", "/static/**").permitAll()
+                      .requestMatchers("/", "/videocall.html", "/static/**").permitAll()
+                    // Autoriser l'accès aux API de connexion, déconnexion et gestion des utilisateurs
+                    .requestMatchers("/api/v1/users/login/**").permitAll()
+                         .requestMatchers("/","/api/v1/users/logout/**").permitAll()
+                      .requestMatchers("/","/api/v1/users/**").permitAll()
+
+    .requestMatchers("/","/api/new-resource/**").permitAll() // Autoriser l'accès sans authentification
+    .anyRequest().authenticated()
+            );
+
     http.authenticationProvider(authenticationProvider());
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    
+
     return http.build();
   }
 

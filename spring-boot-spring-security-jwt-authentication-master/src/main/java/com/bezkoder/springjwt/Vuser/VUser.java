@@ -1,4 +1,4 @@
-package com.alibou.videocall.Vuser;
+package com.bezkoder.springjwt.Vuser;
 
 import lombok.Builder;
 import lombok.Data;
