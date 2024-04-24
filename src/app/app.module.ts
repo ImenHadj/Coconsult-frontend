@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +14,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { TemplateFComponent } from './FrontOffice/template-f/template-f.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.component';
@@ -29,7 +29,21 @@ import {MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordComponent } from './password/password.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { AddProjectComponent } from './BackOffice/add-project/add-project.component';
+import { ProjectsComponent } from './BackOffice/projects/projects.component';
+import { AddtaskComponent } from './BackOffice/addtask/addtask.component';
+import { TasksComponent } from './BackOffice/tasks/tasks.component';
+import { UpdateprojectComponent } from './BackOffice/updateproject/updateproject.component';
+import { UpdatetaskComponent } from './BackOffice/updatetask/updatetask.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { TaskCalenderComponent } from './BackOffice/task-calender/task-calender.component'; // Importez le plugin DayGrid
+import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
+import { KanbanBoardComponent } from './BackOffice/kanban-board/kanban-board.component';
+import { ChartsModule } from 'ng2-charts'; 
+import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
+import { ChartComponent } from './BackOffice/chart/chart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,7 +63,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TemplateBComponent,
     NavbarBackComponent,
     HomeBackComponent,
-    PasswordComponent
+    PasswordComponent,
+    AddProjectComponent,
+    ProjectsComponent,
+    AddtaskComponent,
+    TasksComponent,
+    UpdateprojectComponent,
+    UpdatetaskComponent,
+    TaskCalenderComponent,
+    KanbanBoardComponent,
+    DashboardProjectComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,8 +85,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatGridListModule,
     MatListModule,
     BrowserAnimationsModule,
+    FullCalendarModule,
+    KanbanModule,
+    ChartsModule,
     NgxPaginationModule
-
     
   ],
   providers: [httpInterceptorProviders],

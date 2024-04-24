@@ -17,7 +17,7 @@ export class SidebarBackComponent {
   isDashboardListExpanded = false;
   user = false;
   wallet = false;
-
+  Projects = false;
   // Function to toggle the Dashboard list expansion
   toggleDashboardList() {
     this.isDashboardListExpanded = !this.isDashboardListExpanded;
@@ -28,7 +28,9 @@ export class SidebarBackComponent {
   togglewalletList(){
     this.wallet = !this.wallet;
   }
-
+  toggleProjectsList(){
+    this.Projects = !this.Projects;
+  }
   isRouteActive(route: string): boolean {
     return this.router.isActive(route, true);
   }

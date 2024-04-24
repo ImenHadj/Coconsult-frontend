@@ -1,22 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-layouts/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
-@import '../node_modules/@syncfusion/ej2-kanban/styles/material.css';
-
-.e-card-wrapper .e-card-header {
+/* Colonne "To Do" */
+.todo-column {
+    background-color: #ff9999; /* Rouge */
+  }
+  
+  
+  /* Colonne "In Progress" */
+  .in-progress-column {
+    background-color: #99ccff; /* Bleu clair */
+  }
+  
+  
+  
+  /* Colonne "Done" */
+  .done-column {
+    background-color: #99ff99; /* Vert clair */
+  }
+  
+  
+  .e-card-wrapper .e-card-header {
     font-size: 12px;
     font-weight: 600;
     display: inline-flex;
@@ -72,23 +73,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
         
         
-        
-
-    /* Colonne "To Do" */
-.todo-column {
-    background-color: #ff9999; /* Rouge */
+        /* CSS pour styliser les en-têtes de colonnes */
+.todo-column .header-text {
+    color: #FF6347; /* Couleur du texte pour l'en-tête "To Do" */
   }
   
-  
-  /* Colonne "In Progress" */
-  .in-progress-column {
-    background-color: #99ccff; /* Bleu clair */
+  .in-progress-column .header-text {
+    color: #4682B4; /* Couleur du texte pour l'en-tête "In Progress" */
   }
   
-  
-  
-  /* Colonne "Done" */
-  .done-column {
-    background-color: #99ff99; /* Vert clair */
+  .done-column .header-text {
+    color: #32CD32; /* Couleur du texte pour l'en-tête "Done" */
   }
+  
+  /* CSS pour styliser les icônes */
+  .header-icon {
+    margin-right: 5px; /* Marge à droite de l'icône */
+    font-size: 18px; /* Taille de police de l'icône */
+  }
+  
   
