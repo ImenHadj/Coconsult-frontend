@@ -16,4 +16,5 @@ public interface IResourcesService {
     void affectResourcesToProject(Long projectId, List<ResourceQuantityDTO> resourceQuantities);
 
     public List<Project> retrieveAllProjects();
+    public List<List<Object>> getResourceStockList();
 }

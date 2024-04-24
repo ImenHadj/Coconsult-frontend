@@ -14,5 +14,9 @@ import java.util.List;
 public interface FournisseurRepository extends JpaRepository<Fournisseur,Long> {
     @Query("SELECT f FROM Fournisseur f WHERE f.typeFournisseur = :typeFournisseur  ORDER BY f.score DESC")
     List<Fournisseur> findFournisseurByTypeFournisseurOrderByScoreDesc(@Param("typeFournisseur") ResourcesCategorie typeFournisseur);
+
+
+    @Query("SELECT f FROM Fournisseur f JOIN f.stocks s GROUP BY f ORDER BY COUNT(s) DESC")
+    List<Fournisseur> findTopThreeFournisseursWithStocks();
 }
 

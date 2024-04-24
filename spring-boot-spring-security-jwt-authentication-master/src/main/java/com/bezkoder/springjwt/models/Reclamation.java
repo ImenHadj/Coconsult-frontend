@@ -24,7 +24,8 @@ public class Reclamation {
     String categorie ;
     String departement;
     String description;
-    String priorité ;
+    @Enumerated(EnumType.STRING)
+    Priority priorité ;
     @Enumerated(EnumType.STRING)
     ReclamationStatus statusReclamation ;
 

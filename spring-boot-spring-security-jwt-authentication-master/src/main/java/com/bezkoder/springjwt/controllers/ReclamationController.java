@@ -1,15 +1,18 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.Service.IReclamationService;
+import com.bezkoder.springjwt.models.Priority;
 import com.bezkoder.springjwt.models.Reclamation;
+import com.bezkoder.springjwt.models.ReclamationStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/reclamation")
 public class ReclamationController {
 
@@ -34,6 +37,10 @@ public class ReclamationController {
     @PostMapping("/add-reclamation")
     @ResponseBody
     public Reclamation addReclamation(@RequestBody Reclamation r) {
+        r.setPriorité(Priority.LOW);
+        r.setStatusReclamation(ReclamationStatus.PENDING);
+        Date date = new Date();
+        r.setReclamationDate(date);
         Reclamation reclamation= reclamationService.addReclamation(r);
         return reclamation;
     }

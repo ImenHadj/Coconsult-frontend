@@ -12,4 +12,7 @@ public interface IFournisseurService {
     Fournisseur retrieveFournisseur(Long idF);
     void removeFournisseur(Long idF);
     public int calculerScoreFournisseur(Fournisseur fournisseur);
+
+    public List<Fournisseur> getTopThreeFournisseursWithStocks();
+    public int getNombreStocksFournisseur(Long fournisseurID);
 }

@@ -1,9 +1,6 @@
 package com.bezkoder.springjwt.Service;
 
-import com.bezkoder.springjwt.models.Project;
-import com.bezkoder.springjwt.models.ResourceQuantityDTO;
-import com.bezkoder.springjwt.models.Resources;
-import com.bezkoder.springjwt.models.Stock;
+import com.bezkoder.springjwt.models.*;
 import com.bezkoder.springjwt.repository.ProjectRepository;
 import com.bezkoder.springjwt.repository.ResoucesRepository;
 import com.bezkoder.springjwt.repository.StockRepository;
@@ -12,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +44,7 @@ public class ResourcesService implements IResourcesService {
             Stock stock = availableStocks.get(0);
 
             stock.setResource(r);
-
+            r.setReStatus(ResourceStatus.ACTIVE);
             return resoucesRepository.save(r);
         } else {
             throw new RuntimeException("No available stock found for category: " + r.getCategorie());
@@ -106,7 +104,23 @@ public class ResourcesService implements IResourcesService {
         log.info("Project updated with resources: {}", project.getResources());
     }
 
+    @Override
+    public List<List<Object>> getResourceStockList() {
+        List<List<Object>> resourceStockList = new ArrayList<>();
 
+        Iterable<Resources> resources = resoucesRepository.findAll();
+
+        for (Resources resource : resources) {
+            if (resource.getStock() != null) {
+                List<Object> resourceStock = new ArrayList<>();
+                resourceStock.add(resource.getName()); // Suppose resource.getName() retourne le nom de la ressource
+                resourceStock.add(resource.getStock().getQuantity());
+                resourceStockList.add(resourceStock);
+            }
+        }
+
+        return resourceStockList;
+    }
 
 
 }

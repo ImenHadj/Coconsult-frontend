@@ -95,7 +95,15 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
           auth.requestMatchers("/api/auth/**").permitAll()
               .requestMatchers("/api/test/**").permitAll()
                   .requestMatchers("/api/users/**").permitAll()
-                  .requestMatchers("/api/users/forgotPassword").permitAll() // Autoriser l'accès sans authentification
+                  .requestMatchers("/api/users/forgotPassword").permitAll()
+                  .requestMatchers("/stock/**").permitAll()
+                  .requestMatchers("/commande/**").permitAll()
+                  .requestMatchers("/fournisseur/**").permitAll()
+                  .requestMatchers("/reclamation/**").permitAll()
+                  .requestMatchers("/resource/**").permitAll()
+                  .requestMatchers("/resource/removeResource").permitAll()
+                  .requestMatchers("/resource/resources/{id}/image").permitAll()
+                  .requestMatchers("/resource/add-resource").permitAll()
 
                   .anyRequest().authenticated()
         );

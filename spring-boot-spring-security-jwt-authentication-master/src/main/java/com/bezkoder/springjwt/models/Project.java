@@ -23,11 +23,14 @@ public class Project {
     private String project_description;
     private Date startDate;
     private Date endDate;
+    @Enumerated(EnumType.STRING)
     private ProjectStatus status;
+    @Enumerated(EnumType.STRING)
     private ProjectType type;
     private double budget;
     private double cost;
     private double expectedRevenue;
+    @Enumerated(EnumType.STRING)
     private Priority priority;
 
 //    @ManyToOne

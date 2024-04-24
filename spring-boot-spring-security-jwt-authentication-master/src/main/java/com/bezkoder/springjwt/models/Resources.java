@@ -25,6 +25,9 @@ public class Resources {
     ResourceStatus reStatus ;
     @Enumerated(EnumType.STRING)
     ResourcesCategorie categorie ;
+    @Lob
+    @Column(name = "image", columnDefinition="LONGBLOB")
+    private byte[] image;
 
 
 

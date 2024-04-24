@@ -11,7 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -190,6 +193,12 @@ public class StockService implements IStockService {
         return commande ;
     }
 
+    @Override
+    public List<Object[]> getQualityTrend() {
+        Date startDate = stockRepository.findOldestEntryDate();
+        Date endDate = stockRepository.findLatestEntryDate();
+        return stockRepository.findQualityTrendByDateRangeOrderByDate(startDate, endDate);
+    }
 }
 
 

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/fournisseur")
 public class FournisseurController {
 
@@ -69,6 +69,16 @@ public class FournisseurController {
 
             throw new RuntimeException("Fournisseur non trouvé avec l'ID : " + fournisseurId);
         }
+    }
+
+    @GetMapping("/top-three-fournisseurs")
+    public List<Fournisseur> getTopThreeFournisseursWithStocks() {
+        return fournisseurService.getTopThreeFournisseursWithStocks();
+    }
+
+    @GetMapping("/{fournisseurID}")
+    public int getNombreStocksFournisseur(@PathVariable("fournisseurID") Long fournisseurID) {
+        return fournisseurService.getNombreStocksFournisseur(fournisseurID);
     }
 
 }
