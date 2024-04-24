@@ -11,6 +11,7 @@ import { StockService } from '../stock.service';
 })
 export class AfficherStockComponent {
   stocks: any[] = [];
+  p: number = 1;
 
   constructor(private stockservice:StockService,
     private router: Router){}

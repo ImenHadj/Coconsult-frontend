@@ -12,6 +12,7 @@ import { FournisseurService } from '../fournisseur.service';
 export class AfficherFournisseurComponent {
 
   fournisseurs: any[] = [];
+  p: number = 1;
 
   constructor(private fournisseurService:FournisseurService,
     private router: Router){}

@@ -12,8 +12,8 @@ export class StockService {
 
   URL = "http://localhost:8090/stock";
 
-  getStocks(){
-    return this.http.get(this.URL+"/retrieve-all-stocks");
+  getStocks(): Observable<Stock[]> {
+    return this.http.get<Stock[]>(this.URL+"/retrieve-all-stocks");
   }
   removeStock(id: number): Observable<any> {
     return this.http.delete(this.URL + "/removeStock/" + id);
@@ -30,5 +30,10 @@ export class StockService {
   retrieveStock(id: number){
     return this.http.get(this.URL+"/retrieve-stock/"+id);
   }
+
+  getQualityTrend(): Observable<Object[]> {
+    return this.http.get<Object[]>(this.URL + "/quality-trend");
+  }
+  
 
 }

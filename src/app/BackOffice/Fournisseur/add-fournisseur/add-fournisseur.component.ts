@@ -18,27 +18,26 @@ export class AddFournisseurComponent {
 
   createForm(): void {
     this.fournisseurForm = this.fb.group({
-      nom: ['', Validators.required],
+      nom: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       address: ['', Validators.required],
-      contact: ['', Validators.required],
-      typeFournisseur: ['', Validators.required]
-      
+      contact: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      typeFournisseur: ['', Validators.required]    
     });
   }
 
   onSubmit(): void {
     if (this.fournisseurForm.valid) {
-      const stockData: Fournisseur = this.fournisseurForm.value;
-      this.fournisseurService.addFournisseur(stockData).subscribe(
-        (stockId) => {
-          console.log('fournisseur added successfully with ID:', stockId);
-          
+      const fournisseurData: Fournisseur = this.fournisseurForm.value;
+      this.fournisseurService.addFournisseur(fournisseurData).subscribe(
+        (fournisseurId) => {
+          console.log('Fournisseur added successfully with ID:', fournisseurId);          
         },
         (error) => {
           console.error('Error adding fournisseur:', error);
         }
       );
+    } else {
+      this.fournisseurForm.markAllAsTouched();
     }
   }
-
 }

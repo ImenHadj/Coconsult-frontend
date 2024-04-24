@@ -33,14 +33,19 @@
             </div>
 
             <div class="custom-block bg-white">
-                <h5 class="mb-4">History</h5>
+                <h5 class="mb-4">Stock Details</h5>
 
-                <div id="pie-chart"></div>
+                <canvas id="stockChart" width="400" height="400"></canvas>
+
+                <div class="border-top pt-4 mt-4 text-center">
+                    <a class="btn custom-btn" routerLink="/admin/stock">
+                        Manage stocks
+                        <i class="bi-arrow-up-right-circle-fill ms-2"></i>
+                    </a>
+                </div>
             </div>
 
-            <div class="custom-block bg-white">
-                <div id="chart"></div>
-            </div>
+           
 
             <div class="custom-block custom-block-exchange">
                 <h5 class="mb-4">Exchange Rate</h5>

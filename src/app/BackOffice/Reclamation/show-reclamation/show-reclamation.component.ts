@@ -11,6 +11,7 @@ import { ReclamationService } from '../reclamation.service';
 })
 export class ShowReclamationComponent implements OnInit {
   reclamations: Reclamation[] = [];
+  p: number = 1;
 
   constructor(private reclamationService: ReclamationService,
               private router: Router) { }

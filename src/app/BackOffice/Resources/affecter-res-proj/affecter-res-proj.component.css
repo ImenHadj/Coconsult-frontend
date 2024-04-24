@@ -10,3 +10,6 @@
     z-index: 1000;
   }
   
+  .comparison-text {
+    font-size: 0.8em; /* Taille de police plus petite */
+}

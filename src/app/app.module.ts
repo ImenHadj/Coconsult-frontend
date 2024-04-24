@@ -46,6 +46,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { ReclamationComponent } from './BackOffice/Reclamation/reclamation/reclamation.component';
 import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamation/show-reclamation.component';
+import { ProgressBarModule } from 'angular-progress-bar';
+import { StatRSFComponent } from './BackOffice/Stock/stat-rsf/stat-rsf.component';
 
 
 @NgModule({
@@ -80,7 +82,8 @@ import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamat
     AddCommandeComponent,
     AffecterResProjComponent,
     ReclamationComponent,
-    ShowReclamationComponent
+    ShowReclamationComponent,
+    StatRSFComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,7 @@ import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamat
     MatToolbarModule,
     MatIconModule,
     CommonModule,
+    ProgressBarModule
 
     
   ],

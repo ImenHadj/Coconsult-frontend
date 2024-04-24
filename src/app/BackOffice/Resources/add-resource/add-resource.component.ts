@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Resources } from '../resources.model';
 import { ResourcesService } from '../resources.service';
-
 
 @Component({
   selector: 'app-add-resource',
@@ -11,6 +9,7 @@ import { ResourcesService } from '../resources.service';
 })
 export class AddResourceComponent {
   resourceForm!: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private resourceService: ResourcesService) {
     this.createForm();
@@ -18,26 +17,44 @@ export class AddResourceComponent {
 
   createForm(): void {
     this.resourceForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
+      name: ['',  [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      description: ['',  [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       price: ['', Validators.required],
       categorie: ['', Validators.required],
-      
+      file: [null, Validators.required] // Add file control
     });
   }
 
   onSubmit(): void {
+    this.submitted = true;
     if (this.resourceForm.valid) {
-      const resourceData: Resources = this.resourceForm.value;
-      this.resourceService.addResource(resourceData).subscribe(
+      const formData: FormData = new FormData();
+      formData.append('name', this.resourceForm.get('name')!.value);
+      formData.append('description', this.resourceForm.get('description')!.value);
+      formData.append('price', this.resourceForm.get('price')!.value);
+      formData.append('categorie', this.resourceForm.get('categorie')!.value);
+      formData.append('file', this.resourceForm.get('file')!.value);
+  
+      this.resourceService.addResource(formData).subscribe(
         (resourceId) => {
           console.log('Resource added successfully with ID:', resourceId);
-          
         },
         (error) => {
           console.error('Error adding resource:', error);
         }
       );
     }
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    this.resourceForm.get('file')!.setValue(file);
+  }
+
+  checkValidity(controlName: string): boolean {
+    return (
+      (this.submitted || this.resourceForm.get(controlName)!.touched) &&
+      this.resourceForm.get(controlName)!.invalid
+    );
   }
 }

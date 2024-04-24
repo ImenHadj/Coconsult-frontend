@@ -31,6 +31,7 @@ import { AddCommandeComponent } from './BackOffice/commande/add-commande/add-com
 import { AffecterResProjComponent } from './BackOffice/Resources/affecter-res-proj/affecter-res-proj.component';
 import { ReclamationComponent } from './BackOffice/Reclamation/reclamation/reclamation.component';
 import { ShowReclamationComponent } from './BackOffice/Reclamation/show-reclamation/show-reclamation.component';
+import { StatRSFComponent } from './BackOffice/Stock/stat-rsf/stat-rsf.component';
 
 
 
@@ -72,7 +73,8 @@ const routes: Routes = [
     { path: 'commande', component: AfficherCommandeComponent },
     { path: 'addCommande', component: AddCommandeComponent },
     { path: 'addReclamation', component: ReclamationComponent },
-    { path: 'reclamation', component: ShowReclamationComponent }
+    { path: 'reclamation', component: ShowReclamationComponent },
+    { path: 'statrsf', component: StatRSFComponent }
   ]},
   
 ];

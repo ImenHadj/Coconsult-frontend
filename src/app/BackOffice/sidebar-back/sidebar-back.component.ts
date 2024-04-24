@@ -58,17 +58,37 @@ export class SidebarBackComponent {
     this.reclamation = !this.reclamation;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const currentUser = this.storageService.getUser();
+
+    if (currentUser) {
+        const roles = currentUser.roles;
+
+        // Vérifiez si l'utilisateur a le rôle admin
+        const isAdmin = roles.includes('ROLE_ADMIN');
+        
+        // Si l'utilisateur n'est pas admin, redirigez vers la page d'accueil ou de connexion
+        if (!isAdmin) {
+            this.router.navigate(['/accueil']);
+        }
+    } else {
+        // Rediriger l'utilisateur non authentifié vers la page de connexion
+        this.router.navigate(['/accueil/login']);
+    }
+}
+
   
 
   toggle() {
     this.sidenav.toggle();
   }
   signout(): void {
-    // Supprimer le token d'authentification (si nécessaire)
-     sessionStorage.removeItem('TOKEN_KEY');
-    
-    // Rediriger l'utilisateur vers la page d'accueil
-    this.router.navigate(['/accueil/login']);
-  }
+    // Supprimez le token d'authentification
+    this.authService.logout().subscribe(() => {
+        this.storageService.clean();
+        // Redirigez l'utilisateur vers la page de connexion
+        this.router.navigate(['/accueil/login']);
+    });
+}
+
 }

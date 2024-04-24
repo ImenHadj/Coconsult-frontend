@@ -16,9 +16,17 @@
                 <form class="custom-form profile-form" [formGroup]="resourceForm" (submit)="onSubmit()">
                     <label>Name:</label>
                     <input class="form-control" type="text" formControlName="name" required>
+                    <div *ngIf="checkValidity('name')">
+                        <small class="text-danger" *ngIf="resourceForm.get('name')?.errors?.['required']">Name is required.</small>
+                        <small class="text-danger" *ngIf="!resourceForm.get('name')?.errors?.['required']">Name should contain only letters and spaces.</small>
+                    </div>
   
                     <label>Description:</label>
                     <input class="form-control" type="text" formControlName="description" required>
+                    <div *ngIf="checkValidity('description')">
+                        <small class="text-danger" *ngIf="resourceForm.get('description')?.errors?.['required']">Description is required.</small>
+                        <small class="text-danger" *ngIf="!resourceForm.get('description')?.errors?.['required']">Description should contain only letters and spaces.</small>
+                    </div>
   
                     <label>Price:</label>
                     <input class="form-control" type="number" formControlName="price" required>
@@ -31,14 +39,20 @@
                             <option value="VEHICULES">Vehicles</option>
                         </select>
                     </div>
-                    <br>
+                    
+                    <!-- Ajout du champ pour téléverser l'image -->
+                    <label>Image:</label>
+                    <input type="file" formControlName="file" (change)="onFileSelected($event)">
+                    <div *ngIf="checkValidity('file')">
+                        <small class="text-danger">Image is required.</small>
+                    </div>
             
-                    <br><br>
+                    <br>
+                    <br>
                    
                     <button type="submit" [disabled]="resourceForm.invalid" class="form-control ms-2">Save</button>
                 </form>
             </div>
         </div>
     </div>
-  </main>
-  
+</main>

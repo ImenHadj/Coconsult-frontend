@@ -8,7 +8,7 @@
       </div>
       <br><br>
 
-    <div class="row my-4" *ngFor="let fournisseur of fournisseurs">
+    <div class="row my-4" *ngFor="let fournisseur of fournisseurs | paginate: { itemsPerPage: 5, currentPage: p }">
         <div class="col-lg-12 col-12">
             <div class="custom-block custom-block-transation-detail bg-white">
                
@@ -54,5 +54,9 @@
             </div>
         </div>
     </div>
+
+    <div class="pagination-wrapper">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
 </main>
 

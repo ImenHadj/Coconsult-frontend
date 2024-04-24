@@ -3,7 +3,7 @@
         <h1 class="h2 mb-0">Stocks</h1>
     </div>
 
-    <div class="row my-4" *ngFor="let stock of stocks">
+    <div class="row my-4" *ngFor="let stock of stocks | paginate: { itemsPerPage: 5, currentPage: p }">
         <div class="col-lg-12 col-12">
             <div class="custom-block custom-block-transation-detail bg-white">
                
@@ -69,4 +69,8 @@
             </div>
         </div>
     </div>
+
+    <div class="pagination-wrapper">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
 </main>
