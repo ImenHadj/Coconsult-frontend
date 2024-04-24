@@ -13,7 +13,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 
-import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { httpInterceptorProviders } from './_helpers/http.interceptor'; // Assurez-vous que le chemin d'accès est correct
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateFComponent } from './FrontOffice/template-f/template-f.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
@@ -65,7 +65,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
     
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders], // Assurez-vous que httpInterceptorProviders est importé correctement
   bootstrap: [AppComponent]
 })
 export class AppModule { }
