@@ -1,3 +1,4 @@
+import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-salaires.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
@@ -57,7 +58,12 @@ import { CircularChartCongeComponent } from './BackOffice/dashboarding/circular-
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './BackOffice/dashboarding/calendar/calendar.component';
 import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-absences/calendar-absences.component';
+import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
+import { ChartSalaireComponent } from './BackOffice/dashboarding/chart-salaire/chart-salaire.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -96,6 +102,9 @@ import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-ab
     CircularChartCongeComponent,
     CalendarComponent,
     CalendarAbsencesComponent,
+    AddPrimesAndSHoursComponent,
+    ListSalairesComponent,
+    ChartSalaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +129,9 @@ import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-ab
     MaterialFileInputModule,
     MatFormFieldModule,
     FullCalendarModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
     
   ],
   providers: [httpInterceptorProviders],

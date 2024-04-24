@@ -24,6 +24,16 @@
     </ng-container>
   </div>
   <button class="btn btn-primary" [routerLink]="['/admin/calendar/']">Go to calendar</button>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <select class="form-control" [(ngModel)]="selectedStatus">
+        <option value="">All Status</option>
+        <option *ngFor="let status of statusList" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="filterByStatus(selectedStatus)">Filter by Status</button>
+  </div>
+  
 
   <div class="row my-4" *ngFor="let absence of absences  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
 

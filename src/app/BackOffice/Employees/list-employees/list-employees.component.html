@@ -49,10 +49,10 @@
                 [readonly]="true"
                 [rate]="employee.performanceEmployee.moyenne"
               ></ngb-rating>
-              <p *ngIf="employee.performanceEmployee != null">
+              <p *ngIf="employee.performanceEmployee != null" class="performance-details-box">
                 Rating : {{ employee.performanceEmployee.commentaire }}
               </p>
-              <p *ngIf="employee.performanceEmployee == null">
+              <p *ngIf="employee.performanceEmployee == null" class="performance-unavailable-box">
                 Performance unavailable
               </p>
             </div>
@@ -130,6 +130,17 @@
                 add Rating
               </button>
             </div>
+
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/addPrimesAndSupplementHours/' + employee.id_employe]"
+              >
+                Add Primes & Supplement Hours
+              </button>
+            </div>
+            
             <div class="custom-block-transation-detail-item ms-2">
               <button
                 type="button"

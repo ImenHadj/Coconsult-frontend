@@ -1,3 +1,4 @@
+import { StatutC } from './../models/conge.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -35,6 +36,12 @@ export class ServiceCongeService {
     const params = { startingLetter };
 
     return this.http.get<any[]>(url, { params });
+  }
+  filterByStatus(status: StatutC){
+    const url = `${this.URL}/filterByStatus`;
+  
+
+    return this.http.get<any[]>(url);
   }
 
   getCongesByEmployeeId(employeeId: number) {

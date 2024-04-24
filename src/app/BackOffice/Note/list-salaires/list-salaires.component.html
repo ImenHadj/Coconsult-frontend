@@ -1,27 +1,28 @@
 <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
     <div class="title-group mb-3">
-        <h1 class="h2 mb-0">Departments</h1>
+        <h1 class="h2 mb-0">Salaire</h1>
     </div>
 
-    <div class="border-bottom pb-3 mb-3 d-flex align-items-center justify-content-between">
-        <div class="col-md-6">
-          <input type="text" class="form-control" id="startingLetter" [(ngModel)]="startingLetter" (input)="onInput($event)" placeholder="Enter the label"/>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
-          <app-circular-chart [type]="max" [percentage]="availablePercentage"></app-circular-chart>
-        </div>
-    </div>
-      
-      
+    <!-- <div class="border-bottom pb-3 mb-3 d-flex align-items-center justify-content-between">
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="startingLetter" [(ngModel)]="startingLetter" (input)="onInput($event)" placeholder="Enter the label"/>
+          </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <app-circular-chart [type]="max" [percentage]="availablePercentage"></app-circular-chart>
+          </div>
+      </div>
+       -->
+       <app-chart-salaire *ngIf="hasSalaryData"></app-chart-salaire>
 
-    <div class="row my-4" *ngFor="let absence of departements | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+       <button (click)="exportDataToExcel()">Export to Excel</button>
+    <div class="row my-4" *ngFor="let absence of departements | paginate : { itemsPerPage: itemsPerPage, currentPage: p }">
         <div class="col-lg-12 col-12">
             <div class="custom-block custom-block-transation-detail bg-white">
                 <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
                     <div class="d-flex align-items-center">
                         <div class="d-flex align-items-center">
-                            <h4 class="me-2" >Label :</h4>
-                            <h6 >{{ absence.libelle }}</h6>
+                            <h4 class="me-2" >poste Employee :</h4>
+                            <h6 >{{ absence.employe?.posteEmployee }}</h6>
                         </div>
                     </div>
 
@@ -30,14 +31,14 @@
 
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="custom-block-transation-detail-item mt-4">
-                        <h6>Max Saturation</h6>
-                        <p>{{ absence.maxSaturation }}</p>
+                        <h6>Total salaire</h6>
+                        <p>{{ absence.total_salaire }}</p>
                     </div>
 
                     <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-                        <h6>Number of Employees</h6>
+                        <h6>Prime :</h6>
                         <!-- Use the appropriate property for phone -->
-                        <p>{{ absence.nbreEmpl }}</p>
+                        <p>{{ absence.prime }}</p>
                     </div>
 
                     

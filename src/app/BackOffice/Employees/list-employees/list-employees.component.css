@@ -33,4 +33,17 @@ ngb-rating{
   .btn:hover {
     opacity: 0.8;
   }
+  .performance-unavailable-box {
+    background-color: #f8d7da; /* couleur de fond rouge */
+    color: #721c24; /* couleur du texte rouge */
+    padding: 10px; /* marge intérieure de 10px */
+    border-radius: 5px; /* bordures arrondies */
+  }
+  .performance-details-box {
+    background-color: #cce5ff; /* couleur de fond bleue */
+    color: #004085; /* couleur du texte bleu */
+    padding: 10px; /* marge intérieure de 10px */
+    border-radius: 5px; /* bordures arrondies */
+  }
+  
   

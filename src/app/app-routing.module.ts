@@ -32,11 +32,21 @@ import { ImageComponent } from './BackOffice/image/image.component';
 import { HistoriqueEmployeeComponent } from './BackOffice/Employees/historique-employee/historique-employee.component';
 import { CalendarComponent } from './BackOffice/dashboarding/calendar/calendar.component';
 import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-absences/calendar-absences.component';
+import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-salaires.component';
+import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
 
 const routes: Routes = [
+  {
+    path:"",
+    component:TemplateFComponent,
+    children: [
+      { path: 'home', component: HomeFrontComponent },
+    ]
+  },
   
   { path: "accueil", component:TemplateFComponent,
   children: [
+    // { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'homef', component: HomeFrontComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
@@ -45,7 +55,6 @@ const routes: Routes = [
     { path: 'user', component: BoardUserComponent },
     { path: 'mod', component: BoardModeratorComponent },
     { path: 'admin', component: TemplateBComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'password', component: PasswordComponent }
 ] 
 },
@@ -53,8 +62,8 @@ const routes: Routes = [
   path:"admin",
   component:TemplateBComponent,
   children: [
-    { path: 'homeb', component: HomeBackComponent },
-    { path: 'addemployees', component: AddEmployeeComponent },
+      // { path: 'homeb', component: HomeBackComponent },
+      { path: 'addemployees', component: AddEmployeeComponent },
       { path: 'editEmployees/:id', component: AddEmployeeComponent },
       { path: 'EditAbsence/:id', component: AbsenceComponent },
       { path: 'addAbsences/:p', component: AbsenceComponent },
@@ -73,7 +82,10 @@ const routes: Routes = [
       { path: 'upload/:id', component: ImageComponent }, 
       { path: 'historiqueEmploye/:employeeId', component: HistoriqueEmployeeComponent },
       { path: 'calendar', component: CalendarComponent },
-      { path: 'calendarAbsence', component: CalendarAbsencesComponent },]}
+      { path: 'calendarAbsence', component: CalendarAbsencesComponent },
+      { path: 'addPrimesAndSupplementHours/:p', component: AddPrimesAndSHoursComponent },
+      { path: 'listSalaires', component: ListSalairesComponent },
+    ]}
   
 ];
 

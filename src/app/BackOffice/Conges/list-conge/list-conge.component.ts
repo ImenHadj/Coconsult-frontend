@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatutC } from 'src/app/core/models/conge.model';
 import { ServiceCongeService } from 'src/app/core/services/service-conge.service';
 
 @Component({
@@ -12,6 +13,9 @@ export class ListCongeComponent implements OnInit {
   p: number = 1;
   itemsPerPage:number=4;
   totalProduct:any;
+  selectedStatus: StatutC = StatutC.PENDING; // Initialize selectedStatus with a default value
+  statusList = Object.values(StatutC).filter(value => typeof value === 'string').sort();
+
 
 
 
@@ -21,6 +25,11 @@ export class ListCongeComponent implements OnInit {
     this.loadAbsences();  
   }
 
+  filterByStatus(status: StatutC): void {
+    this.selectedStatus = status;
+    this.searchUsers();
+  }
+  
   private loadAbsences(): void {
     this.congeService.getall().subscribe((absences)=>{
       this.absences=absences as any[];
@@ -54,4 +63,5 @@ searchUsers(): void {
     }
   );
 }
+
 }
