@@ -19,7 +19,7 @@ import java.util.Map;
 @Slf4j
 @AllArgsConstructor
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/recrutement")
 
 public class RhControlleur {

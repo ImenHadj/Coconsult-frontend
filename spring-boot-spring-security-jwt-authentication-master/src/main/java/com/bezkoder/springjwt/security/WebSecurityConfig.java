@@ -113,16 +113,22 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                       .requestMatchers("/","/api/v1/users/**").permitAll()
 
     .requestMatchers("/","/api/new-resource/**").permitAll() // Autoriser l'accès sans authentification
+                            .requestMatchers("/stock/**").permitAll()
+                            .requestMatchers("/commande/**").permitAll()
+                            .requestMatchers("/fournisseur/**").permitAll()
+                            .requestMatchers("/reclamation/**").permitAll()
+                            .requestMatchers("/resource/**").permitAll()
+                            .requestMatchers("/resource/removeResource").permitAll()
+                            .requestMatchers("/resource/resources/{id}/image").permitAll()
+                            .requestMatchers("/resource/add-resource").permitAll()
     .anyRequest().authenticated()
             );
-
     http.authenticationProvider(authenticationProvider());
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
   }
-
 
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
