@@ -17,6 +17,22 @@ import { NavbarBackComponent } from './BackOffice/navbar-back/navbar-back.compon
 import { TemplateBComponent } from './BackOffice/template-b/template-b.component';
 import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { PasswordComponent } from './password/password.component';
+import { ClientsComponent } from './BackOffice/clients/clients.component';
+import { AddclientComponent } from './BackOffice/addclient/addclient.component';
+import { EditclientComponent } from './BackOffice/editclient/editclient.component';
+import { ContratComponent } from './BackOffice/contrat/contrat.component';
+import { AddcontratComponent } from './BackOffice/addcontrat/addcontrat.component';
+import { EditcontratComponent } from './BackOffice/editcontrat/editcontrat.component';
+import { FactureComponent } from './BackOffice/facture/facture.component';
+import { CalenderComponent } from './BackOffice/calender/calender.component';
+import { AddpaimentComponent } from './BackOffice/addpaiment/addpaiment.component';
+import { DetailfactureComponent } from './BackOffice/detailfacture/detailfacture.component';
+import { AddfactureComponent } from './BackOffice/addfacture/addfacture.component';
+import { NotiflogComponent } from './BackOffice/notiflog/notiflog.component';
+import { StatsComponent } from './BackOffice/stats/stats.component';
+import { MeetComponent } from './FrontOffice/meet/meet.component';
+import { SliderComponent } from './FrontOffice/slider/slider.component';
+import { ClienthomeComponent } from './FrontOffice/Client/clienthome/clienthome.component';
 
 
 
@@ -28,6 +44,9 @@ const routes: Routes = [
   { path: "accueil", component:TemplateFComponent,
   
   children: [
+    {
+      path:'Clienthome',component:ClienthomeComponent
+    },
     { path: 'homef', component: HomeFrontComponent },
     { path: 'home', component: HomeComponent },
    
@@ -35,7 +54,7 @@ const routes: Routes = [
     { path: 'user', component: BoardUserComponent },
     { path: 'mod', component: BoardModeratorComponent },
 
-    { path: 'admin', component: BoardAdminComponent },
+   // { path: 'admin', component: BoardAdminComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'password', component: PasswordComponent }
 ]
@@ -48,8 +67,25 @@ const routes: Routes = [
   component:TemplateBComponent,
   children: [
     { path: 'homeb', component: HomeBackComponent },
-    { path: 'admin', component: BoardAdminComponent },
-  ]}
+    { path: 'clients', component: ClientsComponent },
+    { path: 'addclient', component: AddclientComponent },
+    {path: 'editclient', component: EditclientComponent},
+    {path: 'contrat', component: ContratComponent},
+    {path: 'addcontrat', component: AddcontratComponent},
+    {path: 'editcontrat', component: EditcontratComponent},
+    {path: 'facture', component: FactureComponent},
+    {path: 'addpaiment', component: AddpaimentComponent},
+    {path: 'calendrier', component: CalenderComponent},
+    {path: 'detailfacture', component: DetailfactureComponent},
+    {path: 'addfacture', component: AddfactureComponent},
+    {path: 'notiflog', component: NotiflogComponent},
+     ]
+},  
+{
+  path:'stats',component:StatsComponent
+},
+{ path: 'video', component: MeetComponent },
+{ path: 'slider', component: SliderComponent },
   
 ];
 

@@ -1,0 +1,196 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <div class="dropdown">
+            <button id="formadd" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <i class="bi bi-file-earmark-plus"></i>  Add a bill
+            </button>
+            <ul class="dropdown-menu">
+                <div class="form-container">
+                 <form #factureFormElement class="custom-form profile-form"  role="form" [formGroup]="factureForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <h4>Fill all required fileds *</h4>
+                        <div class="col-md-6">
+                            <label for="contractDate">Designation <span class="required">*</span></label>
+                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="designation" formControlName="designation" required>
+                   </div>
+                   <div class="col-md-6">
+                    <label for="contractDate">Invoice Number <span class="required">*</span></label>
+                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="invoiceNumber" formControlName="invoice_number" required>
+                   </div>
+                   </div>
+                   <div class="row">
+                    <div class="col-md-6">
+                        <label for="contractDate">Due Date <span class="required">*</span></label>
+                        <input class="form-control" type="datetime-local"  name="profile-name" id="profile-name" placeholder="dueDate" formControlName="due_date" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="contractDate">Bill Date <span class="required">*</span></label>
+                    <input class="form-control" type="datetime-local"  name="profile-name" id="profile-name" placeholder="factureDate" formControlName="facture_date" required>
+                   </div></div>
+
+                   <div class="row">
+                    <div class="col-md-6">
+                        <label for="contractDate">Milestone <span class="required">*</span></label>
+                <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="milestoneDescription" formControlName="milestone_description" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="contractDate">Notes<span class="required">*</span></label>
+                <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="notes" formControlName="notes" required>
+                </div></div>
+                   <div class="row">
+                        <div class="col-md-6">
+                      
+                    <div id="total" class="d-flex flex-wrap mb-2">
+                        <span>Contract Total Amount :</span>
+                    </div>
+                    <div class="d-flex flex-wrap mb-2">
+                        <span class="prix">{{totalprix}} Dt</span>
+                    </div>
+                </div>
+
+               
+                    <div class="col-md-6">
+                        <label for="contractDate">Bill amount <span class="required">*</span></label>
+                        <input class="form-control" type="number" name="profile-name" id="profile-name" placeholder="Amount to pay" formControlName="total_amount" required>
+                        
+                          
+                  
+                    </div>
+                    
+                        </div>
+                      
+
+                      <div class="subbtn">
+                       
+
+                        <button id="formbtn" type="submit" [disabled]="factureForm.invalid" class="form-control ms-2">
+                            Add Facture
+                        </button>
+                        
+                    </div>
+                </form>
+              </div>
+            </ul>
+          </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-12 col-12">
+            <div class="custom-block bg-white">
+<div class="searching">
+           <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get" role="form">
+            <input class="form-control" name="search" type="text" placeholder="Search invoice" aria-label="Search">
+        </form>
+       
+        <div class="filtres">
+            <div class="dropdown">
+                <button id="filtrebtn" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <i class="bi bi-funnel" ></i>  Filtre
+                </button>
+                <ul class="dropdown-menu">
+                    <li><p>Bills in range</p></li>
+                  <li><a id="t"class="dropdown-item">Week</a></li>
+                  <li><a id="t" class="dropdown-item" >Month</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><p>filtre by less Cost</p></li>
+                  <li><a id="t" class="dropdown-item" >order</a></li>
+                  
+                </ul>
+              </div>
+            <button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-file-pdf"></i> Export </button>
+</div>
+
+</div>
+
+                <div class="table-responsive">
+                    <table class="account-table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Invoice Number</th>
+
+                               
+
+                                <th scope="col">Creation Date</th>
+
+                                <th scope="col">Due Date</th>
+                                <th scope="col">Total Amount</th>
+
+                                <th scope="col">Amount Paid</th>
+
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Display Details</th>
+                                
+
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let facture of pagedFactures">
+                            <tr>
+                        
+                                <td scope="row" > {{facture.invoice_number}}</td>
+
+                                
+
+                                <td scope="row">{{ facture.facture_date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+
+                                <td scope="row">{{facture.due_date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                                
+                                <td  scope="row">{{facture.total_amount}}DT</td>
+                                <td  scope="row">{{facture.paid_amount}} DT</td>
+                                <td  scope="row">{{facture.payment_status}}</td>
+
+                                <td scope="row" class="actions">
+                                    <button (click)="navtoaddpaiment(facture.idFacture)"><i id="edit" class="bi bi-pencil-fill"></i></button>
+                                   <button (click)="removefacture(facture.idFacture)"> <i id="delete" class="bi bi-trash-fill"></i></button>
+                                 
+                                </td>
+
+                                <td scope="row" class="actions">
+                                    
+                                   <button id="bill" (click)="navtodetails(facture.idFacture)"><i class="bi bi-file-earmark-image"></i></button>
+                                 
+                                </td>
+                                
+                            </tr>
+                            
+                           
+
+                        </tbody>
+                    </table>
+                    <div class="paginator12">
+                    <mat-paginator [length]="Factures.length"
+                    showFirstLastButtons
+                    
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="[2, 5, Factures.length]"
+                    (page)="onPageChange($event)"
+                    aria-label="Facture pagination">
+                    
+                    
+     </mat-paginator>
+    </div>
+                </div>
+
+            </div>
+        </div>
+
+       
+
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 
+                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</main>
