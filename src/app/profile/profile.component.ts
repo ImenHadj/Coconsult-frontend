@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../_services/storage.service';
-import { UserService } from '../_services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-profile',
@@ -11,24 +8,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
-  userDetails: any;
-  errorMessage: any;
 
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.userService.getUserDetails().subscribe(
+    this.currentUser = this.storageService.getUser();
+  } 
+
+ updateProfile(): void {
+    this.storageService.updateProfile(this.currentUser).subscribe(
       (response: any) => {
-        this.userDetails = response;
+        console.log('Profil mis à jour avec succès');
       },
-      (error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.errorMessage = 'Authentication is required. Please log in.';
-        } else {
-          this.errorMessage = 'An error occurred while fetching user details. Please try again later.';
-        }
-        console.error('Erreur lors de la récupération des détails de l\'utilisateur:', error);
+      (error: any) => {
+        console.error('Erreur lors de la mise à jour du profil:', error);
       }
     );
-  } 
+  }
 }

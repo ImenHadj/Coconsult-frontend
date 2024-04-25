@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { Chart, ChartOptions } from 'chart.js';
 @Component({
   selector: 'app-board-admin',
   templateUrl: './board-admin.component.html',
@@ -11,13 +12,21 @@ export class BoardAdminComponent implements OnInit {
   pagedUsers: any[] = [];
   pageSize: number = 10; 
   currentPage: number = 1; 
-
-
+  userStatsChart: any;
+  userStats: any = {}; // Déclaration de la propriété userStats
+  criteriaLabels: string[] = [];
+  chart: any;
+  performanceData: any;
+  averageNotesByCriteria: any[] = []; // Initialisez averageNotesByCriteria avec un tableau vide
 
   constructor(private userService: UserService) { }
   ngOnInit(): void {
 
-    this.getAllUsers();}
+    this.getAllUsers();
+    this.getAdvancedUserStats();
+    this.getAverageNotesByCriteria();
+
+  }
 
     getAllUsers(): void {
     this.userService.getAllUsers().subscribe(
@@ -30,6 +39,7 @@ export class BoardAdminComponent implements OnInit {
     );
   
   }
+  
   deleteUser(userId: string): void {
     const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');
     if (confirmation) {
@@ -47,8 +57,96 @@ export class BoardAdminComponent implements OnInit {
 
   pageChanged(event: any): void {
     this.setPage(event.page);
+ 
+ 
   }
-}
 
+  getAdvancedUserStats(): void {
+    this.userService.getAdvancedUserStats().subscribe(
+      (data: any) => {
+        // Création du graphique à barres avec les données récupérées
+        this.createBarChart(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  createBarChart(userStats: any): void {
+    const ctx = document.getElementById('userStatsChart') as HTMLCanvasElement;
+    this.userStatsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Total des utilisateurs', 'Utilisateurs administrateurs', 'Utilisateurs employés'],
+        datasets: [{
+          label: 'Statistiques d\'utilisateurs',
+          data: [userStats.totalUsers, userStats.adminUsers, userStats.employeeUsers],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            type: 'linear',
+            ticks: {
+              beginAtZero: true
+            }
+          }
+        }
+      } as ChartOptions
+    });
+  }
+  getAverageNotesByCriteria(): void {
+    this.userService.getAverageNotesByCriteria().subscribe(
+      (data: any) => {
+        if (data && typeof data === 'object') {
+          // Convertissez les données d'objet en tableau
+          this.averageNotesByCriteria = Object.entries(data).map(([criteria, value]) => ({ criteria, value }));
+          this.criteriaLabels = this.averageNotesByCriteria.map(item => item.criteria);
+          this.createChart(); // Appeler la création du graphique une fois les données reçues
+        } else {
+          console.error('Les données retournées ne sont pas un objet ou sont vides :', data);
+        }
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération des données :', error);
+      }
+    );
+  }
+  
+  createChart(): void {
+    const ctx = document.getElementById('performanceChart') as HTMLCanvasElement;
+    this.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: this.criteriaLabels,
+        datasets: [{
+          label: 'Moyenne par critère',
+          data: this.averageNotesByCriteria.map(item => item.value), // Utilisez la propriété 'value' au lieu de 'moyenne'
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }}
   
 

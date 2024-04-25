@@ -31,6 +31,7 @@ import { PasswordComponent } from './password/password.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

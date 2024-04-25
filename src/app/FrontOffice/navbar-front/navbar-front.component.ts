@@ -27,6 +27,7 @@ constructor(
 ) {}
 
 ngOnInit(): void {
+  console.log(this.username)
   this.isLoggedIn = this.storageService.isLoggedIn();
 
   // Si l'utilisateur est connecté, obtenir son rôle

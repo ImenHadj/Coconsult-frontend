@@ -10,7 +10,7 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
   
-  private apiUrl = 'http://localhost:8090/users/';
+  private apiUrl = 'http://localhost:8090/api/users/';
   storageService: any;
 
 
