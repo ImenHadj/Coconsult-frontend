@@ -43,6 +43,25 @@ export class ServicerecrutementService {
     }
      */
     
+  getNomsCandidatsByDate(date: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/rendezvous?date=${date}`);
+  } 
 
+proposerDateEntretien(idCandidat: number, dateEntretien: string): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/add/${idCandidat}`, { dateEntretien: dateEntretien });
+}
+ 
+
+   
+getNombreCandidatsParPoste(): Observable<Map<string, number>> {
+  return this.http.get<Map<string, number>>(`${this.apiUrl}/nombreCandParPoste`);
+}
+
+
+
+ParExperiencePro(): Observable<Map<string, number>> {
+  // Assurez-vous que l'URL est correcte
+  return this.http.get<Map<string, number>>(`${this.apiUrl}/candidatsAcceptesParPosteParExperiencPro`);
+}
    
 }

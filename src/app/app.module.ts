@@ -49,6 +49,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MatIconModule } from '@angular/material/icon';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
+import { CharthrComponent } from './BackOffice/charthr/charthr.component';
+
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import { CommonModule } from '@angular/common';
     DetailsRecrutementModalComponent,
     CandidatsacceptesComponent,
     RendezvousComponent,
-    PasswordComponent
+    PasswordComponent,
+    CharthrComponent
   ],
   imports: [
     BrowserModule,
@@ -98,8 +101,10 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     MatFormFieldModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    FullCalendarModule
+    FullCalendarModule,
+  
   ],
+  
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

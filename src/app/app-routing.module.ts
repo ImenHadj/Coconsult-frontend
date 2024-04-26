@@ -19,6 +19,8 @@ import { AddrecrutementComponent } from './BackOffice/addrecrutement/addrecrutem
 import { RecrutementComponent } from './BackOffice/recrutement/recrutement.component';
 import { AllcandidatComponent } from './BackOffice/allcandidat/allcandidat.component';
 import { RendezvousComponent } from './BackOffice/rendezvous/rendezvous.component';
+import { CharthrComponent } from './BackOffice/charthr/charthr.component';
+import { SidebarBackComponent } from './BackOffice/sidebar-back/sidebar-back.component';
 
 
 
@@ -41,15 +43,19 @@ const routes: Routes = [
     { path: 'allrecrutement.html', component: AllrecrutementComponent },
     { path: 'allrecrutement', component: AllrecrutementComponent }, 
     { path: 'candidat/:idRec', component: CandidatComponent },
-
-
     { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+//  { path: '', redirectTo: 'home', pathMatch: 'full' },
   ]
   
 },
 {
-  path:"admin",
-  component:TemplateBComponent,
+  
+  path: 'admin',
+  component: TemplateBComponent,
+
+  
+
   children: [
    
     { path: 'homeb', component: HomeBackComponent },
@@ -60,11 +66,11 @@ const routes: Routes = [
     { path: 'addrecrutement', component: AddrecrutementComponent},
     { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
     { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
-   
-  
+    { path: 'charthr', component: CharthrComponent },
+   // { path: 'SidebarBack', component: SidebarBackComponent },
 
-  ]}
-  
+  ]},
+
 ];
 
 
