@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
 import { StorageService } from '../_services/storage.service';
 import { EventBusService } from '../_shared/event-bus.service';
 import { EventData } from '../_shared/event.class';
 import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
+
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
@@ -14,25 +16,20 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   constructor(private storageService: StorageService, private eventBusService: EventBusService) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      withCredentials: true,
-    });
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = sessionStorage.getItem('TOKEN_KEY'); // Récupère le jeton JWT depuis le sessionStorage
 
-    return next.handle(req).pipe(
-      catchError((error) => {
-        if (
-          error instanceof HttpErrorResponse &&
-          !req.url.includes('auth/signin') &&
-          error.status === 401
-        ) {
-          return this.handle401Error(req, next);
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}` // Ajoute le jeton JWT à l'en-tête Authorization
         }
+      });
+    }
 
-        return throwError(() => error);
-      })
-    );
+    return next.handle(request);
   }
+
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     if (!this.isRefreshing) {
@@ -51,4 +48,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
 ];
+
+
+
 

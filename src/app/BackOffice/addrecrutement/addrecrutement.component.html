@@ -1,0 +1,64 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <div class="title-group mb-3">
+      <h1 class="h2 mb-0">Add Recrutement</h1>
+  </div>
+
+  <div class="row my-4">
+      <div class="col-lg-7 col-12">
+          <div class="custom-block bg-white">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="profile-tab">Fill in Recrutement details</button>
+                  </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                      <form class="custom-form profile-form"  role="form" [formGroup]="recrutementForm" (ngSubmit)="addRecrutement()">
+                          <input class="form-control" type="text" name="poste" id="poste" placeholder="Poste" formControlName="poste" required>
+                          <input class="form-control" type="text" name="lieu" id="lieu" placeholder="Lieu" formControlName="lieu" required>
+                          <input class="form-control" type="text" name="postes_vacants" id="postes_vacants" placeholder="Postes Vacants" formControlName="postesVacants" required>
+                          <select class="form-control" name="typeRecrutement" id="typeRecrutement" formControlName="typeRecrutement" required>
+                              <option value="">Select Type Recrutement</option>
+                              <option *ngFor="let type of TypeRecrutement" [value]="type">{{ type }}</option>
+                          </select>
+                                                    
+                          <input class="form-control" type="text" name="objectifs" id="objectifs" placeholder="Objectifs" formControlName="objectifs">
+                          <input class="form-control" type="text" name="problematique" id="problematique" placeholder="Problematique" formControlName="problematique">
+                          <input class="form-control" type="text" name="travailDemande" id="travailDemande" placeholder="Travail Demandé" formControlName="travailDemande">
+                          <input class="form-control" type="text" name="experience" id="experience" placeholder="Experience" formControlName="experience" required>
+                          <input class="form-control" type="text" name="niveauDetude" id="niveauDetude" placeholder="Niveau d'Etude" formControlName="niveauDetude">
+                          <input class="form-control" type="number" name="salaire" id="salaire" placeholder="Salaire" formControlName="salaire" required>
+                          <input class="form-control" type="text" name="langue" id="langue" placeholder="Langue" formControlName="langue">
+                          <input class="form-control" type="text" name="sex" id="sex" placeholder="Sex" formControlName="sex">
+                          <input class="form-control" type="text" name="description" id="description" placeholder="Description" formControlName="description">
+                          <input class="form-control" type="date" name="dateDebut" id="dateDebut" placeholder="Date Debut" formControlName="dateDebut">
+                          <input class="form-control" type="date" name="dateCloture" id="dateCloture" placeholder="Date Cloture" formControlName="dateCloture">
+                          <input class="form-control" type="text" name="responsableRecrutement" id="responsableRecrutement" placeholder="Responsable Recrutement" formControlName="responsableRecrutement">
+                          <input class="form-control" type="text" name="statut" id="statut" placeholder="Statut" formControlName="statut">
+                          <input class="form-control" type="text" name="motsCles" id="motsCles" placeholder="Mots Cles" formControlName="motsCles">
+                          <div class="d-flex">
+                              <button type="button" class="form-control me-3">
+                                  Cancel
+                              </button>
+                              <button type="submit" [disabled]="recrutementForm.invalid" class="form-control ms-2">
+                                  Add Recrutement
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <footer class="site-footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-12">
+                  <p class="copyright-text">Copyright © Mini Finance 2048 
+                  - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+              </div>
+          </div>
+      </div>
+  </footer>
+</main>

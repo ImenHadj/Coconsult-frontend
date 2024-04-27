@@ -24,9 +24,10 @@
                     <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_3">How it works</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/accueil/allrecrutement">Recrutement</a>
+            </li>
+            
 
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#section_4">FAQs</a>
@@ -51,10 +52,10 @@
             <div class="d-none d-lg-block">
                 <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                     <li class="nav-item">
-                      <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+                      <a class="nav-link" routerLink="/register">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                      <a href="/login" class="nav-link" routerLink="login">Login</a>
+                      <a  class="nav-link" routerLink="/login">Login</a>
                     </li>
                   </ul>
                   <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
@@ -62,8 +63,8 @@
                       <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
                     </li>
                     <li class="nav-item" *ngIf="showAdminBoard">
-                        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-                      </li>
+                      <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+                    </li>
                       <li class="nav-item" *ngIf="showModeratorBoard">
                         <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
                       </li>

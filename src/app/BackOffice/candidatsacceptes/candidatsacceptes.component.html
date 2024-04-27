@@ -1,0 +1,49 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+  <div class="row my-4">
+    <div class="col-lg-12 col-12">
+      <div class="custom-block bg-white">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-tab">Accepted Candidates</button>
+          </li>
+        </ul>
+        <div *ngFor="let candidat of candidatsAcceptes" class="col-lg-12 col-12">
+          <div class="custom-block custom-block-transation-detail bg-white">
+            <div class="d-flex align-items-center">
+              <div>
+                <div class="custom-block-transation-detail-item mt-4 ms-auto me-auto">
+                  <p> {{ candidat.nom }} {{ candidat.prenom }}</p>
+                  <p> {{ candidat.email }} </p>
+                  <p> {{ candidat.telephone }} </p>
+                </div>
+              </div>
+              <div class="ms-auto"> <!-- Utilisation de la classe ms-auto pour aligner le bouton à droite -->
+                <button class="btn btn-primary" (click)="proposerDateEntretien(candidat)">Proposer une date d'entretien</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showPropositionForm" class="row my-4">
+    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          Proposition de date d'entretien
+        </div>
+        <div class="card-body">
+          <form (submit)="submitPropositionDateEntretien()">
+            <div class="mb-3">
+              <label for="dateEntretien" class="form-label">Date d'entretien</label>
+              <input type="date" class="form-control" id="dateEntretien" [(ngModel)]="dateEntretien" name="dateEntretien" required>
+            </div>
+            <!-- Ajoutez d'autres champs du formulaire si nécessaire -->
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

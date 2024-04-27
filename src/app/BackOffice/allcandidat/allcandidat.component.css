@@ -1,0 +1,11 @@
+/* Styliser la liste déroulante */
+.form-select {
+    width: auto; /* Taille ajustée au contenu */
+    padding: 0.375rem 0.75rem; /* Rembourrage intérieur */
+    font-size: 0.875rem; /* Taille de police */
+    line-height: 1.5; /* Hauteur de ligne */
+    height: auto; /* Hauteur automatique */
+    border-radius: 0.25rem; /* Bordure arrondie */
+    margin-left: auto; /* Alignement à droite */
+  }
+  

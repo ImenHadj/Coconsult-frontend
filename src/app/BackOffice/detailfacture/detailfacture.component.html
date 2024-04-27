@@ -1,0 +1,159 @@
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" >
+        
+        <div class="container-fluid" >
+            <div class="row">
+          <a class="navbar-brand" id="titredash">Dashbord - Clients - Bills</a>
+        </div>
+        <div class="row">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                
+                <a class="nav-link" id="paybill" (click)="navtoaddpaiment(facture.idFacture)"> Pay Bill <i class="bi bi-credit-card"></i></a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" id="download"(click)="generatePdf()">Download <i class="bi bi-download"></i></a>
+              </li>
+            </ul>
+           
+          </div>
+          </div>
+        </div>
+      </nav>
+    <div class="row">
+  
+
+        <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+            <div class="row my-4" >
+                <div class="col-lg-12 col-12" >
+                   
+                       
+                        <div class="col-md-9" style="width: 120%; margin-left: 20%;" id="content">   
+                            <div class="row" >
+                                   
+                                   <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                                       <div class="row">
+                                           <div class="receipt-header">
+                                               <div class="col-xs-6 col-sm-6 col-md-6">
+                                                   <div class="receipt-left">
+                                                       <img class="img-responsive" alt="iamgurdeeposahan" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
+                                                   </div>
+                                               </div>
+                                              
+                                           </div>
+                                       </div>
+                                       
+                                       <div class="row"  >
+                                           <div class="receipt-header receipt-header-mid">
+                                               <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                                                   <div class="receipt-right" >
+                                                   
+                                                     <h5> {{facture.client.nom}} {{facture.client.prenom}}</h5>
+                                                      
+                                                    
+                                                       <p><b>Mobile :</b> {{facture.client.phone}}</p>
+                                                       <p><b>Email :</b> {{facture.client.email}}</p>
+                                                       <p><b>Address :</b> {{facture.client.companyAddress}}</p>
+                                                   </div>
+                                               </div>
+                                               <div class="col-xs-4 col-sm-4 col-md-10">
+                                                   <div class="receipt-left">
+                                                       <h3>INVOICE # {{facture.invoice_number}}</h3>
+                                                       <h3>Contrat Totale Amount: {{facture.contract?.payment_terms}} DT</h3>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       
+                                       <div>
+                                           <table class="table table-bordered">
+                                               <thead>
+                                                   <tr>
+                                                       <th>Description</th>
+                                                       <th>Amount</th>
+                                                   </tr>
+                                               </thead>
+                                               <tbody>
+                                                   
+                                                   <tr>
+                                                       <td class="text-right">
+                                                       <p>
+                                                        <strong>Total Amount: </strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong>Late Fees: </strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong>Paied Amount: </strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong>Left to Pay: </strong>
+                                                       </p>
+                                                       </td>
+                                                       <td>
+                                                       <p>
+                                                           <strong><i class="fa fa-inr"></i> {{facture.total_amount}} DT</strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong><i class="fa fa-inr"></i> 500/-</strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong><i class="fa fa-inr"></i> {{facture.paid_amount}} DT</strong>
+                                                       </p>
+                                                       <p>
+                                                           <strong><i class="fa fa-inr"></i> {{amountleft}} </strong>
+                                                       </p>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                      
+                                                       <td class="text-right"><h2><strong>Status </strong></h2></td>
+                                                       <td class="text-left text-danger"><h3><strong><i class="fa fa-inr"></i>{{facture.payment_status}}</strong></h3></td>
+                                                   </tr>
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                       
+                                       <div class="row">
+                                           <div class="receipt-header receipt-header-mid receipt-footer">
+                                               <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                                                   <div class="receipt-right">
+                                                       <h5><b>Date :</b>{{facture.facture_date | date:'yyyy-MM-dd HH:mm'}}</h5>
+                                                       <h5 style="color: rgb(140, 140, 140);"><b>Due Date :</b>{{facture.due_date | date:'yyyy-MM-dd HH:mm'}}</h5>
+                                                   </div>
+                                               </div>
+                                               <div class="col-xs-4 col-sm-4 col-md-4">
+                                                   <div class="receipt-left">
+                                                       <h1>Stamp</h1>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       
+                                   </div>    
+                               </div>
+                           </div>
+
+                      
+                </div>
+            </div>
+
+            <footer class="site-footer">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-lg-12 col-12">
+                            <p class="copyright-text">Copyright © Mini Finance 2048 
+                            - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+        </main>
+
+    </div>
+</div>

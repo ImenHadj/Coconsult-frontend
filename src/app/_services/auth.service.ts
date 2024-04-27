@@ -89,7 +89,7 @@ export class AuthService {
 //}
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 
 const AUTH_API = 'http://localhost:8090/api/auth/';
 
@@ -107,6 +107,9 @@ export class AuthService {
   qrCodeUri: string = '';
 
   constructor(private http: HttpClient) {}
+
+  
+
 
   register(username: string, email: string, password: string, image: File): Observable<any> {
     const formData = new FormData();
@@ -163,5 +166,19 @@ export class AuthService {
   }
 
   
-  
+  refreshToken(): Observable<string> {
+    return this.http.post<any>(AUTH_API + 'refresh-token', {}).pipe(
+      map((response) => {
+        const newToken = response.accessToken;
+        // Stockez le nouveau token dans le session storage ou dans un endroit approprié
+        sessionStorage.setItem('TOKEN_KEY', newToken);
+        return newToken;
+      }),
+      catchError((error) => {
+        console.error('Error refreshing token:', error);
+        return throwError('Failed to refresh token');
+      })
+    );
+  }
 }
+
