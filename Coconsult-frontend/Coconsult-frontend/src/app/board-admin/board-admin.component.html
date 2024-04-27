@@ -1,0 +1,28 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div>
+<h2>Liste des utilisateurs</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom d'utilisateur</th>
+      <th>Email</th>
+      <th>Image</th>
+      <th>Actions</th> <!-- Ajout de la colonne Actions -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <img [src]="user.image" alt="Avatar" width="50" height="50">
+      </td>
+
+    </tr>
+  </tbody>
+</table>

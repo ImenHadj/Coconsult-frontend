@@ -1,0 +1,50 @@
+.chart {
+  width: 800px; /* Largeur souhaitée */
+  height: 500px; /* Hauteur souhaitée */
+}
+/* Style pour le bouton */
+.btn-custom {
+  background-color: #28d5e1; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px 20px; /* Espacement à l'intérieur du bouton */
+  cursor: pointer; /* Curseur de souris de type pointeur */
+  transition: background-color 0.3s; /* Transition de couleur de fond */
+}
+
+/* Style pour le texte à l'intérieur du bouton */
+.btn-custom span {
+  margin-right: 10px; /* Marge à droite du texte */
+}
+
+/* Style pour le badge */
+.badge {
+  background-color: #426cb3; /* Couleur de fond */
+  color: #f3f3f3; /* Couleur du texte */
+  font-size: 14px; /* Taille de la police */
+  padding: 5px 10px; /* Espacement à l'intérieur du badge */
+  border-radius: 50px; /* Forme arrondie */
+}
+
+/* Style pour le conteneur principal */
+.d-flex {
+  display: flex; /* Utilisation du modèle de boîte flexible */
+  padding: 2px 0; /* Espacement intérieur */
+}
+
+/* Style pour la boîte flex colonne */
+.flex-column {
+  flex-direction: column; /* Aligner les éléments verticalement */
+}
+
+/* Style pour centrer verticalement le contenu */
+.justify-content-center {
+  justify-content: center; /* Centrer verticalement le contenu */
+}
+
+/* Style pour le texte */
+.text-xs {
+  font-size: 14px; /* Taille de la police */
+  margin-bottom: 0; /* Supprimer la marge inférieure */
+}

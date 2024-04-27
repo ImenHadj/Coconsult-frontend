@@ -1,0 +1,76 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+
+<div class="home">
+    <div class="header">
+      <h1>Dashboard</h1>
+      
+      <div class="content">
+        <div class="total-task">
+          <p class="data">%</p>
+          <p class="data-type">ProjectType</p>
+        </div>
+        <div class="total-task-chart">
+          <div class="chart">
+            <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    [options]="doughnutChartOptions"
+                    [colors]="doughnutChartColor">
+            </canvas>
+          </div>
+         
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+  <button type="button" class="btn btn-custom" *ngIf="bestProject">
+    <span>Best Project of this year</span>
+    <span class="badge">{{ bestProject.projectname }}</span>
+  </button>
+  
+  
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">project</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Timeline</th>
+            <th class="text-secondary opacity-7"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let project of projects" >
+          <tr>
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-xs">{{project.projectname}}</h6>
+            
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-xs font-weight-bold mb-0">{{project.status}}</p>
+              
+            </td>
+            <td class="align-middle text-center text-sm">
+              <span class="badge badge-sm badge-success">{{project.priority}}</span>
+            </td>
+            <td class="align-middle text-center text-sm">
+              <p class="text-xs font-weight-bold mb-0">{{project.budget}}</p>
+            </td>
+            <td class="align-middle text-center">
+              <span class="text-secondary text-xs font-weight-normal">{{project.endDate}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,28 @@
+/* Ajoutez vos styles personnalisés ici */
+
+.container {
+    margin-top: 20px;
+  }
+  
+  /* Styles pour la barre de défilement horizontale */
+  .table-responsive::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .table-responsive::-webkit-scrollbar-thumb {
+    background-color: #3490dc;
+    border-radius: 10px;
+  }
+  
+  /* Styles pour les cellules du tableau */
+  th, td {
+    white-space: nowrap; /* Empêcher le renvoi à la ligne dans les cellules */
+    text-overflow: ellipsis; /* Ajouter des points de suspension si le texte dépasse */
+    overflow: hidden;
+  }
+  
+  /* Styles spécifiques pour la colonne Nom d'utilisateur */
+  th:nth-child(2), td:nth-child(2) {
+    max-width: 100px; /* Définissez une largeur maximale pour la colonne Nom d'utilisateur */
+  }
+  
