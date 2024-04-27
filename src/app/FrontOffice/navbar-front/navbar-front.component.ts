@@ -27,7 +27,24 @@ constructor(
 ) {}
 
 ngOnInit(): void {
-  this.currentUser = this.storageService.getUser();
+  console.log(this.username)
+  this.isLoggedIn = this.storageService.isLoggedIn();
+
+  // Si l'utilisateur est connecté, obtenir son rôle
+  if (this.isLoggedIn) {
+    const user = this.storageService.getUser();
+    this.roles = user.roles;
+
+    // Vérifier si l'utilisateur a le rôle d'administrateur
+    this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+  }
+
+  // Abonnement à l'événement de déconnexion
+  this.eventBusSub = this.eventBusService.on('logout', () => {
+    this.logout();
+  });
+}
+  /*this.currentUser = this.storageService.getUser();
 
   this.isLoggedIn = this.storageService.isLoggedIn();
 
@@ -44,7 +61,7 @@ ngOnInit(): void {
   this.eventBusSub = this.eventBusService.on('logout', () => {
     this.logout();
   });
-}
+}*/
 
 logout(): void {
   this.authService.logout().subscribe({

@@ -1,40 +1,81 @@
-<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-  <div class="flex flex-column align-items-center justify-content-center">
-    <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
-      <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-        <div class="text-center mb-5">
-          <div class="text-900 text-3xl font-medium mb-3">Sign Up</div>
-          <span class="text-600 font-medium">Create an account</span>
+<!doctype html>
+<html lang="en">
+  <head>
+
+  </head>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="assets/Front/images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
         </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign In to <strong>Coconsult</strong></h3>
+              <p class="mb-4">All your business on one platform.
+				Simple, efficient, and affordable!</p>
+            </div>
+            <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group first">
+                <label for="username">Username</label>
+            
+				<input [(ngModel)]="form.username" id="username" name="username" type="text"  pInputText class="form-control" >
 
-        <form class="l-f-o__form" name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
-          <label for="username" class="block text-900 text-xl font-medium mb-2">Username</label>
-          <input [(ngModel)]="form.username" id="username" name="username" type="text" placeholder="Username" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+              </div>
+			  <div class="form-group first">
+                <label for="username">Email</label>
+                
+				<input [(ngModel)]="form.email" id="email" name="email" type="email"  pInputText  class="form-control" >
 
-          <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
-          <input [(ngModel)]="form.email" id="email" name="email" type="email" placeholder="Email" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
 
-          <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
-          <input [(ngModel)]="form.password" id="password" name="password" type="password" placeholder="Password" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Password</label>
+				<input [(ngModel)]="form.password" id="password" name="password" type="password"  pInputText class="form-control">
+                
+              </div>
+			  <div class="form-group first">
+                
+                
+				<input type="file"class="form-control2" name="image" (change)="handleFileInput($event)" required>
 
-          <label for="image" class="block text-900 font-medium text-xl mb-2">Image</label>
-          <input type="file" class="w-full md:w-30rem mb-5" name="image" (change)="handleFileInput($event)" required>
+              </div>
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+              </div>
 
-          <button pButton pRipple type="submit" class="w-full p-3 text-xl rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300 ease-in-out" style="background-color: #3490dc; color: #ffffff;">
-            Sign Up
-          </button>
-        </form>
-        <div *ngIf="isSuccessful">
-          <h2>User registered successfully!</h2>
-          <img *ngIf="qrCodeUri" [src]="qrCodeUri" alt="QR Code">
+              <input type="submit" value="Sign up" class="btn text-white btn-block btn-primary" style="  border-radius: 25px;">
+
+              <span class="d-block text-left my-4 text-muted"> or login in with <a routerLink="/login" style="color: rgb(127, 127, 183);">Login</a></span>
+			  
+			  <div class="alert alert-danger" *ngIf="isSignUpFailed">
+				{{ errorMessage }}
+			  </div>
+            </form>
+			<div *ngIf="isSuccessful">
+				<h2>User registered successfully!</h2>
+				<img *ngIf="qrCodeUri" [src]="qrCodeUri" alt="QR Code">
+			  </div>
+            </div>
+          </div>
+          
         </div>
         
-        
-        <div class="alert alert-danger" *ngIf="isSignUpFailed">
-          {{ errorMessage }}
-        </div>
-
       </div>
     </div>
   </div>
-</div>
+
+
+  </body>
+</html>

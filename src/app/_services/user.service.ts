@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_URL = 'http://localhost:8090/api/test/';
@@ -9,15 +9,36 @@ const API_URL = 'http://localhost:8090/api/test/';
 })
 export class UserService {
   private baseUrl = 'http://localhost:8090/api/users';
+  private apiUrl = 'http://localhost:8090/api/users';
+  private backendUrl = 'http://localhost:8090'; // URL de base du backend
+
+
   updateProfile(profileData: any): Observable<any> {
     return this.http.put(API_URL + 'users/profile', profileData);
   }
   constructor(private http: HttpClient) {}
 
-  getAllUsers(): Observable<any> {
+  /*getAllUsers(): Observable<any> {
     return this.http.get<any[]>(`${this.baseUrl}`);
-  }
+  }*/
 
+  getAdvancedUserStats(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/advanced-stats`);
+  }
+  getAllUsers(): Observable<any[]> {
+    const accessToken = 'votre_token_jwt';
+  
+    // Définissez les options pour les en-têtes HTTP avec le token JWT
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken // Incluez le token JWT avec le préfixe 'Bearer'
+      })
+    };
+  
+    // Effectuez la requête HTTP avec les en-têtes contenant le token JWT
+    return this.http.get<any[]>('http://localhost:8090/api/users', httpOptions);
+  }
   
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
@@ -44,5 +65,12 @@ export class UserService {
   unlockAccount(userId: string) {
     return this.http.put(`${this.baseUrl}/${userId}/unlock`, {});
   }
- 
+
+  getUserDetails(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user`);
+  }
+  getAverageNotesByCriteria(): Observable<any> {
+    return this.http.get<any[]>(`${this.backendUrl}/perfomanceEmpl/average-by-criteria`);
+  }
+  
 }
