@@ -1,0 +1,79 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Liste des candidats</h1>
+    
+
+    <select class="form-select" id="ordreTri" (change)="choisirOrdreTri($event)">
+      <option value="croissant">Score Croissant</option>
+      <option value="decroissant">Score  Décroissant</option>
+    </select>
+    
+    
+
+    
+  </div>
+  <div class="row my-4" *ngFor="let candidat of candidats">
+    <div class="col-lg-12 col-12">
+      <div class="custom-block custom-block-transation-detail bg-white">
+        <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
+          <div class="d-flex align-items-center">
+            <div>
+              <h4>{{ candidat.nom }} {{ candidat.prenom }}</h4>
+            </div>
+          </div>
+          <div class="ms-auto">
+            <strong class="d-block text-success"><span class="me-1">Téléphone:</span> {{ candidat.telephone }}</strong>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap align-items-center">
+          <div class="custom-block-transation-detail-item mt-4">
+            <h6>Adresse:</h6>
+          <p> {{ candidat.email }}</p>
+          </div>
+          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+            <h6>Nationalité:</h6>
+            <p>{{ candidat.nationalite }}</p>
+          </div>
+        
+          <div class="custom-block-transation-detail-item mt-4 ms-auto me-auto">
+            <h6>Score:</h6>
+            <p>{{ candidat.score }}</p>
+          </div>
+          <div class="ms-auto me-4">
+            <button class="btn btn-primary" (click)="openPopup(candidat)" data-bs-toggle="modal" data-bs-target="#exampleModal">Show All</button>
+            </div>
+         </div>
+      </div>
+    </div>
+   </div>
+ 
+   <button class="btn btn-primary" routerLink="/admin/candidatsacceptes">Voir les candidats acceptés</button>
+
+                            
+</main>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Détails du Candidat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedCandidat">
+        <h3>{{ selectedCandidat.nom }} {{ selectedCandidat.prenom }}</h3>
+        <h3>Email: {{ selectedCandidat.email }}</h3>
+        <h3>Téléphone: {{ selectedCandidat.telephone }}</h3>
+        <h3>Adresse: {{ selectedCandidat.adresse }}</h3>
+        <h3>Nationalité: {{ selectedCandidat.nationalite }}</h3>
+        <h3>Genre: {{ selectedCandidat.genre }}</h3>
+        <a [href]="selectedCandidat.cvUrl" target="_blank">Voir CV</a>
+     </div>
+      <div class="modal-footer">
+        <div class="modal-body" *ngIf="selectedCandidat">
+          <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Fermer</button>
+          <button class="btn btn-success me-3" (click)="accepterCandidat(selectedCandidat.idCandidat)">Accepter</button>
+          <button class="btn btn-danger" (click)="removeCandidat(selectedCandidat.idCandidat)">Refuser</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

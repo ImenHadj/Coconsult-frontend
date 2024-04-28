@@ -1,0 +1,29 @@
+.form-select {
+  color: var(--p-color);
+  border-radius: var(--border-radius-large);
+  font-size: var(--menu-font-size);
+  margin-bottom: 54px;
+  padding: 10px 20px;
+  outline: none;
+  transition: all 0.3s;
+}
+.title {
+  margin-bottom: 50px;
+
+  color: #004cff71;
+}
+.title h3 {
+  font-weight: bold;
+  font-size: large;
+}
+.required {
+  color: red;
+}
+.subbtn {
+  display: flex;
+  justify-content: flex-start;
+}
+.subbtn button {
+  width: 100px;
+  border-radius: 5px;
+}

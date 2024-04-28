@@ -1,0 +1,119 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Modifier le recrutement</h1>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-lg-12 col-12">
+      <div class="custom-block bg-white">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-tab">Modifier les détails du recrutement</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <form class="custom-form profile-form" role="form" [formGroup]="recrutementForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="poste" class="form-label">Poste</label>
+                    <input class="form-control" type="text" name="poste" id="poste" formControlName="poste" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="lieu" class="form-label">Lieu</label>
+                    <input class="form-control" type="text" name="lieu" id="lieu" formControlName="lieu" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="postesVacants" class="form-label">Postes Vacants</label>
+                    <input class="form-control" type="text" name="postesVacants" id="postesVacants" formControlName="postesVacants" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="objectifs" class="form-label">Objectifs</label>
+                    <input class="form-control" type="text" name="objectifs" id="objectifs" formControlName="objectifs" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="problematique" class="form-label">Problématique</label>
+                    <input class="form-control" type="text" name="problematique" id="problematique" formControlName="problematique" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="travailDemande" class="form-label">Travail demandé</label>
+                    <input class="form-control" type="text" name="travailDemande" id="travailDemande" formControlName="travailDemande" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="experience" class="form-label">Expérience</label>
+                    <input class="form-control" type="text" name="experience" id="experience" formControlName="experience" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="niveauDetude" class="form-label">Niveau d'étude</label>
+                    <input class="form-control" type="text" name="niveauDetude" id="niveauDetude" formControlName="niveauDetude" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="salaire" class="form-label">Salaire</label>
+                    <input class="form-control" type="number" name="salaire" id="salaire" formControlName="salaire" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="langue" class="form-label">Langue</label>
+                    <input class="form-control" type="text" name="langue" id="langue" formControlName="langue" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="sex" class="form-label">Sexe</label>
+                    <input class="form-control" type="text" name="sex" id="sex" formControlName="sex" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input class="form-control" type="text" name="description" id="description" formControlName="description" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="dateDebut" class="form-label">Date de début</label>
+                    <input class="form-control" type="date" name="dateDebut" id="dateDebut" formControlName="dateDebut" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="dateCloture" class="form-label">Date de clôture</label>
+                    <input class="form-control" type="date" name="dateCloture" id="dateCloture" formControlName="dateCloture" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="responsableRecrutement" class="form-label">Responsable de Recrutement</label>
+                    <input class="form-control" type="text" name="responsableRecrutement" id="responsableRecrutement" formControlName="responsableRecrutement" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="statut" class="form-label">Statut</label>
+                    <input class="form-control" type="text" name="statut" id="statut" formControlName="statut" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="criteresSelection" class="form-label">Critères de Sélection</label>
+                    <input class="form-control" type="text" name="criteresSelection" id="criteresSelection" formControlName="criteresSelection" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="motsCles" class="form-label">Mots Clés</label>
+                    <input class="form-control" type="text" name="motsCles" id="motsCles" formControlName="motsCles" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="typeRecrutement" class="form-label">Type de Recrutement</label>
+                  <select class="form-select" name="typeRecrutement" id="typeRecrutement" formControlName="typeRecrutement" required>
+                    <option value="" disabled selected>Choisir le type de recrutement</option>
+                    <option value="OFFRE_EMPLOI">Offre d'emploi</option>
+                    <option value="ETUDIANT">Recrutement étudiant</option>
+                  </select>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between mt-4">
+                <button type="submit" [disabled]="recrutementForm.invalid" class="btn btn-primary">Modifier Recrutement</button>
+                <button type="button" class="btn btn-secondary">Annuler</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

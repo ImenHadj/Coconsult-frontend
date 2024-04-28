@@ -1,0 +1,13 @@
+.calender-main {
+  width: 100%; /* Largeur souhaitée */
+  height: 400px; /* Hauteur souhaitée */
+  margin-left: auto; /* Décalage vers la droite */
+  
+
+
+.fc-daygrid-day {
+  font-size: 10px; /* Taille de la police */
+  width: 90px; /* Largeur de chaque case de date */
+  height: 150px; /* Hauteur de chaque case de date */
+}
+}

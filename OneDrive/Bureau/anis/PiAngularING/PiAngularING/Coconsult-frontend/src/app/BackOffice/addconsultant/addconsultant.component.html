@@ -1,0 +1,37 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <form [formGroup]="consultantForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="skills">Skills:</label>
+        <input type="text" class="form-control" id="skills" formControlName="skills">
+      </div>
+      <div class="form-group">
+        <label>Availability:</label>
+        <div>
+            <input type="radio" [value]="true" formControlName="availability" > Available
+        </div>
+        <div>
+            <input type="radio" [value]="false" formControlName="availability" > Unavailable
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="hourlyRate">Hourly Rate:</label>
+        <input type="number" class="form-control" id="hourlyRate" formControlName="hourlyRate">
+      </div>
+      <div class="form-group">
+        <label for="hoursWorked">Hours Worked:</label>
+        <input type="number" class="form-control" id="hoursWorked" formControlName="hoursWorked">
+      </div>
+      <div class="form-group">
+        <label for="projectIds">Projects:</label>
+        <div *ngFor="let project of projects">
+          <input type="checkbox" [value]="project.projectid" formControlName="projectIds"> {{ project.projectname }}
+        </div>
+      </div>
+      <button type="submit" [disabled]="consultantForm.invalid" class="form-control ms-2">Add Consultant</button>
+    </form>
+  </main>
+  
