@@ -39,10 +39,11 @@ export class ServiceCongeService {
   }
   filterByStatus(status: StatutC){
     const url = `${this.URL}/filterByStatus`;
+    const params = { status };
   
-
-    return this.http.get<any[]>(url);
+    return this.http.get<any[]>(url, { params });
   }
+  
 
   getCongesByEmployeeId(employeeId: number) {
     const url = `${this.URL}/getConges/${employeeId}`;

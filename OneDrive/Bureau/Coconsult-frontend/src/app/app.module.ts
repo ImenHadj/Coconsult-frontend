@@ -148,6 +148,10 @@ import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-ab
 import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
 import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-salaires.component';
 import { ChartSalaireComponent } from './BackOffice/dashboarding/chart-salaire/chart-salaire.component';
+import { CircularChartCongeComponent } from './BackOffice/dashboarding/circular-chart-conge/circular-chart-conge.component';
+import { CircularChartComponent } from './BackOffice/dashboarding/circular-chart/circular-chart.component';
+import { ChartComponent } from './BackOffice/chart/chart.component';
+import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 
 @NgModule({
   declarations: [
@@ -236,15 +240,17 @@ import { ChartSalaireComponent } from './BackOffice/dashboarding/chart-salaire/c
     AddNoteComponent,
     AddContratEmployeComponent,
     ListContratEmployeeComponent,
-    // CircularChartComponent,
+    CircularChartComponent,
     ImageComponent,
     HistoriqueEmployeeComponent,
-    // CircularChartCongeComponent,
+    CircularChartCongeComponent,
     CalendarComponent,
     CalendarAbsencesComponent,
     AddPrimesAndSHoursComponent,
     ListSalairesComponent,
     ChartSalaireComponent,
+    DashboardProjectComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,

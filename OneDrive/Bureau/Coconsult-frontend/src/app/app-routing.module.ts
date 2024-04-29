@@ -78,6 +78,8 @@ import { CalendarComponent } from './BackOffice/dashboarding/calendar/calendar.c
 import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-absences/calendar-absences.component';
 import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-salaires.component';
 import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
+import { ChartComponent } from './BackOffice/chart/chart.component';
+import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 
 
 
@@ -142,6 +144,8 @@ const routes: Routes = [
     { path: 'calendarT/:id', component: TaskCalenderComponent  } ,
     { path: 'kanban', component: KanbanBoardComponent  } ,
     { path: 'addconsultant', component: AddconsultantComponent } ,
+    { path: 'dash', component: DashboardProjectComponent  } ,
+    { path: 'chart', component: ChartComponent } ,
 
     { path: 'addemployees', component: AddEmployeeComponent },
     { path: 'editEmployees/:id', component: AddEmployeeComponent },

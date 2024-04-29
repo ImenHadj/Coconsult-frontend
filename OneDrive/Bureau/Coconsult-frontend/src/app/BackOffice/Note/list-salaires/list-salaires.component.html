@@ -12,7 +12,7 @@
           </div>
       </div>
        -->
-       <app-chart-salaire *ngIf="hasSalaryData"></app-chart-salaire>
+       <!-- <app-chart-salaire *ngIf="hasSalaryData"></app-chart-salaire> -->
 
        <button (click)="exportDataToExcel()">Export to Excel</button>
     <div class="row my-4" *ngFor="let absence of departements | paginate : { itemsPerPage: itemsPerPage, currentPage: p }">

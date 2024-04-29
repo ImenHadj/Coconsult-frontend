@@ -20,11 +20,14 @@
       />
     </div>
     <ng-container *ngIf="absences">
-      <!-- <app-circular-chart-conge></app-circular-chart-conge> -->
+      <app-circular-chart-conge></app-circular-chart-conge>
     </ng-container>
   </div>
-  <button class="btn btn-primary" [routerLink]="['/admin/calendar/']">Go to calendar</button>
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="mb-3">
+    <button class="btn btn-primary" [routerLink]="['/admin/calendar/']">Go to calendar</button>
+
+  </div>
+  <div class="d-flex  mb-3">
     <div>
       <select class="form-control" [(ngModel)]="selectedStatus">
         <option value="">All Status</option>
