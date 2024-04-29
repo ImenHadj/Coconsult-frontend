@@ -21,6 +21,13 @@ export class SidebarBackComponent {
   fournisseur = false;
   commande = false ;
   reclamation = false ;
+  absences = false;
+  listAbsences = false;
+  conge = false;
+  contrat=false;
+  employe = false;
+  departement = false;
+  Salaires = false;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +35,27 @@ export class SidebarBackComponent {
     private router: Router
 ) {}
   Projects = false;
+  toggleContratEmployeList() {
+    this.contrat = !this.contrat;
+  }
+  toggleSalairesList() {
+    this.Salaires = !this.Salaires;
+  }
+  toggleAbsences() {
+    this.absences = !this.absences;
+  }
+  toggleConges() {
+    this.conge = !this.conge;
+  }
+  toggleListAbsences() {
+    this.listAbsences = !this.listAbsences;
+  }
+  toggleDepartementList() {
+    this.departement = !this.departement;
+  }
+  toggleEmployeList(){
+    this.employe = !this.employe;
+  }
 
   toggleProjectsList(){
     this.Projects = !this.Projects;

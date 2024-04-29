@@ -1,0 +1,13 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    
+    <div>
+        <input type="date" [(ngModel)]="selectedDate" (change)="onDateChange()">
+        
+        <canvas id="salaryStatisticsChart" class="chart" width="600" height="200"></canvas>
+        
+        <canvas id="salaryEvolutionChart" class="chart" width="600" height="200"></canvas>
+    </div>
+    
+   
+      
+</main>

@@ -67,6 +67,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CommonModule } from '@angular/common';
 import { CharthrComponent } from './BackOffice/charthr/charthr.component';
 
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -127,12 +128,26 @@ import { TaskCalenderComponent } from './BackOffice/task-calender/task-calender.
 import { KanbanBoardComponent } from './BackOffice/kanban-board/kanban-board.component';
 import { AddconsultantComponent } from './BackOffice/addconsultant/addconsultant.component';
 import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
-
-
-
-
-
-
+import { AddEmployeeComponent } from './BackOffice/Employees/add-employee/add-employee.component';
+import { AbsenceComponent } from './BackOffice/Absences/absence/absence.component';
+import { AbsenceListComponent } from './BackOffice/Absences/list-absence/list-absence.component';
+import { AddCongeComponent } from './BackOffice/Conges/add-conge/add-conge.component';
+import { AddDepartementComponent } from './BackOffice/Departement/add-departement/add-departement.component';
+import { ListEmployeesComponent } from './BackOffice/Employees/list-employees/list-employees.component';
+import { ListDepartementComponent } from './BackOffice/Departement/list-departement/list-departement.component';
+import { ListCongeComponent } from './BackOffice/Conges/list-conge/list-conge.component';
+import { AddNoteComponent } from './BackOffice/Note/add-note/add-note.component';
+import { AddContratEmployeComponent } from './BackOffice/contratEmploye/add-contrat-employe/add-contrat-employe.component';
+import { ListContratEmployeeComponent } from './BackOffice/contratEmploye/list-contrat-employee/list-contrat-employee.component';
+// import { CircularChartComponent } from './BackOffice/dashboarding/circular-chart/circular-chart.component';
+import { ImageComponent } from './BackOffice/image/image.component';
+import { HistoriqueEmployeeComponent } from './BackOffice/Employees/historique-employee/historique-employee.component';
+// import { CircularChartCongeComponent } from './BackOffice/dashboarding/circular-chart-conge/circular-chart-conge.component';
+import { CalendarComponent } from './BackOffice/dashboarding/calendar/calendar.component';
+import { CalendarAbsencesComponent } from './BackOffice/dashboarding/calendar-absences/calendar-absences.component';
+import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
+import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-salaires.component';
+import { ChartSalaireComponent } from './BackOffice/dashboarding/chart-salaire/chart-salaire.component';
 
 @NgModule({
   declarations: [
@@ -209,6 +224,27 @@ import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
     KanbanBoardComponent,
     AddconsultantComponent,
     // ChartComponent,
+
+    AddEmployeeComponent,
+    AbsenceComponent,
+    AbsenceListComponent,
+    AddCongeComponent,
+    AddDepartementComponent,
+    ListEmployeesComponent,
+    ListDepartementComponent,
+    ListCongeComponent,
+    AddNoteComponent,
+    AddContratEmployeComponent,
+    ListContratEmployeeComponent,
+    // CircularChartComponent,
+    ImageComponent,
+    HistoriqueEmployeeComponent,
+    // CircularChartCongeComponent,
+    CalendarComponent,
+    CalendarAbsencesComponent,
+    AddPrimesAndSHoursComponent,
+    ListSalairesComponent,
+    ChartSalaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -261,6 +297,7 @@ import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
      NgbDatepicker,
 
      KanbanModule,
+      MaterialFileInputModule,
 
   ],
   

@@ -37,6 +37,7 @@
                               <a mat-list-item routerLink="/admin/addclient">add Clients</a>
                             </div>
                           </li>
+                          
                           <li class="nav-item">
                             <a class="nav-link" aria-current="page" mat-button (click)="toggleProjectsList()" [ngClass]="{'active': isRouteActive('/admin/projects')|| isRouteActive('/admin/addclient')}">
                                 <i class="bi-wallet me-2"></i>
@@ -48,6 +49,70 @@
                               <a mat-list-item routerLink="/admin/dash">Dashboard Projects</a>
                             </div>
                           </li>
+
+                          
+                          <li class="nav-item">
+                            <a  class="nav-link" aria-current="page" mat-button (click)="toggleSalairesList()"  [ngClass]="{'active': isRouteActive('/admin/listSalaires') }">
+                              <i class="bi-person me-2"></i>
+                              Salaire
+                            </a>
+                            <div *ngIf="Salaires">
+                              <a mat-list-item id="aa" routerLink="/admin/listSalaires">All Salaires</a>
+                            </div>
+                          </li>
+
+
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleAbsences()"  [ngClass]="{'active': isRouteActive('/admin/listAbsences') } ">
+                              <i class="bi-person me-2"></i>
+                              Absences
+                            </a>
+                            <div *ngIf="absences">
+                              <a mat-list-item routerLink="/admin/listAbsences">Absences List</a>
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleConges()"  [ngClass]="{'active': isRouteActive('/admin/EditConge')} ">
+                              <i class="bi-person me-2"></i>
+                              Leaves
+                            </a>
+                            <div *ngIf="conge">
+                              <a mat-list-item routerLink="/admin/listConge">Leaves List</a>
+
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleContratEmployeList()"  [ngClass]="{'active': isRouteActive('/admin/ListContratEmployee')} ">
+                              <i class="bi-person me-2"></i>
+                            Contracts
+                            </a>
+                            <div *ngIf="contrat">
+                              <a mat-list-item routerLink="/admin/ListContratEmployee">Contract List </a>
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleEmployeList()"  [ngClass]="{'active': isRouteActive('/admin/addEmployee') || isRouteActive('/admin/listEmployees')} ">
+                              <i class="bi-person me-2"></i>
+                              Employees
+                            </a>
+                            <div *ngIf="employe">
+                              <a mat-list-item routerLink="/admin/addemployees">Add Employee</a>
+                              <a mat-list-item routerLink="/admin/listEmployees">Employees List</a>
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" mat-button (click)="toggleDepartementList()"  [ngClass]="{'active': isRouteActive('/admin/addDepartment')} ">
+                              <i class="bi-person me-2"></i>
+                              Departments
+                            </a>
+                            <div *ngIf="departement">
+                              <a mat-list-item routerLink="/admin/addDepartments">Add Department</a>
+                              <a mat-list-item routerLink="/admin/listDepartments">Departments List </a>
+
+                            </div>
+                          </li>
+
+
                           <li class="nav-item">
                             <a class="nav-link" aria-current="page" mat-button (click)="toggleResourceList()"  [ngClass]="{'active': isRouteActive('/admin/resources') || isRouteActive('/admin/addResource') || isRouteActive('/admin/affectResource')}">
                               <i class="bi-person me-2"></i>
