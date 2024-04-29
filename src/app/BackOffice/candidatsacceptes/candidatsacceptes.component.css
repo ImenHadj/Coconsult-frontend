@@ -1,0 +1,8 @@
+.custom-dialog {
+    width: 400px;
+    height: 300px;
+    margin-left: 20px;
+    top: 50px; /* Décalage de 50 pixels vers le haut */
+    transform: translateY(-50%);
+  }
+  

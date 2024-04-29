@@ -1,0 +1,45 @@
+<!-- <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+<div class="absence-list">
+    <h2>Listes d'absences</h2>
+    <div *ngIf="absences.length > 0; else noAbsences">
+      <mat-card *ngFor="let absence of absences" class="absence-card">
+        <mat-card-header>
+          <mat-card-title>{{ absence.motif}}</mat-card-title>
+          <mat-card-subtitle>{{ absence.date | date:'mediumDate' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <p class="{{ absence.validee ? 'text-success' : 'text-danger' }}">
+                {{ absence.validee ? 'Validée' : 'Non Validée' }}
+            </p>              
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <ng-template #noAbsences>
+      <p>there is no records</p>
+    </ng-template>
+  </div>
+
+  <div class="conge-list">
+    <h2>Listes d'Conges</h2>
+    <div *ngIf="conges.length > 0; else noAbsences">
+      <mat-card *ngFor="let absence of conges" class="absence-card">
+        <mat-card-header>
+          <mat-card-title>{{ absence.typeC}}</mat-card-title>
+          <mat-card-subtitle>{{ absence.date_debut | date:'mediumDate' }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ absence.date_fin | date:'mediumDate' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+
+      </mat-card>
+    </div>
+    <ng-template #noAbsences>
+      <p>there is no records</p>
+    </ng-template>
+  </div>
+
+</main> -->
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+</main>

@@ -1,0 +1,4 @@
+.table-primary {
+    border: 2px solid #3d74af; /* Bordure de 1 pixel solide de couleur bleue */
+    border-radius: 0.25rem; /* Rayon de bordure arrondi */
+}

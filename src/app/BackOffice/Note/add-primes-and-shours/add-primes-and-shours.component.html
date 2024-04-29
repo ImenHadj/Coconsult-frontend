@@ -1,0 +1,98 @@
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Add Rating</h1>
+  </div>
+
+  <div class="flex items-center row my-4">
+    <div class="col-lg-7 col-12">
+      <div class="custom-block bg-white p-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-tab">
+              Fill in Salaire Details
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="profile-tab-pane"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+            tabindex="0"
+          >
+            <form
+              class="custom-form profile-form"
+              role="form"
+              [formGroup]="SalaireForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="form-group">
+                <label for="primes">Primes:</label>
+                <input
+                class="form-control"
+
+                  type="number"
+                  name="prime"
+                  id="prime"
+                  formControlName="prime"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="supplementHours">Supplement Hours:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  name="heures_supplementaires"
+                  id="heures_supplementaires"
+                  formControlName="heures_supplementaires"
+                  required
+                />
+              </div>
+              <div class="alert alert-danger" *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+
+              <div class="d-flex">
+                <button
+                  type="button"
+                  class="btn btn-secondary me-3"
+                  (click)="onCancel()"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  [disabled]="SalaireForm.invalid"
+                  class="btn btn-primary ms-2"
+                >
+                  Add Salaire
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-12 text-center">
+          <p class="copyright-text">
+            Copyright © Mini Finance 2048 - Design:
+            <a rel="sponsored" href="https://www.tooplate.com" target="_blank"
+              >Tooplate</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>

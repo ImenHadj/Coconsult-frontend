@@ -1,0 +1,55 @@
+.mdc-list-item.mdc-list-item--with-one-line {
+  height: 32px;
+}
+#sidebarMenu {
+  padding-top: 0;
+
+  background-color: #162342;
+  width: 17%;
+}
+.mat-sidenav {
+  background-color: transparent;
+}
+#sidebarMenu a {
+  color: #fff;
+}
+.mat-mdc-list-base {
+  --mdc-list-list-item-label-text-color: rgb(237, 227, 227);
+  --mdc-list-list-item-label-text-size: 13px;
+  --mdc-list-list-item-supporting-text-size: 10px;
+}
+
+.mat-mdc-list-base {
+  --mdc-list-list-item-supporting-text-color: rgba(0, 0, 0, 0.54);
+  --mdc-list-list-item-leading-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-list-list-item-trailing-supporting-text-color: rgba(0, 0, 0, 0.38);
+  --mdc-list-list-item-trailing-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-list-list-item-selected-trailing-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-list-list-item-disabled-label-text-color: black;
+  --mdc-list-list-item-disabled-leading-icon-color: black;
+  --mdc-list-list-item-disabled-trailing-icon-color: black;
+  --mdc-list-list-item-hover-label-text-color: rgb(237, 227, 227);
+  --mdc-list-list-item-hover-leading-icon-color: rgb(237, 227, 227);
+  --mdc-list-list-item-hover-trailing-icon-color: rgb(237, 227, 227);
+  --mdc-list-list-item-focus-label-text-color: rgb(237, 227, 227);
+  --mdc-list-list-item-hover-state-layer-color: rgb(237, 227, 227);
+  --mdc-list-list-item-hover-state-layer-opacity: 0.04;
+  --mdc-list-list-item-focus-state-layer-color: transparent;
+  --mdc-list-list-item-focus-state-layer-opacity: 0.12;
+}
+.image img {
+  width: 20%;
+}
+.image {
+  margin-top: 10px;
+  display: flex;
+  height: 10%;
+  align-items: center;
+  border-bottom: 1px dashed #b2c2d4;
+}
+.image a {
+  font-weight: bold;
+  font-size: large;
+  margin-top: 10px;
+  margin-left: 10px;
+}
