@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
 
 const wrapper = document.querySelector(".wrapper");
 console.log(wrapper);
@@ -52,7 +52,7 @@ const dragStart = (e) => {
     // Updates the scroll position of the carousel based on the cursor movement
     carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
 }*/
-
+/*
 const dragStop = () => {
     isDragging = false;
     carousel.classList.remove("dragging");
@@ -83,7 +83,7 @@ const infiniteScroll = () => {
     timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
 }
 autoPlay();*/
-
+/*
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
@@ -92,3 +92,5 @@ wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 
 });
+
+*/

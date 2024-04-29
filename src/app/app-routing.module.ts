@@ -80,11 +80,14 @@ import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-sala
 import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
-
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'landingpage', component: LandingpageComponent },
+  { path: '', component: LandingpageComponent },
+  
 
   { path: 'register', component: RegisterComponent },
   { path: "accueil", component:TemplateFComponent,

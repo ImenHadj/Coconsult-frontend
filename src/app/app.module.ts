@@ -84,21 +84,21 @@ import {MatSortModule} from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 
 import {MatMenuModule} from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 
 import { ChartModule } from 'angular-highcharts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbCalendar, NgbDatepickerModule, NgbDatepicker,NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClientsComponent } from './BackOffice/clients/clients.component';
 import { AddclientComponent } from './BackOffice/addclient/addclient.component';
@@ -152,6 +152,7 @@ import { CircularChartCongeComponent } from './BackOffice/dashboarding/circular-
 import { CircularChartComponent } from './BackOffice/dashboarding/circular-chart/circular-chart.component';
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
@@ -216,8 +217,6 @@ import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashbo
     MeetComponent,
     SliderComponent,
     ClienthomeComponent,
-
-
     AddProjectComponent,
     ProjectsComponent,
     AddtaskComponent,
@@ -227,8 +226,6 @@ import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashbo
     TaskCalenderComponent,
     KanbanBoardComponent,
     AddconsultantComponent,
-    // ChartComponent,
-
     AddEmployeeComponent,
     AbsenceComponent,
     AbsenceListComponent,
@@ -251,6 +248,7 @@ import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashbo
     ChartSalaireComponent,
     DashboardProjectComponent,
     ChartComponent,
+    LandingpageComponent,
   ],
   imports: [
     BrowserModule,

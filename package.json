@@ -44,6 +44,7 @@
     "date-fns": "^3.6.0",
     "highcharts": "^11.4.1",
     "html2canvas": "^1.4.1",
+    "jquery": "^3.7.1",
     "jspdf": "^2.5.1",
     "ng-bootstrap": "^0.46.0",
     "ng2-charts": "^6.0.0",
