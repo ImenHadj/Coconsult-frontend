@@ -1,0 +1,173 @@
+.actions button {
+  background: none;
+  border: none;
+}
+#edit {
+  font-size: 18px;
+  color: rgb(73, 190, 73);
+}
+#edit:hover {
+  color: rgb(20, 93, 20);
+}
+
+#delete {
+  font-size: 18px;
+  color: red;
+}
+#delete:hover {
+  color: rgb(142, 74, 74);
+}
+#contrat {
+  color: cornflowerblue;
+  font-size: 16px;
+  margin-left: 16px;
+}
+#contrat:hover {
+  color: blue;
+  font-size: 18px;
+}
+.searching {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.filtres {
+  display: flex;
+  justify-content: flex-end;
+}
+.filtres button {
+  height: 40px;
+}
+
+#formadd {
+  width: 260px;
+}
+#formadd {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  /* Create a gradient for the background */
+  background-image: linear-gradient(to right, #3498db 0%, #2980b9 100%);
+  /* Make the text color white for contrast */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#formadd:hover {
+  /* Change the gradient direction on hover */
+  background-image: linear-gradient(to right, #2980b9 0%, #3498db 100%);
+  /* Add a slight box shadow on hover */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.dropdown-menu {
+  width: 600px;
+  height: 460px;
+
+  border-radius: 15px;
+  padding-top: 0;
+  padding-left: 20px;
+  background-color: #f5f5f5;
+}
+
+#formbtn {
+  background-image: linear-gradient(to right, #3498db 0%, #2980b9 100%);
+  color: white;
+  width: 120px;
+  border-radius: 3px;
+}
+.subbtn {
+  width: 120px;
+}
+
+.dropdown button {
+  width: 100%;
+}
+.dropdown p {
+  font-size: 13px;
+  color: blue;
+  margin-left: 20px;
+}
+#t:hover {
+  background-color: rgb(124, 163, 235);
+}
+#filtrebtn.filter-applied {
+  background-color: rgb(124, 163, 235);
+  border-color: rgb(124, 163, 235);
+}
+
+#bill {
+  margin-left: 40px;
+}
+#bill i {
+  font-size: 18px;
+  color: rgb(44, 44, 129);
+}
+#bill:hover {
+  color: rgb(25, 108, 149);
+}
+/***********/
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px; /* Add some space between the form elements */
+  background-color: #f5f5f5; /* Light gray background color */
+  padding: 20px; /* Add some padding around the form elements */
+  border-radius: 5px; /* Add some rounded corners to the form */
+}
+
+/* Style the labels */
+.form-container label {
+  display: block; /* Make the labels display on their own line */
+  margin-bottom: 5px; /* Add some space below the labels */
+  font-weight: bold; /* Make the labels bold */
+}
+
+/* Style the input fields */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="datetime-local"] {
+  border: 1px solid #ccc; /* Add a solid border to the input fields */
+  padding: 5px; /* Add some padding to the input fields */
+  border-radius: 3px; /* Add some rounded corners to the input fields */
+  width: 80%; /* Make the input fields fill the width of their container */
+}
+
+/* Add a hover effect to the input fields */
+.form-container input[type="text"]:hover,
+.form-container input[type="number"]:hover,
+.form-container input[type="datetime-local"]:hover {
+  border-color: #888; /* Change the border color on hover */
+}
+#total {
+  /* Display the label on its own line */
+  display: block;
+  /* Make the text bold */
+  font-weight: bold;
+  /* Add some margin below the label */
+  margin-bottom: 5px;
+}
+.prix {
+  /* Make the font size a little bit larger than the default */
+  font-size: 16px;
+  margin-left: 20px;
+  /* Add some padding to the left and right of the input field */
+  padding: 5px 10px;
+  /* Add a solid border to the input field */
+  border: 1px solid #ccc;
+  /* Add some rounded corners to the input field */
+  border-radius: 3px;
+  color: #db3453;
+  font-size: 18px;
+}
+.mat-mdc-paginator-container {
+  background: var(--secondary-color);
+  color: rgb(27, 27, 63);
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}

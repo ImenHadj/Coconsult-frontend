@@ -1,0 +1,51 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Submit Complaint</h1>
+    </div>
+  
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="profile-tab">Fill in your Complaint details</button>
+                    </li>
+                </ul>
+
+                <form class="custom-form profile-form" [formGroup]="reclamationForm" (submit)="onSubmit()">
+                    <div class=" align-items-center">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Employe ID:</label>
+                            <input class="form-control" type="number" formControlName="employeID" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Categorie:</label>
+                            <input class="form-control" type="text" formControlName="categorie" required>
+                        </div>
+                    </div>
+  
+                
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label>Departement:</label>
+                        <input class="form-control" type="text" formControlName="departement" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Description:</label>
+                        <input class="form-control" type="text" formControlName="description" required>
+                    </div>
+                    </div>
+
+                </div>
+  
+                    <button type="submit" [disabled]="reclamationForm.invalid" class="form-control ms-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
