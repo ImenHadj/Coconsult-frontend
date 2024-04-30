@@ -81,11 +81,14 @@ import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-sh
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-report.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', component: LandingpageComponent },
+  { path: 'landingpage', component: LandingpageComponent },
 
   { path: 'register', component: RegisterComponent },
   { path: "accueil", component:TemplateFComponent,

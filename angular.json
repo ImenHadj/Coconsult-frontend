@@ -30,10 +30,10 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/Front/jsaziz/AgoraRTC_N-4.7.3.js",
               "src/assets/Front/jsaziz/main.js",
-              "src/assets/Front/jsaziz/script.js"
+              "src/assets/Front/jsaziz/script.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {

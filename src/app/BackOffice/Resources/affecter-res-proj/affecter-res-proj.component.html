@@ -13,14 +13,14 @@
                         <ul class="list-group table-hover">
                             <li class="list-group-item" *ngFor="let project of projects" (click)="onSelectProject(project)"
                                 [class.selected]="selectedProject === project">
-                                {{ project.project_name }}
+                                {{ project.projectname }}
                             </li>
                         </ul>
                     </div>
 
                     <div class="container" *ngIf="selectedProject">
                         <br>
-                        <h2>Selected Project: {{ selectedProject.project_name }}</h2>
+                        <h2>Selected Project: {{ selectedProject.projectname }}</h2>
 
                         <div formArrayName="resources">
                             <div *ngFor="let resourceField of resourceFields.controls; let i = index" [formGroupName]="i">

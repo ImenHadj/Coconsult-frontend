@@ -8,9 +8,12 @@ import { Observable } from 'rxjs';
 export class ProjclientService {
 
   constructor(private http:HttpClient) { }
-  URL = "http://localhost:8080/";
+  URL = "http://localhost:8090/Clients";
 
-  getProjectByIdClient(id:number):Observable<any> {
-    return this.http.get(this.URL + "projectforclient/" + id);
-}
+  clientsbyprod(){
+    return this.http.get(this.URL+"/clientsbyprod");
+  }
+  projbyidclient(id:number): Observable<any> {
+    return this.http.get(this.URL + "/projclient/" + id);
+  }
 }

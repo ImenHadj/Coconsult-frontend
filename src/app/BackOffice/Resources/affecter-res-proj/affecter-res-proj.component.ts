@@ -1,5 +1,7 @@
+
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProjectServiceService } from '../../project-service.service';
 import { ResourcesService } from '../resources.service';
 
 
@@ -18,7 +20,8 @@ export class AffecterResProjComponent {
 
   constructor(
     private resourceService: ResourcesService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private projetservice: ProjectServiceService
   ) {
     this.resourceForm = this.formBuilder.group({
       resources: this.formBuilder.array([])
@@ -28,10 +31,12 @@ export class AffecterResProjComponent {
   }
 
   loadProjects() {
-    this.resourceService.getAllProjects()?.subscribe((projects: any) => {
-      this.projects = projects || [];
+    this.projetservice.getAllProjects()?.subscribe((projects: any) => {
+        this.projects = projects || [];
+        console.log('Projects:', this.projects); // Ajouter ce log pour vérifier les données récupérées
     });
-  }
+}
+
 
   loadResources() {
     this.resourceService.getResources()?.subscribe((resources: any) => {
@@ -40,7 +45,7 @@ export class AffecterResProjComponent {
   }
 
   affectResourcesToProject() {
-    const projectId = this.selectedProject?.project_id;
+    const projectId = this.selectedProject?.projectid;
     console.log('Project ID:', projectId);
 
     const resourceQuantities = this.resourceForm.value.resources.map((item: any) => {
