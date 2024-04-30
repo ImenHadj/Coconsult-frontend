@@ -19,17 +19,13 @@ export class ServiceSalaireService {
   }
 
   removeNote(id: number) {
-    return this.http.delete(this.URL + "/deleteNote/" + id);
+    return this.http.delete(this.URL + "/deleteSalaire/" + id);
 
-  }
-
-  updateNote(id: number, updatedemployee: SalaireEmployee){
-    return this.http.put<SalaireEmployee>(`${this.URL}/updateNote/`+id, updatedemployee);
   }
 
 
   getNote(id: number){
-    return this.http.get<SalaireEmployee>(this.URL+"/getNote/" + id);
+    return this.http.get<SalaireEmployee>(this.URL+"/getSalaire/" + id);
   }
 
   fetchMax(){
@@ -37,6 +33,10 @@ export class ServiceSalaireService {
   }
   getSalaryStatistics(year: number, month: number) {
     return this.http.get(`${this.URL}/generateSalaryStatistics/${year}/${month}`);
+  }
+
+  generateMonthlySalaryReport(year: number, month: number) {
+    return this.http.get(`${this.URL}/generateMonthlySalaryReport/${year}/${month}`);
   }
 
   getTotalSalariesEvolution(){

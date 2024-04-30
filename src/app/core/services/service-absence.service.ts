@@ -1,7 +1,7 @@
+import { Absence } from './../models/absence.model';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Absence } from '../models/absence.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,9 @@ export class ServiceAbsenceService {
 
   getAbsence(id: number){
     return this.http.get<Absence>(this.URL+"/getAbsence/" + id);
+  }
+  givename(absence: Absence){
+    return this.http.get<any>(this.URL+"/givename");
   }
 
   getAbsencesByEmployeeId(employeeId: number) {

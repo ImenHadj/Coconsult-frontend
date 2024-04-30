@@ -54,9 +54,6 @@ public imagePath:any;
   private fetchContratDetails(): void {
     if (this.ContratId !== null) {
       this.congeService.getContratEmployee(this.ContratId).subscribe((conge) => {
-        // console.log('Conge object:', conge);
-
-        // console.log('Conge typeC:', conge.typeCE);
 
         const dateD = new Date(conge.date_debut);
         const dateF = new Date(conge.date_fin);
@@ -71,7 +68,8 @@ public imagePath:any;
           typeCE: conge.typeCE,     
           salaire_base: conge.salaire_base,     
           montant_heures_supplementaires: conge.montant_heures_supplementaires,     
-          montant_Conge_Absence: conge.montant_Conge_Absence,     
+          montant_Conge_Absence: conge.montant_Conge_Absence,  
+          pourcentage:conge.pourcentage   
         });
       });
     }
@@ -89,7 +87,7 @@ public imagePath:any;
       salaire_base: ['', Validators.required],
       montant_heures_supplementaires: ['', Validators.required],
       montant_Conge_Absence: ['', Validators.required],
-
+      pourcentage: ['', Validators.required]
     });
   }
 
@@ -98,7 +96,7 @@ public imagePath:any;
       const contratEmployeeData: ContratEmployee = this.ContratEmployeeForm.value;
       if (this.isEditMode && this.ContratId !== null) {
         this.congeService.updateContratEmployee(contratEmployeeData,this.ContratId ).subscribe(() => {
-          this.generatePDF(contratEmployeeData);
+          this.generatePDF(contratEmployeeData,this.employeeId);
           console.log('Contract updated successfully');
           this.router.navigate(['admin/ListContratEmployee']);
         },
@@ -115,7 +113,7 @@ public imagePath:any;
           this.congeService.saveContratEmployee(contratEmployeeData, this.employeeId).subscribe(
             (clientId) => {
               // console.log('Conge added successfully with ID:', clientId);
-              this.generatePDF(contratEmployeeData);
+              this.generatePDF(contratEmployeeData,this.employeeId);
               this.router.navigate(['admin/ListContratEmployee']);
             },
             (errorResponse) => {
@@ -145,8 +143,8 @@ public imagePath:any;
   }
 
 
-  generatePDF(contrat: ContratEmployee): void {
-    this.congeService.generatePDF(contrat).subscribe(
+  generatePDF(contrat: ContratEmployee,empId:any): void {
+    this.congeService.generatePDF(contrat,empId).subscribe(
       (response: Blob) => {
         const blob = new Blob([response], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
@@ -157,6 +155,5 @@ public imagePath:any;
       }
     );
   }
-  
 
 }

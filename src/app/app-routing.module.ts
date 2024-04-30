@@ -80,6 +80,7 @@ import { ListSalairesComponent } from './BackOffice/Note/list-salaires/list-sala
 import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-shours/add-primes-and-shours.component';
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
+import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-report.component';
 
 
 
@@ -169,6 +170,7 @@ const routes: Routes = [
     { path: 'calendarAbsence', component: CalendarAbsencesComponent },
     { path: 'addPrimesAndSupplementHours/:p', component: AddPrimesAndSHoursComponent },
     { path: 'listSalaires', component: ListSalairesComponent },
+    { path: 'reportSalaires', component: SalaryReportComponent },
  
     { path: 'clients', component: ClientsComponent },
     { path: 'addclient', component: AddclientComponent },

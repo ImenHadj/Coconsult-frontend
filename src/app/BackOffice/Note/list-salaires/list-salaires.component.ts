@@ -27,16 +27,6 @@ export class ListSalairesComponent implements OnInit{
       this.loadDepartements();
 
     }
- // exportDataToExcel(): void {
-    //   this.SalaireService.getall().subscribe(
-    //     (salaries) => {
-    //       this.excelService.exportToExcel(salaries, 'salary_data');
-    //     },
-    //     (error) => {
-    //       console.error('Error fetching salary data:', error);
-    //     }
-    //   );
-    // }
     exportDataToExcel(): void {
       this.SalaireService.getall().subscribe(
         (salaries) => {

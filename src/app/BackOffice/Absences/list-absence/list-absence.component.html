@@ -25,7 +25,7 @@
         <div class="title-group mb-3">
             <h1 class="h2 mb-0">Absences</h1>
         </div>
-          <button class="btn btn-primary" [routerLink]="['/admin/calendarAbsence/']">Aller au calendrier</button>
+          <button class="btn btn-outline-primary" [routerLink]="['/admin/calendarAbsence/']"><i class="bi bi-file-pdf"></i>Go to Calendar</button>
     </div>
 
        <div>
@@ -51,6 +51,7 @@
                         </div>
                         <div>
                             <p>{{absence.emp!=null? absence.emp.posteEmployee:' no empl' }}</p>
+                            <!-- <p>{{ absence?.username }}</p> -->
                         </div>
                     <!-- </div> -->
 

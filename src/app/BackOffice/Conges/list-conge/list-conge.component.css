@@ -1,0 +1,18 @@
+.custom-select {
+    display: inline-block;
+    width: auto;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23343a40' d='M8.354 10.854a.5.5 0 0 0 .792 0l3-3a.5.5 0 0 0-.792-.607L8 9.793l-2.354-2.354a.5.5 0 1 0-.708.708l3 3z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    appearance: none;
+  }
+  
+
+  

@@ -13,10 +13,8 @@ export class ListCongeComponent implements OnInit {
   p: number = 1;
   itemsPerPage:number=4;
   totalProduct:any;
-  selectedStatus: StatutC = StatutC.PENDING; // Initialize selectedStatus with a default value
-  statusList = Object.values(StatutC).filter(value => typeof value === 'string').sort();
-
-
+  selectedStatus:string = 'All';
+  filteredAbsences: any[] = []; // Variable to hold the filtered list
 
 
   constructor(private congeService: ServiceCongeService) {}
@@ -25,14 +23,11 @@ export class ListCongeComponent implements OnInit {
     this.loadAbsences();  
   }
 
-  filterByStatus(status: StatutC): void {
-    this.selectedStatus = status;
-    this.searchUsers();
-  }
   
   private loadAbsences(): void {
     this.congeService.getall().subscribe((absences)=>{
       this.absences=absences as any[];
+      this.filterActivitiesByState();
       this.totalProduct=absences.length;
     })
   }
@@ -44,6 +39,8 @@ export class ListCongeComponent implements OnInit {
         this.congeService.removeConge(id).subscribe(() => {  
             this.congeService.getall().subscribe((datas) => {
                 this.absences = datas as any[];
+                this.filterActivitiesByState();
+
             }); 
         });
     }  
@@ -55,13 +52,24 @@ onInput(event: any): void {
 searchUsers(): void {
   this.congeService.searchUsers(this.startingLetter).subscribe(
     (data) => {
-//      console.log('Users:', data);
       this.absences = data;
+      this.filterActivitiesByState(); 
+
     },
     (error) => {
       console.error('Error fetching users:', error);
     }
   );
 }
+
+filterActivitiesByState() {
+  if (this.selectedStatus === 'All') {
+    this.filteredAbsences = this.absences;
+  } else {
+    this.filteredAbsences = this.absences.filter(activity => activity.statutC.toUpperCase() === this.selectedStatus.toUpperCase());
+  }
+}
+
+
 
 }

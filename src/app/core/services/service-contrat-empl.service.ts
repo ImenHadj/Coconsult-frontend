@@ -30,7 +30,7 @@ export class ServiceContratEmplService {
     return this.http.get<ContratEmployee>(this.URL+"/getContratEmployee/" + id);
   }
 
-  generatePDF(contrat: ContratEmployee) {
-    return this.http.post<Blob>(`${this.URL}/pdfgenerate`, contrat, { responseType: 'blob' as 'json' });
+  generatePDF(contrat: ContratEmployee,emp:any) {
+    return this.http.post<Blob>(`${this.URL}/pdfgenerate/`+emp, contrat, { responseType: 'blob' as 'json' });
   }
 }

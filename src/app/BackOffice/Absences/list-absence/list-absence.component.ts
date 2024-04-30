@@ -1,6 +1,7 @@
+import { Absence } from './../../../core/models/absence.model';
 import { Component, OnInit } from '@angular/core';
-import { Absence } from 'src/app/core/models/absence.model';
 import { ServiceAbsenceService } from 'src/app/core/services/service-absence.service';
+import { Observable, catchError, forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-list-absence',
@@ -29,8 +30,22 @@ export class AbsenceListComponent implements OnInit {
       this.absences = absences as any[];
       this.totalProduct=absences.length;
 
+      this.absences.forEach((absence) => {
+        this.giveName(absence);
+      });
     });
   }
+  private giveName(absence: Absence): void {
+    this.absenceService.givename(absence).subscribe(
+      (username: string) => {
+        absence.username = username;
+      },
+      (error) => {
+        console.error('Error occurred while retrieving username:', error);
+      }
+    );
+  }
+
   getAbsencesForToday(): void {
     this.absenceService.getAbsencesForToday().subscribe(
       (absences: Absence[]) => {

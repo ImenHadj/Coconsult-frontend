@@ -16,6 +16,7 @@ export interface ContratEmployee {
     salaire_base: number;
     montant_heures_supplementaires: number;
     montant_Conge_Absence: number;
+    pourcentage: number;
     isArchive: Boolean;
     empl: Employee;
   

@@ -5,10 +5,28 @@
     <h1 class="h2 mb-0">Contracts</h1>
   </div>
 
+
+  <div style="margin-top: 20px;">
+    <select id="stateFilter" [(ngModel)]="selectedStatus" (change)="filterActivitiesByState()" class="custom-select">
+      <option value="All">All</option>
+      <option value="CDI_CLASSIQUE">CDI CLASSIQUE</option>
+      <option value="CIVP">CIVP</option>
+      <option value="CDI_INTERIM">CDI INTERIM</option>
+      <option value="CDI_CHANTIER">CDI CHANTIER</option>
+      <option value="CDD_USAGE">CDD USAGE</option>
+      <option value="CDD_SAISONNIER">CDD_SAISONNIER</option>
+      <option value="CDD_INSERTION">CDD_INSERTION</option>
+      <option value="CDD_PROJET">CDD_PROJET</option>
+      <option value="CONTRAT_APPRENTISSAGE">CONTRAT_APPRENTISSAGE</option>
+      <option value="CONTRAT_PROFESSIONNALISATION">CONTRAT_PROFESSIONNALISATION</option>
+      <option value="CUI">CUI</option>
+    </select>
+  </div>
+
   <div
     class="row my-4"
     *ngFor="
-      let absence of absences
+      let absence of filteredAbsences
         | paginate : { itemsPerPage: itemsPerPage, currentPage: p }
     "
   >

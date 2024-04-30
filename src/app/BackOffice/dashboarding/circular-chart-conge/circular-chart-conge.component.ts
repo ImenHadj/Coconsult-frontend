@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, ChartData, TooltipItem } from 'chart.js';
 import { ServiceCongeService } from 'src/app/core/services/service-conge.service';
 @Component({
   selector: 'app-circular-chart-conge',
@@ -38,7 +38,7 @@ export class CircularChartCongeComponent implements OnInit {
         new Chart(ctx, {
           type: 'doughnut',
           data: {
-            // labels:keys
+             labels:keys,
             datasets: [{
               data: values,
               backgroundColor: dynamicColors,
@@ -57,6 +57,9 @@ export class CircularChartCongeComponent implements OnInit {
       }
     }
   }
+ 
+  
+  
 
   private getRandomColor(): string {
     const letters = '0123456789ABCDEF';

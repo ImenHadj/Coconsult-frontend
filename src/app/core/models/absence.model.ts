@@ -8,6 +8,7 @@ export interface Absence {
   motif: string;
   date: Date;
   validee: boolean;
+  username?: string; // New property to store the username
   emp?: Employee;
   image?:Image
 }

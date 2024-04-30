@@ -152,6 +152,8 @@ import { CircularChartCongeComponent } from './BackOffice/dashboarding/circular-
 import { CircularChartComponent } from './BackOffice/dashboarding/circular-chart/circular-chart.component';
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
+import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-report.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
@@ -251,6 +253,8 @@ import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashbo
     ChartSalaireComponent,
     DashboardProjectComponent,
     ChartComponent,
+    SalaryReportComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,

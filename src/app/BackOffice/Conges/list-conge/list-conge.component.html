@@ -23,22 +23,32 @@
       <app-circular-chart-conge></app-circular-chart-conge>
     </ng-container>
   </div>
-  <div class="mb-3">
-    <button class="btn btn-primary" [routerLink]="['/admin/calendar/']">Go to calendar</button>
+  <div class="mb-3 d-flex justify-content-between align-items-center">
+    <button class="btn btn-outline-primary mr-3" [routerLink]="['/admin/calendar/']"><i class="bi bi-file-pdf"></i>Go to calendar</button>
+    <!-- <div class="my-2 d-flex align-items-center">
+      <div class="w-25">
+        <select class="form-control" [(ngModel)]="selectedStatus">
+          <option value="all" selected>All Status</option>
+          <option *ngFor="let status of statusList" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+      <button class="btn btn-primary ml-3" (click)="filterByStatus(selectedStatus)">Filter by Status</button>
+    </div>     -->
 
-  </div>
-  <div class="d-flex  mb-3">
-    <div>
-      <select class="form-control" [(ngModel)]="selectedStatus">
-        <option value="">All Status</option>
-        <option *ngFor="let status of statusList" [value]="status">{{ status }}</option>
+    <div style="margin-top: 20px;">
+      <select id="stateFilter" [(ngModel)]="selectedStatus" (change)="filterActivitiesByState()" class="custom-select">
+        <option value="All">All</option>
+        <option value="PENDING">PENDING</option>
+        <option value="REJECTED">REJECTED</option>
+        <option value="VALIDATED">VALIDATED</option>
       </select>
     </div>
-    <button class="btn btn-primary" (click)="filterByStatus(selectedStatus)">Filter by Status</button>
   </div>
+    
+  
   
 
-  <div class="row my-4" *ngFor="let absence of absences  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+  <div class="row my-4" *ngFor="let absence of filteredAbsences  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
 
     <div class="col-lg-12 col-12">
       <div class="custom-block custom-block-transation-detail bg-white">
