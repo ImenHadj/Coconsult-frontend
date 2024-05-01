@@ -63,7 +63,6 @@ export class AbsenceListComponent implements OnInit {
   searchUsers(): void {
     this.absenceService.searchUsers(this.startingLetter).subscribe(
       (data) => {
-  //      console.log('Users:', data);
         this.absences = data;
       },
       (error) => {

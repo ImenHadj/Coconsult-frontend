@@ -16,6 +16,10 @@ export class ServiceCongeService {
     return this.http.get<Conge[]>(this.URL+"/retrieveAll"); 
   }
 
+  getConges(p:number){
+    return this.http.get<Conge[]>(this.URL+"/getConges/"+p); 
+  }
+
   removeConge(id: number) {
     return this.http.delete(this.URL + "/deleteConge/" + id);
 
@@ -24,6 +28,9 @@ export class ServiceCongeService {
     return this.http.post<number>(`${this.URL}/saveConge/`+p, conge);  
   }
 
+  SendEmailConge(p:number,conge: Conge){
+    return this.http.post<number>(`${this.URL}/SendEmailConge/`+p, conge);  
+  }
   getConge(id: number){
     return this.http.get<Conge>(this.URL+"/getConge/" + id);
   }

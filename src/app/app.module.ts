@@ -154,6 +154,8 @@ import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-report.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
+import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 
 @NgModule({
   declarations: [
@@ -254,7 +256,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     DashboardProjectComponent,
     ChartComponent,
     SalaryReportComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    AddLeaveComponent,
+    MyLeavesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
-import { StatutC } from './../../../core/models/conge.model';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { typeC } from 'src/app/core/models/conge.model';
@@ -8,16 +7,16 @@ import { ImageServiceService } from 'src/app/core/services/image-service.service
 import { ServiceCongeService } from 'src/app/core/services/service-conge.service';
 
 @Component({
-  selector: 'app-add-conge',
-  templateUrl: './add-conge.component.html',
-  styleUrls: ['./add-conge.component.css'],
+  selector: 'app-add-leave',
+  templateUrl: './add-leave.component.html',
+  styleUrls: ['./add-leave.component.css']
 })
-export class AddCongeComponent implements OnInit {
-
+export class AddLeaveComponent {
+   
   CongeForm!: FormGroup;
   isEditMode: boolean = false;
   congeId: number | null = null;
-  employeeId: number | null = null;
+  userId: number | null = null;
   errorMessage: string = '';
   selectedFile: File  | null = null;
   uploadProgress: number | null = null;
@@ -25,24 +24,13 @@ export class AddCongeComponent implements OnInit {
   imageMin: File | null = null;
   images: Image[] = [];
   imageUrl: string | null = null;
-  statusChanged: boolean = false;
 
-private changeMe(): void {
-  this.CongeForm.get('statutC')?.valueChanges.subscribe((value) => {
-    if (value && value !== 'PENDING') { // Check if the value is not 'PENDING'
-      this.statusChanged = true;
-    } else {
-      this.statusChanged = false;
-    }
-  });
-}
+
 
   postes = Object.values(typeC)
     .filter((value) => typeof value === 'string')
     .sort();
-  status = Object.values(StatutC)
-    .filter((value) => typeof value === 'string')
-    .sort();
+
 
   constructor(
     private fb: FormBuilder,
@@ -53,28 +41,24 @@ private changeMe(): void {
   ) {}
 
   ngOnInit(): void {
+    this.getUserIdFromSession(); // Call the method to get user ID from session
     this.initForm();
     this.checkEditMode();
-    this.getEmployee();
-    this.changeMe();
-  }
 
-   ClickEmail(): any{
-    if (this.employeeId !== null && this.CongeForm.valid) {
-   this.congeService.SendEmailConge(this.employeeId,this.CongeForm.value).subscribe((id)=>{
-    console.log(id);
-   })
   }
-}
+  
 
-  private getEmployee(): void {
-    this.route.params.subscribe((params) => {
-      const id = params['p'];
-      if (id) {
-        this.employeeId = +id;
+  private getUserIdFromSession(): void {
+    const userData = sessionStorage.getItem('auth-user');
+    if (userData) {
+      const user = JSON.parse(userData); // Convert JSON string to JavaScript object
+      if (user && user.id) {
+        this.userId = user.id; // Extract the user ID from the object
+        console.log("aaaaaaaaaaaa" + this.userId);
       }
-    });
+    }
   }
+  
   private checkEditMode(): void {
     this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -111,7 +95,6 @@ private changeMe(): void {
       date_debut: ['', Validators.required],
       date_fin: ['', Validators.required],
       typeC: ['', Validators.required],
-      statutC: [StatutC.PENDING, this.isEditMode ? Validators.required : null],
       commentaire: ['', Validators.required],
     });
   }
@@ -120,13 +103,9 @@ private changeMe(): void {
     if (this.CongeForm.valid) {
       const CongeData = this.CongeForm.value;
       if (this.isEditMode && this.congeId !== null) {
-       const sendEmailAutomatically = (document.getElementById('sendEmailAutomatically') as HTMLInputElement)?.checked;
         this.congeService.updateConge(this.congeId, CongeData).subscribe(() => {
-          if (sendEmailAutomatically) {
-            this.ClickEmail();
-          }
           this.onUpload(this.congeId);
-          this.router.navigate(['admin/listConge']);
+          this.router.navigate(['accueil/homef']);
         }
         ,
         
@@ -139,12 +118,12 @@ private changeMe(): void {
         }
         );
       } else {
-        if (this.employeeId !== null) {
-          this.congeService.addConge(CongeData, this.employeeId).subscribe(
+        if (this.userId !== null) {
+          this.congeService.addConge(CongeData, this.userId).subscribe(
             (clientId) => {
               console.log('Conge added successfully with ID:', clientId);
               this.onUpload(clientId);
-              this.router.navigate(['admin/listConge']);
+              this.router.navigate(['accueil/homef']);
             }
             ,
           (errorResponse) => {
@@ -161,11 +140,11 @@ private changeMe(): void {
   }
 
   onCancel(): void {
-    if (this.isEditMode) {
-      this.router.navigate(['admin/listConge']);
-    } else {
-      this.router.navigate(['admin/listEmployees']);
-    }
+    // if (this.isEditMode) {
+    //   this.router.navigate(['admin/listConge']);
+    // } else {
+      this.router.navigate(['accueil/homef']);
+    // }
   }
 
 
@@ -215,5 +194,4 @@ private changeMe(): void {
     );
   }
   
-
 }

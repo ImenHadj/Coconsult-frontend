@@ -17,7 +17,7 @@ export class AbsenceComponent implements OnInit {
   isEditMode: boolean = false;
   absenceId: number | null = null; 
   employeeId: number | null = null; 
-  selectedFile: File  | null = null;
+  //selectedFile: File  | null = null;
   uploadProgress: number | null = null;
   image: File | null = null;
   imageMin: File | null = null;

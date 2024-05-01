@@ -29,23 +29,13 @@
                                     <option *ngFor="let poste of postes" [value]="poste">{{ poste }}</option>
                                 </select>                            
                             </div>  
-                            <div *ngIf="isEditMode" class="mb-3">
-                                <label for="statutC" class="form-label">Conge Status</label>
-                                <select class="form-select" formControlName="statutC">
-                                  <option *ngFor="let poste of status" [value]="poste">{{ poste }}</option>
-                                </select>
-                              </div> 
+                           
                             <div class="mb-3">
                                 <label for="commentaire" class="form-label">Comment</label>
                                 <input class="form-control" type="text" id="commentaire" placeholder="Enter commentaire" formControlName="commentaire" required>
                             </div>
-                            <!-- <div class="mb-3">
-                                <label for="justification" class="form-label">Justification</label>
-                                <input class="form-control" type="text" id="justification" placeholder="Enter justification" formControlName="justification" required>
-                            </div> -->
-
                             <div class="card-header">
-                                <h2>Justification</h2>
+                                <h5>Justification</h5>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -67,10 +57,7 @@
                                 </div>
 
                             </div>
-                            <!-- <button  (click)="ClickEmail()" class="send-email-button">Send Email</button> -->
-
-                            <input *ngIf="isEditMode && statusChanged" type="checkbox" id="sendEmailAutomatically"> Send Email Automatically
-
+                            
                             
 
                             <div class="alert alert-danger" *ngIf="errorMessage">
@@ -92,13 +79,4 @@
 
     </div>
 
-    <footer class="site-footer mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 text-center">
-                    <p class="copyright-text">Copyright © Mini Finance 2048 - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
 </main>

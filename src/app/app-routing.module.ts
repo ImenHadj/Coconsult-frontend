@@ -82,7 +82,8 @@ import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-report.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-
+import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
+import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 
 
 const routes: Routes = [
@@ -109,11 +110,14 @@ const routes: Routes = [
     { path: 'password', component: PasswordComponent },
     { path: 'allrecrutement.html', component: AllrecrutementComponent },
     { path: 'allrecrutement', component: AllrecrutementComponent }, 
-    { path: 'candidat/:idRec', component: CandidatComponent },
-
-   // { path: 'admin', component: BoardAdminComponent },
+    { path: 'candidat/:idRec', component: CandidatComponent },    
+    {
+      path:'addLeave',component:AddLeaveComponent
+    },
+    {
+      path:'myLeaves',component:MyLeavesComponent
+    },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-
 //  { path: '', redirectTo: 'home', pathMatch: 'full' },
   ]
   
