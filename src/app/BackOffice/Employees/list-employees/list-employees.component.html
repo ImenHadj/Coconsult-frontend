@@ -16,15 +16,8 @@
         placeholder="Enter the department's name"
       />
     </div>
-    <!-- <div class="col-lg-6 col-12 d-flex justify-content-end">
-      <app-circular-chart-employee
-        [nbreEmpl]="max"
-        [percentage]="availablePercentage"
-      ></app-circular-chart-employee>
-    </div> -->
   </div>
   
-  <!-- <button (click)="exportExcel()">Export to Excel</button> -->
   <div
     class="row my-4"
     *ngFor="
@@ -79,16 +72,16 @@
                 type="button"
                 class="btn btn-outline-danger"
                 (click)="removeEmployee(employee.id_employe)"
-              >
+              > <i class="bi bi-trash"></i>
                 Delete
               </button>
             </div>
             <div class="custom-block-transation-detail-item ms-2">
               <button
                 type="button"
-                class="btn btn-outline-success"
+                class="btn btn-outline-primary"
                 [routerLink]="['/admin/editEmployees/' + employee.id_employe]"
-              >
+              ><i class="bi bi-pencil"></i>
                 Edit
               </button>
             </div>
@@ -97,7 +90,7 @@
                 type="button"
                 class="btn btn-outline-success"
                 [routerLink]="['/admin/addConges/' + employee.id_employe]"
-              >
+              ><i class="bi bi-calendar-plus"></i> 
                 add Leave
               </button>
             </div>
@@ -106,7 +99,7 @@
                 type="button"
                 class="btn btn-outline-success"
                 [routerLink]="['/admin/addAbsences/' + employee.id_employe]"
-              >
+              ><i class="bi bi-clipboard-plus"></i>
                 add absence
               </button>
             </div>
@@ -117,7 +110,7 @@
                 [routerLink]="[
                   '/admin/addContratEmployee/' + employee.id_employe
                 ]"
-              >
+              ><i class="bi bi-file-earmark-plus"></i>
                 add Contract
               </button>
             </div>
@@ -126,7 +119,7 @@
                 type="button"
                 class="btn btn-outline-success"
                 [routerLink]="['/admin/addNote/' + employee.id_employe]"
-              >
+              ><i class="bi bi-star bi-lg text-warning"></i>
                 add Rating
               </button>
             </div>
@@ -136,7 +129,8 @@
                 type="button"
                 class="btn btn-outline-success"
                 [routerLink]="['/admin/addPrimesAndSupplementHours/' + employee.id_employe]"
-              >
+              ><i class="bi bi-cash bi-lg text-success"></i>
+
                 Add Primes & Supplement Hours
               </button>
             </div>
@@ -148,7 +142,8 @@
                 [routerLink]="[
                   '/admin/historiqueEmploye/' + employee.id_employe
                 ]"
-              >
+              ><i class="bi bi-clock-history bi-lg text-info"></i>
+
               Employee History
               </button>
             </div>

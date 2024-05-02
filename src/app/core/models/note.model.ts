@@ -4,6 +4,7 @@ export interface Note {
   id_note?: number;
   critere:critereNote;
   note: number;
+  idUser: number;
   perfEmpl?: PerformanceEmployee;
 }
 

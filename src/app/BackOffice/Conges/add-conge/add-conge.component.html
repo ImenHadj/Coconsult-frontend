@@ -68,8 +68,11 @@
 
                             </div>
                             <!-- <button  (click)="ClickEmail()" class="send-email-button">Send Email</button> -->
+                            <div *ngIf="isEditMode && statusChanged">
+                                <input  type="checkbox" id="sendEmailAutomatically"> Send Email Automatically
 
-                            <input *ngIf="isEditMode && statusChanged" type="checkbox" id="sendEmailAutomatically"> Send Email Automatically
+                            </div >
+                            <div class="spacer" *ngIf="isEditMode && statusChanged"></div> 
 
                             
 
@@ -81,7 +84,7 @@
                                   Cancel
                                 </button>
                                 <button type="submit" [disabled]="CongeForm.invalid" class="btn btn-primary ms-2">
-                                  {{ isEditMode ? 'Update Conge' : 'Add Conge' }}
+                                  {{ isEditMode ? 'Update Leave' : 'Add Leave' }}
                                 </button>
                               </div>
                         </form>

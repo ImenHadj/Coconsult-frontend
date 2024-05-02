@@ -19,13 +19,21 @@ export class AddNoteComponent implements OnInit {
   totalRating=0;
   finalRating:any;
   ratingControl=new FormControl(0);
-  // GetRating(){
-  //   this.ratingCount++;
-  //   this.totalRating+=this.ratingControl?.value ||0;
-  //   this.finalRating=(this.totalRating/this.ratingCount).toFixed(2);
-  // }
+  userId: number | null = null;
 
 
+  private getUserIdFromSession(): void {
+    const userData = sessionStorage.getItem('auth-user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      if (user && user.id) {
+        this.userId = user.id; 
+        console.log("aaaaaaaaaaaa" + this.userId);
+        this.initForm();
+
+      }
+    }
+  }
   postes = Object.values(critereNote)
     .filter((value) => typeof value === 'string')
     .sort();
@@ -42,7 +50,7 @@ export class AddNoteComponent implements OnInit {
       this.initForm(); 
       this.checkEditMode();  
       this.getEmployee();
-
+      this.getUserIdFromSession();
       
     }
     private getEmployee():void{
@@ -79,9 +87,9 @@ export class AddNoteComponent implements OnInit {
     
     private initForm(): void {  
       this.NoteForm = this.fb.group({
-        // note: ['', Validators.required],
         note: this.ratingControl,
         critere: ['', Validators.required],
+        idUser:[this.userId]
 
       });}
 

@@ -34,9 +34,10 @@
       <div class="custom-block custom-block-transation-detail bg-white">
         <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
             <div class="d-flex justify-content-between w-100">
-              <div>
-                <p>RIB : {{ absence.rib }}</p>
-              </div>
+              <div style="display: flex; align-items: center;">
+                <h6 style="color: #333; margin-right: 5px;">RIB :</h6>
+                <p> {{ absence.rib }}</p>
+            </div>
               <div>
                 <p>{{ absence.empl != null ? absence.empl.posteEmployee : "there's no employee" }}</p>
               </div>
@@ -54,17 +55,18 @@
             <p>{{ absence.duree_hebdomadaire }}</p>
           </div>
           <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-            <h6>Weekly duration</h6>
+            <h6>Base Salary</h6>
             <p>{{ absence.salaire_base }}</p>
-          </div>          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+          </div>          
+          <!-- <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
             <h6>Hour work</h6>
             <p>{{ absence.montant_heures_supplementaires }}</p>
           </div>          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
             <h6>Hour conge</h6>
             <p>{{ absence.montant_Conge_Absence }}</p>
-          </div>
+          </div> -->
 
-          <div
+          <!-- <div
             class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
             style="
               background-color: #f0f8ff;
@@ -91,7 +93,7 @@
             <p style="font-weight: bold; color: #007bff">
               {{ absence.date_fin }}
             </p>
-          </div>
+          </div> -->
 
           <div
             class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3"

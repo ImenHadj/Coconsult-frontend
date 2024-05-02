@@ -14,9 +14,9 @@
        -->
        <!-- <app-chart-salaire *ngIf="hasSalaryData"></app-chart-salaire> -->
 
-       <button (click)="exportDataToExcel()" class="action-button">Export to Excel</button>
+       <button (click)="exportDataToExcel()" class="btn btn-outline-custom">Export to Excel</button>
        <span class="button-space"></span>
-       <button routerLink="/admin/reportSalaires" class="action-button">Salaries reports</button>
+       <button routerLink="/admin/reportSalaires" class="btn btn-outline-custom">Salaries reports</button>
        
        
     <div class="row my-4" *ngFor="let absence of departements | paginate : { itemsPerPage: itemsPerPage, currentPage: p }">

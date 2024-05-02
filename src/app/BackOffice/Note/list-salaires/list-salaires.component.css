@@ -2,22 +2,14 @@
     margin-right: 10px; /* Adjust the margin as needed */
   }
 
-  .action-button {
-    background-color: #007bff; /* Blue color */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
+  .btn-outline-custom {
+    color: #007bff; /* Blue color */
+    border-color: #007bff; /* Blue color */
   }
   
-  .action-button:hover {
-    background-color: #0056b3; /* Darker blue color on hover */
+  .btn-outline-custom:hover {
+    background-color: #007bff; /* Blue color on hover */
+    color: #fff; /* White text color on hover */
   }
   
   .button-space {

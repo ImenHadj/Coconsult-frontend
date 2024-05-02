@@ -41,7 +41,7 @@ export class AddLeaveComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getUserIdFromSession(); // Call the method to get user ID from session
+    this.getUserIdFromSession();
     this.initForm();
     this.checkEditMode();
 
@@ -51,9 +51,9 @@ export class AddLeaveComponent {
   private getUserIdFromSession(): void {
     const userData = sessionStorage.getItem('auth-user');
     if (userData) {
-      const user = JSON.parse(userData); // Convert JSON string to JavaScript object
+      const user = JSON.parse(userData); 
       if (user && user.id) {
-        this.userId = user.id; // Extract the user ID from the object
+        this.userId = user.id; 
         console.log("aaaaaaaaaaaa" + this.userId);
       }
     }
