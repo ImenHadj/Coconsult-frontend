@@ -112,15 +112,13 @@ public imagePath:any;
         if (this.employeeId !== null) {
           this.congeService.saveContratEmployee(contratEmployeeData, this.employeeId).subscribe(
             (clientId) => {
-              // console.log('Conge added successfully with ID:', clientId);
               this.generatePDF(contratEmployeeData,this.employeeId);
               this.router.navigate(['admin/ListContratEmployee']);
             },
             (errorResponse) => {
              if (errorResponse.error && errorResponse.error.error) {
                 this.errorMessage = errorResponse.error.error;
-                // console.log(errorResponse.error.error)
-                // console.log(contratEmployeeData)
+
 
               } else {
                 this.errorMessage = 'An unexpected error occurred.';

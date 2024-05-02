@@ -136,6 +136,13 @@ export class AddNoteComponent implements OnInit {
           this.router.navigate(['admin/listEmployees']);
         }
       }
+      hisNotes(): void {
+        if (this.isEditMode) {
+          this.router.navigate(['admin/hisNotes/'+this.employeeId]);
+        } else {
+          this.router.navigate(['admin/hisNotes/'+this.employeeId]);
+        }
+      }
 }
 
 

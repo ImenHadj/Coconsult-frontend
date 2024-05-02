@@ -84,6 +84,7 @@ import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-re
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
 import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
+import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
 
 
 const routes: Routes = [
@@ -178,6 +179,7 @@ const routes: Routes = [
     { path: 'addPrimesAndSupplementHours/:p', component: AddPrimesAndSHoursComponent },
     { path: 'listSalaires', component: ListSalairesComponent },
     { path: 'reportSalaires', component: SalaryReportComponent },
+    { path: 'hisNotes/:p', component: MyNotesComponent },
  
     { path: 'clients', component: ClientsComponent },
     { path: 'addclient', component: AddclientComponent },

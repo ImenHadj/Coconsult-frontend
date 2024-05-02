@@ -156,6 +156,7 @@ import { SalaryReportComponent } from './BackOffice/Note/salary-report/salary-re
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
 import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
+import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
 
 @NgModule({
   declarations: [
@@ -258,7 +259,8 @@ import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
     SalaryReportComponent,
     LandingpageComponent,
     AddLeaveComponent,
-    MyLeavesComponent
+    MyLeavesComponent,
+    MyNotesComponent
   ],
   imports: [
     BrowserModule,
