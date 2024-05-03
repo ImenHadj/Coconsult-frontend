@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/core/models/employee.model';
 import { SericeEmployeeService } from 'src/app/core/services/serice-employee.service';
 import { ServiceDepartementService } from 'src/app/core/services/service-departement.service';
+import { ServiceNoteService } from 'src/app/core/services/service-note.service';
 
 @Component({
   selector: 'app-add-departement',
@@ -17,21 +18,32 @@ export class AddDepartementComponent implements OnInit {
   departementId: number | null = null;
   employees: any[] = [];
   selectedEmployees: Employee[] = [];
+  usernames: { [userId: number]: string } = {}; 
 
   constructor(
     private fb: FormBuilder,
     private departementService: ServiceDepartementService,
     private employeeService: SericeEmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private noteService: ServiceNoteService
   ) {}
-
+  getUserNameById(userId: number): void {
+    this.noteService.getUsernameById(userId).subscribe((user: any) => {
+      this.usernames[userId] = user.username;
+    });
+  }
   ngOnInit(): void {
     this.initForm();
     this.checkEditMode();
     this.employeeService.getall().subscribe(
       (data: Employee[]) => {
         this.employees = data;
+        this.employees.forEach(department => {
+          if (department.userId) {
+            this.getUserNameById(department.userId);
+          }
+        });
       },
       (error) => {
         console.error('Error fetching employees:', error);
@@ -133,11 +145,9 @@ export class AddDepartementComponent implements OnInit {
           .updateDepartement(this.departementId, CongeData)
           .subscribe(() => {
             console.log('departement updated successfully');
-            // console.log('Request payload:', CongeData); 
 
 
             if (this.departementId !== null) {
-              // console.log('this isssssss');
               this.departementService
                 .affecterEmplADep(this.departementId, this.selectedEmployees)
                 .subscribe(
@@ -152,23 +162,18 @@ export class AddDepartementComponent implements OnInit {
                       'Error associating employees with the department:',
                       error
                     );
-                    // console.log('Request payload:', CongeData); 
 
                   }
                 );
             } else {
               console.error('Received null clientId from the server');
-              // console.log('Request payload:', CongeData);
 
             }
           });
       } else {
         this.departementService.addDepartement(CongeData).subscribe(
           (id_departement: number) => {
-            // console.log(
-            //   'departement added successfully with ID:',
-            //   id_departement
-            // );
+
             if (id_departement !== null) {
               console.log('this isssssss');
               this.departementService

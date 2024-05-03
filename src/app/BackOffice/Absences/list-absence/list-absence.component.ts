@@ -2,6 +2,7 @@ import { Absence } from './../../../core/models/absence.model';
 import { Component, OnInit } from '@angular/core';
 import { ServiceAbsenceService } from 'src/app/core/services/service-absence.service';
 import { Observable, catchError, forkJoin, of } from 'rxjs';
+import { ServiceNoteService } from 'src/app/core/services/service-note.service';
 
 @Component({
   selector: 'app-list-absence',
@@ -16,9 +17,19 @@ export class AbsenceListComponent implements OnInit {
   itemsPerPage:number=4;
   totalProduct:any;
   startingLetter: any = '';
+  usernames: { [userId: number]: string } = {}; 
 
 
-  constructor(private absenceService: ServiceAbsenceService) {}
+  constructor(private absenceService: ServiceAbsenceService,
+    private noteService: ServiceNoteService
+
+  ) {}
+
+  getUserNameById(userId: number): void {
+    this.noteService.getUsernameById(userId).subscribe((user: any) => {
+      this.usernames[userId] = user.username;
+    });
+  }
 
   ngOnInit(): void {
     this.loadAbsences();
@@ -28,6 +39,11 @@ export class AbsenceListComponent implements OnInit {
   private loadAbsences(): void {
     this.absenceService.getall().subscribe((absences)=>{
       this.absences = absences as any[];
+      this.absences.forEach(department => {
+        if (department.emp?.userId) {
+          this.getUserNameById(department.emp.userId);
+        }
+      });
       this.totalProduct=absences.length;
 
       this.absences.forEach((absence) => {

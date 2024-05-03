@@ -32,7 +32,9 @@
             class="employee-details-container border-bottom pb-3 mb-3 d-flex align-items-center justify-content-between"
           >
             <div class="employee-basic-info">
-              <p>Post: {{ employee.posteEmployee }}</p>
+              <!-- <p>Post: {{ employee.posteEmployee }}</p> -->
+              <p>{{ usernames[employee.userId] ? usernames[employee.userId] : 'no employee' }}</p>
+
               <p>ID: {{ employee.id_employe }}</p>
             </div>
             <div class="employee-performance-info ml-3">

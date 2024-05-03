@@ -28,9 +28,11 @@
                   <div class="card" style="height: 100px; overflow-y: auto;">
                     <div class="form-check" *ngFor="let employee of employees">
                       <input class="form-check-input" type="checkbox" (change)="onCheckboxChange(employee)" [checked]="employee.selected">
-                      <label class="form-check-label" for="flexCheckChecked">
+                      <!-- <label class="form-check-label" for="flexCheckChecked">
                         {{ employee.posteEmployee }}
-                      </label>
+                      </label> -->
+                      <label class="form-check-label" for="flexCheckChecked">{{ usernames[employee.userId] ? usernames[employee.userId] : 'no employee' }}</label>
+
                     </div>
                   </div>
                 </div>

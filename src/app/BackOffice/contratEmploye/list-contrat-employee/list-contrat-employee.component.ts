@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceContratEmplService } from 'src/app/core/services/service-contrat-empl.service';
+import { ServiceNoteService } from 'src/app/core/services/service-note.service';
 
 @Component({
   selector: 'app-list-contrat-employee',
@@ -12,11 +13,19 @@ export class ListContratEmployeeComponent implements OnInit {
   itemsPerPage:number=4;
   totalProduct:any;
   selectedStatus:string = 'All';
-  filteredAbsences: any[] = []; // Variable to hold the filtered list
+  filteredAbsences: any[] = [];
+  usernames: { [userId: number]: string } = {}; 
 
 
-  constructor(private congeService: ServiceContratEmplService) {}
 
+  constructor(private congeService: ServiceContratEmplService,
+    private noteService: ServiceNoteService
+  ) {}
+  getUserNameById(userId: number): void {
+    this.noteService.getUsernameById(userId).subscribe((user: any) => {
+      this.usernames[userId] = user.username;
+    });
+  }
   ngOnInit(): void {
     this.loadAbsences();  
   }
@@ -24,6 +33,11 @@ export class ListContratEmployeeComponent implements OnInit {
   private loadAbsences(): void {
     this.congeService.getall().subscribe((absences)=>{
       this.absences=absences as any[];
+      this.absences.forEach(department => {
+        if (department.empl?.userId) {
+          this.getUserNameById(department.empl.userId);
+        }
+      });
       this.filterActivitiesByState();
 
         this.totalProduct=absences.length;

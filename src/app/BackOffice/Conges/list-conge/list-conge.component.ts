@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatutC } from 'src/app/core/models/conge.model';
 import { ServiceCongeService } from 'src/app/core/services/service-conge.service';
+import { ServiceNoteService } from 'src/app/core/services/service-note.service';
 
 @Component({
   selector: 'app-list-conge',
@@ -14,11 +15,19 @@ export class ListCongeComponent implements OnInit {
   itemsPerPage:number=4;
   totalProduct:any;
   selectedStatus:string = 'All';
-  filteredAbsences: any[] = []; // Variable to hold the filtered list
+  filteredAbsences: any[] = [];
+  usernames: { [userId: number]: string } = {}; 
 
 
-  constructor(private congeService: ServiceCongeService) {}
+  constructor(private congeService: ServiceCongeService,
+    private noteService: ServiceNoteService
 
+  ) {}
+  getUserNameById(userId: number): void {
+    this.noteService.getUsernameById(userId).subscribe((user: any) => {
+      this.usernames[userId] = user.username;
+    });
+  }
   ngOnInit(): void {
     this.loadAbsences();  
   }
@@ -27,6 +36,12 @@ export class ListCongeComponent implements OnInit {
   private loadAbsences(): void {
     this.congeService.getall().subscribe((absences)=>{
       this.absences=absences as any[];
+      this.absences.forEach(department => {
+        if (department.employee?.userId) {
+          this.getUserNameById(department.employee.userId);
+        }
+      });
+
       this.filterActivitiesByState();
       this.totalProduct=absences.length;
     })

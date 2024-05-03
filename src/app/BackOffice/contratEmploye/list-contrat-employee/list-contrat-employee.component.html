@@ -39,7 +39,9 @@
                 <p> {{ absence.rib }}</p>
             </div>
               <div>
-                <p>{{ absence.empl != null ? absence.empl.posteEmployee : "there's no employee" }}</p>
+                <!-- <p>{{ absence.empl != null ? absence.empl.posteEmployee : "there's no employee" }}</p> -->
+                <p>{{ usernames[absence.empl?.userId] ? usernames[absence.empl?.userId] : 'no employee' }}</p>
+
               </div>
             </div>
           </div>

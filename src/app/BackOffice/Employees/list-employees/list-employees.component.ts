@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SericeEmployeeService } from 'src/app/core/services/serice-employee.service';
+import { ServiceNoteService } from 'src/app/core/services/service-note.service';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -19,8 +20,10 @@ export class ListEmployeesComponent implements OnInit {
   itemsPerPage: number = 4;
   totalProduct: any;
   fileName = 'ExcelSheet.xlsx';
+  usernames: { [userId: number]: string } = {}; 
 
-  constructor(private employeeService: SericeEmployeeService) {}
+  constructor(private employeeService: SericeEmployeeService,
+    private noteService: ServiceNoteService) {}
 
   ngOnInit(): void {
     this.loadAbsences();
@@ -41,10 +44,20 @@ export class ListEmployeesComponent implements OnInit {
       }
     );
   }
+  getUserNameById(userId: number): void {
+    this.noteService.getUsernameById(userId).subscribe((user: any) => {
+      this.usernames[userId] = user.username;
+    });
+  }
 
   private loadAbsences(): void {
     this.employeeService.getall().subscribe((absences) => {
       this.employees = absences as any[];
+      this.employees.forEach(department => {
+        if (department.userId) {
+          this.getUserNameById(department.userId);
+        }
+      });
       this.totalProduct = absences.length;
     });
   }
