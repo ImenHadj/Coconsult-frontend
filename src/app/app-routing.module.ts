@@ -123,7 +123,6 @@ const routes: Routes = [
       path:'myAbsences',component:MyAbsencesComponent
     },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-//  { path: '', redirectTo: 'home', pathMatch: 'full' },
   ]
   
 },

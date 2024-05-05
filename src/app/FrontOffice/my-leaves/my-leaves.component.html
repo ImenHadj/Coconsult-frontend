@@ -1,42 +1,30 @@
 <main
   class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
 >
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <div class="title-group">
-      <h1 class="h2 mb-0">My Leaves</h1>
-    </div>
+<div class="d-flex justify-content-between align-items-center mb-3" style="padding: 10px; border-radius: 8px;">
+  <div class="title-group">
+      <h1 class="h2 mb-0" style="color: #333;">My Leaves</h1>
   </div>
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <!-- <div>
-      <input
-        type="text"
-        class="form-control"
-        id="startingLetter"
-        [(ngModel)]="startingLetter"
-        (input)="onInput($event)"
-        placeholder="Enter the comment"
-      />
-    </div> -->
-    <div class="custom-block-transation-detail-item ms-2">
-      <button
-        type="button"
-        class="btn btn-outline-success"
-        [routerLink]="['/accueil/addLeave/']"
-      ><i class="bi bi-calendar-plus"></i> 
-        add Leave
-      </button>
+</div>
+
+
+  <div class="d-flex justify-content-between align-items-center pb-5 pt-3 mb-3">
+    <div>
+      <button type="button" class="btn" style="background-color: #f0f8ff; border-color: #333;" [routerLink]="['/accueil/addLeave/']">
+        <i class="bi bi-calendar-plus"></i> Add Leave
+    </button>
+    
     </div>
-  </div>
-  <div class="mb-3 d-flex justify-content-between align-items-center">
-    <div style="margin-top: 20px;">
+    <div class="custom-select-container ms-3" style="border: 2px solid #333; border-radius: 8px; padding: 4px;">
       <select id="stateFilter" [(ngModel)]="selectedStatus" (change)="filterActivitiesByState()" class="custom-select">
-        <option value="All">All</option>
-        <option value="PENDING">PENDING</option>
-        <option value="REJECTED">REJECTED</option>
-        <option value="VALIDATED">VALIDATED</option>
+          <option value="All">All</option>
+          <option value="PENDING">PENDING</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="VALIDATED">VALIDATED</option>
       </select>
-    </div>
   </div>
+  </div>
+  
   <div class="row my-4" *ngFor="let absence of filteredAbsences  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
 
     <div class="col-lg-12 col-12">
@@ -44,21 +32,26 @@
         <div
           class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3"
         >
-          <div class="d-flex flex-wrap align-items-center mr-10">
-            <h5> Comment : </h5>{{ absence.commentaire }}
+          <div style="display: flex; align-items: center;">
+            <h6 style="color: #333; margin-right: 5px;"> Comment : </h6>  <p> {{ absence.commentaire }}</p>
           </div>
+
           <div>
           </div>
+
         </div>
+
         <div class="d-flex flex-wrap align-items-center">
           <div class="custom-block-transation-detail-item mt-4">
-            <h6>Type</h6>
+            <p>Type</p>
             <p>{{ absence.typeC }}</p>
           </div>
+
           <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-            <h6>Status</h6>
+            <p>Status</p>
             <p>{{ absence.statutC }}</p>
           </div>
+
           <div
             class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
             style="
@@ -68,8 +61,8 @@
               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             "
           >
-            <h6 style="color: #333">Start date</h6>
-            <p style="font-weight: bold; color: #007bff">
+            <p style="color: #333">Start date</p>
+            <p style="font-weight: 100; color: #007bff">
               {{ absence.date_debut }}
             </p>
           </div>
@@ -82,37 +75,23 @@
               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             "
           >
-            <h6 style="color: #333">End date</h6>
-            <p style="font-weight: bold; color: #007bff">
+            <p style="color: #333">End date</p>
+            <p style="font-weight: 100; color: #007bff">
               {{ absence.date_fin }}
             </p>
           </div>
 
-          <!-- <div
-            class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3"
-          >
-            <h6>Justification</h6>
-            <div class="card mb-3" *ngIf="absence.image">
-              <img
-                src="{{ absence.image.imageUrl }}"
-                class="card-img-top"
-                alt="Image 1"
-                style="max-height: 100px"
-              />
-            </div>
-          </div> -->
-
           <div class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3">
-            <h6>Justification</h6>
+            <p>Justification</p>
             <div class="card mb-3" *ngIf="absence.image && absence.image.imageUrl">
               <div class="card-body">
-                <h6 class="card-title">Image</h6>
+                <p class="card-title">Image</p>
                 <img src="{{ absence.image.imageUrl }}" class="card-img-top" alt="Image 1" style="max-height: 100px">
               </div>
             </div>
             <div class="card mb-3" *ngIf="!absence.image || !absence.image.imageUrl">
               <div class="card-body">
-                <h6 class="card-title text-red">There is no justification</h6>
+                <p class="card-title text-red">There is no justification</p>
               </div>
             </div>
           </div>
