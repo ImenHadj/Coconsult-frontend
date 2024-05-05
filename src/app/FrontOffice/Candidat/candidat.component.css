@@ -1,0 +1,12 @@
+/* Agrandir la taille des boîtes de sélection */
+select {
+    width: 100%; /* Ajustez cette valeur selon vos préférences */
+    height: 3rem; /* Ajustez cette valeur pour définir la hauteur des options */
+    padding: 0.5rem; /* Ajoutez de l'espacement interne */
+    font-size: 1rem; /* Ajustez la taille de la police selon vos préférences */
+}
+
+/* Ajuster la taille des options */
+select option {
+    font-size: 1.2rem; /* Ajuster la taille de la police des options */
+}

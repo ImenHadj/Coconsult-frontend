@@ -1,0 +1,37 @@
+<div *ngIf="recrutement" class="recrutement-container">
+    <!-- Cadre 1 : typeRecrutement et lieu -->
+    
+    <div class="cadre-type-lieu">
+        
+        <h3>{{ recrutement.typeRecrutement }}</h3>
+        <p class="text-orange">{{ recrutement.poste }}</p>
+        <p class="d-flex align-items-center">
+            <i class="bi bi-geo-alt-fill me-2 text-info"></i>
+            {{ recrutement.lieu }}
+        </p>
+        
+    </div>
+
+    <!-- Cadre 2 : autres informations -->
+    <div class="cadre-autres-informations">
+        
+        <p>Expérience : {{ recrutement.experience }}</p>
+        <p>{{ recrutement.niveauDetude }}</p>
+        <p>Postes vacants : {{ recrutement.postesVacants }}</p>
+        <p>Date d'expiration : {{ recrutement.dateCloture | date: 'yyyy/MM/dd' }}</p>
+      
+        <p>Langue : {{ recrutement.langue }}</p>
+        <p>Critères de sélection : {{ recrutement.criteresSelection }}</p>
+   
+        <p>Objectifs : {{ recrutement.objectifs }}</p>
+       
+        <p>Travail demandé : {{ recrutement.responsableRecrutement }}</p>
+        <p>{{ recrutement.salaire }} dt</p>
+        <!-- Lien pour postuler avec texte encourageant -->
+        <p class="encouragement">
+            N'attendez pas pour vous garantir ce poste !
+            <span class="fleche">&#8594;</span> <!-- Flèche vers la droite -->
+            <a [routerLink]="['/accueil/candidat', recrutement.idRec]" class="btn btn-primary">Postuler</a>
+        </p>
+    </div>
+</div>

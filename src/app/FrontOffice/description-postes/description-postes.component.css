@@ -1,0 +1,38 @@
+.recrutement-container {
+    width: 60%; /* Ajustez la largeur selon vos préférences */
+    margin: 0 auto; /* Centre horizontalement l'élément */
+    padding: 20px; /* Ajoute de l'espace autour du contenu */
+    border: 1px solid #ccc; /* Ajoute une bordure fine autour du conteneur */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1); /* Ajoute un ombrage léger pour plus de style */
+ 
+}
+
+.cadre-autres-informations {
+    padding: 20px; /* Ajoute de l'espace autour du contenu */
+    border: 1px solid #ccc; /* Ajoute une bordure fine */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    color: black; 
+}
+.encouragement {
+    color: #e74c3c; /* Couleur de texte rouge vif */
+    font-weight: bold; /* Texte en gras */
+}
+.fleche {
+    color: #3498db; /* Couleur de flèche bleue claire */
+    font-weight: bold; 
+}
+.cadre-autres-informations {
+    padding: 20px;
+    border: 1px solid #8d1b1b; /* Bordure fine */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    background-color: hsla(0, 0%, 100%, 0.816); /* Couleur de fond beige */
+    color: black;  /* Couleur de texte bleu foncé */
+}
+.cadre-type-lieu {
+    padding: 20px;
+    border: 1px solid #ffffff; /* Bordure fine */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    background-color: hsl(0, 0%, 100%); /* Couleur de fond beige */
+    color: #000000; /* Couleur de texte gris foncé */
+}

@@ -1,0 +1,42 @@
+<div>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offres d'emplois et Demande de Stage</title>
+
+
+  <!-- Main container -->
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <h3>Offres d'emplois et Demande de Stage</h3>
+          </div>
+      </div>
+      
+      <!-- Search bar -->
+      <div class="row">
+          <input type="text" [(ngModel)]="searchText" class="input-search" placeholder="Rechercher...">
+   
+          <div class="col-12" *ngFor="let recrutement of recrutements | searchFilter: searchText">
+              <div class="recrutement-item mb-3 p-3 border">
+                  <h4>{{ recrutement.typeRecrutement }}</h4>
+                  <p class="text-orange">{{ recrutement.poste }}</p>
+                  <p>{{ recrutement.niveauDetude }}</p>
+                  <p class="d-flex align-items-center">
+                      <i class="bi bi-geo-alt-fill me-2 text-info"></i>
+                      {{ recrutement.lieu }}
+                  </p>
+                  <p>{{ recrutement.salaire }} dt</p>
+                  <p>Date d'expiration : {{ recrutement.dateCloture | date: 'yyyy/MM/dd' }}</p>
+                  <p>Postes vacants : {{ recrutement.postesVacants }}</p>
+                  <button
+                      [routerLink]="['/accueil/description-postes', recrutement.idRec]"
+                      class="btn btn-secondary"
+                      [disabled]="isButtonDisabled(recrutement.dateCloture, recrutement.postesVacants)"
+                  >Voir plus</button>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Liste des candidats</h1>
+    
+
+    <select class="form-select" id="ordreTri" (change)="choisirOrdreTri($event)">
+      <option value="croissant">Score Croissant</option>
+      <option value="decroissant">Score  Décroissant</option>
+      
+    </select>
+    <button type="button" class="btn btn-outline-primary" routerLink="/admin/rendezvous" ><i class="bi bi-file-pdf"></i> calendrier </button>
+     <button class="btn btn-primary" routerLink="/admin/candidatsacceptes">Voir les candidats acceptés</button>
+
+  </div>
+  <div class="row my-4">
+    <div class="col-lg-12 col-12">
+        <div class="custom-block">
+            <div class="searching">
+                <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get" role="form">
+                    <input class="form-control" name="search" type="text" placeholder="Rechercher un candidat" aria-label="Rechercher">
+                </form>
+                <div class="filtres">
+                   
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="account-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom et Prenom du candidat</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">CV</th>
+                            <th scope="col">Experience</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody *ngFor="let candidat of candidats">
+                        <tr>
+                            <td scope="row">{{ candidat.nom }} {{ candidat.prenom }}</td>
+                            <td scope="row">{{ candidat.email }}</td>
+                            <td scope="row">{{ candidat.telephone }}</td>
+                            <td scope="row">{{ candidat.score }}</td>
+                            <td scope="row">{{ candidat.cvUrl }}</td>
+                            <td scope="row">{{ candidat.experience }}</td>
+                            <td scope="row" class="actions">
+
+                                
+                    
+                           <button (click)="removeCandidat(candidat.idCandidat)">
+                               <i id="delete" class="bi bi-trash-fill text-danger"></i>
+                                </button>
+                                <button (click)="accepterCandidat(candidat.idCandidat)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="bi bi-check2-circle text-success"></i>
+                                </button>
+
+                                
+                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+

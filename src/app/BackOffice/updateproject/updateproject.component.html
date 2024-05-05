@@ -1,0 +1,72 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">update Project</h1>
+    </div>
+
+    <div class="row my-2"> 
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white">
+                <form class="custom-form profile-form" role="form" [formGroup]="projectForm" (ngSubmit)="updateProject()">
+                    <div class="mb-1 rounded row"> 
+                        <label for="projectname" class="col-sm-3 col-form-label">Project Name</label>
+                        <input class="form-control col-sm-9" type="text" name="projectname" placeholder="Project Name" formControlName="projectname" required>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="projectdescription" class="col-sm-3 col-form-label">Description</label>
+                        <input class="form-control col-sm-9" type="text" name="projectdescription" placeholder="Project Description" formControlName="projectdescription" required>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="startDate" class="col-sm-3 col-form-label">Start Date</label>
+                        <input class="form-control col-sm-9" type="date" name="startDate" placeholder="Start Date" formControlName="startDate" required>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="endDate" class="col-sm-3 col-form-label">End Date</label>
+                        <input class="form-control col-sm-9" type="date" name="endDate" placeholder="End Date" formControlName="endDate" required>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="budget" class="col-sm-3 col-form-label">Budget (Dinar)</label>
+                        <input class="form-control col-sm-9" type="number" name="budget" placeholder="Budget" formControlName="budget" required>
+                    </div>
+                   
+                    <div class="mb-1 rounded row">
+                        <label for="type" class="col-sm-3 col-form-label">Type</label>
+                        <select class="form-select col-sm-9" formControlName="type" placeholder="projectType">
+                            <option *ngFor="let type of projectTypeOptions" [value]="type">{{ type }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="status" class="col-sm-3 col-form-label">Status</label>
+                        <select class="form-select col-sm-9" formControlName="status" placeholder="Status">
+                            <option *ngFor="let status of projectStatusOptions" [value]="status">{{ status }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-1 rounded row"> 
+                        <label for="priority" class="col-sm-3 col-form-label">Priority</label>
+                        <select class="form-select col-sm-9" formControlName="priority" placeholder="Priority">
+                            <option *ngFor="let priority of priorityOptions" [value]="priority">{{ priority }}</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex">
+                        <button type="submit" [disabled]="projectForm.invalid" class="form-control ms-2">update Projet</button>
+                        <button type="button" (click)="onCancel()" class="form-control ms-2">cancel</button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add other content or remove this section as needed -->
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 
+                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>

@@ -1,0 +1,49 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Edit Stock</h1>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white">
+                <form class="custom-form profile-form" (submit)="updateStock()">
+                    <label>Quantity:</label>
+                    <input class="form-control" type="number" [(ngModel)]="stock.quantity" name="quantity" required>
+
+                    <label>Location:</label>
+                    <input class="form-control" type="text" [(ngModel)]="stock.location" name="location" required>
+
+                    <label>Replenishment Alert:</label>
+                    <select class="form-control" [(ngModel)]="stock.replenishmentAlert" name="replenishmentAlert" required>
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
+                    </select>
+
+                    <label>Entry Date:</label>
+                    <input class="form-control" type="date" [(ngModel)]="stock.entryDate" name="entryDate" required>
+
+                    <label>Purchase Date:</label>
+                    <input class="form-control" type="date" [(ngModel)]="stock.purchaseDate" name="purchaseDate" required>
+
+                    <label>Expiration Date:</label>
+                    <input class="form-control" type="date" [(ngModel)]="stock.expirationDate" name="expirationDate" required>
+
+                    <label>Quality:</label>
+                    <input class="form-control" type="text" [(ngModel)]="stock.quality" name="quality" required>
+
+                    <label>Defect Percentage:</label>
+                    <input class="form-control" type="number" [(ngModel)]="stock.pourcentageDefauts" name="pourcentageDefauts" required>
+
+                    <label>Category:</label>
+                    <select class="form-control" [(ngModel)]="stock.categorieStock" name="categorieStock" required>
+                        <option value="ELECTRONICS">Electronics</option>
+                        <option value="FURNITURE">Furniture</option>
+                        <option value="VEHICULES">Vehicles</option>
+                    </select>
+                    
+                    <button type="submit" class="form-control ms-2">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

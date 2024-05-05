@@ -1,0 +1,35 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Edit Fournisseur</h1>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white">
+                <form class="custom-form profile-form" (submit)="updateFournisseur()">
+                    <label>Nom:</label>
+                    <input class="form-control" type="text" [(ngModel)]="fournisseur.nom" name="Nom" required>
+
+                    <label>Address:</label>
+                    <input class="form-control" type="text" [(ngModel)]="fournisseur.address" name="Address" required>
+
+                    <label>Contact:</label>
+                    <input class="form-control" type="text" [(ngModel)]="fournisseur.contact" name="Contact" required>
+
+                    <label>Type:</label>
+                    <select class="form-control" [(ngModel)]="fournisseur.typeFournisseur" name="TypeFournisseur" required>
+                        <option value="ELECTRONICS">Electronics</option>
+                        <option value="FURNITURE">Furniture</option>
+                        <option value="VEHICULES">Vehicules</option>
+                    </select>
+
+                    <label>Score:</label>
+                    <input class="form-control" type="number" [(ngModel)]="fournisseur.score" name="score" required>
+
+                    <button type="submit" class="form-control ms-2">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+

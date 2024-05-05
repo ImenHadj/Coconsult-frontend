@@ -1,0 +1,51 @@
+/*.container {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 500px));
+  grid-gap: 20px;
+  place-content: center;
+  margin-top: 30px;
+}
+.container * {
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}*/
+.highcharts-color-0 {
+  fill: #506ef9;
+  stroke: #506ef9;
+}
+
+/*/*/
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-direction: row;
+}
+.container .pie {
+  width: 400px !important;
+  height: 250px !important;
+}
+.container .bar {
+  width: 400px !important;
+  height: 250px !important;
+}
+
+.highcharts-area.highcharts-color-0 {
+  /* Combine selectors */
+  fill-opacity: 1;
+  fill: url(#gradient-0);
+}
+
+#gradient-0 {
+  stop-color: #506ef9;
+}
+
+#gradient-0 stop[offset="0"] {
+  stop-opacity: 0.25;
+}
+
+#gradient-0 stop[offset="1"] {
+  stop-opacity: 0;
+}
