@@ -1,0 +1,7 @@
+<form (submit)="onSubmitClick()">
+  <div class="mb-3">
+    <label for="dateEntretien" class="form-label">Date d'entretien</label>
+    <input type="date" class="form-control" id="dateEntretien" [(ngModel)]="dateEntretien" name="dateEntretien" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Soumettre</button>
+</form>

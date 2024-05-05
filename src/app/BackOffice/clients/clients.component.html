@@ -1,0 +1,170 @@
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+    <div id="title">
+      <h4>Dashbord - Clients</h4>  
+      <a href="https://wa.me/29843730">whatsapp</a>
+    </div>
+    <section id="content">
+        <main>
+      
+          <ul class="box-info">
+            <li>
+
+              <i class='bx bxs-calendar-check' ></i>
+              <span class="text">
+                <h3>12 Projects</h3>
+                <p> this month</p>
+              </span>
+            </li>
+            <li>
+              <i class='bx bxs-group' ></i>
+              <span class="text">
+                <h3>{{numberOfClients}}</h3>
+                <p>Clients</p>
+              </span>
+            </li>
+            <li>
+              <i class='bx bxs-dollar-circle' ></i>
+              <span class="text">
+                <h3>{{totalAmountLeftToPay.toFixed(3) }} DT</h3>
+                <p>Total Due</p>
+              </span>
+            </li>
+          </ul>
+          </main>
+          </section>
+
+
+    <div class="row my-4">
+        <div class="col-lg-12 col-12">
+            <div class="custom-block ">
+          <div class="searching">
+           <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get" role="form">
+            <input class="form-control" name="search" type="text" placeholder="Search Client" aria-label="Search">
+        </form>
+       
+        <div class="filtres">
+            <div class="dropdown">
+                <button id="filtrebtn" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'filter-applied': isFilterApplied, 'filter-not-applied': !isFilterApplied}">
+                    <i class="bi bi-funnel" ></i>  Filtre
+                </button>
+                <ul class="dropdown-menu">
+                    <li><p>Bills in range</p></li>
+                  <li><a id="t"class="dropdown-item" (click)="see(7)">Week</a></li>
+                  <li><a id="t" class="dropdown-item" (click)="see(30)">Month</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><p>filtre by less Cost</p></li>
+                  <li><a id="t" class="dropdown-item" (click)="btnfiltrage()" >order</a></li>
+                  
+                </ul>
+              </div>
+            <button type="button" class="btn btn-outline-primary" routerLink="/admin/calendrier" ><i class="bi bi-file-pdf"></i> calendrier </button>
+</div>
+
+</div>
+
+                <div class="table-responsive">
+                    <table class="account-table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Client Name</th>
+
+                                <th scope="col">Email</th>
+
+                                <th scope="col">Phone</th>
+
+                                <th scope="col">Company Adress</th>
+
+                                <th scope="col">Amount Left to pay</th>
+
+                                <th scope="col">Actions</th>
+                                <th scope="col">Contracts</th>
+                                
+
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let client of paginatedclients">
+                            <tr>
+                        
+                                <td scope="row" > {{ client.nom }} {{ client.prenom }}</td>
+
+                                <td scope="row">{{ client.email }}</td>
+
+                                <td scope="row">{{ client.phone }}</td>
+
+                                <td scope="row">{{ client.companyAddress }}</td>
+
+                                <td  scope="row">{{ client.amount }} DT</td>
+
+                                <td scope="row" class="actions">
+                                    <button (click)="navigateToeditclient(client.idClient)"><i id="edit" class="bi bi-pencil-fill"></i></button>
+                                   <button (click)="removeClient(client.idClient)"> <i id="delete" class="bi bi-trash-fill"></i></button>
+                                 
+                                </td>
+
+                                <td scope="row" class="actions">
+                                    
+                                   <button (click)="navigateToContracts(client.idClient)"><i id="contrat" class="bi bi-folder2-open"></i></button>
+                                 
+                                </td>
+                                
+                            </tr>
+                            
+                           
+
+                        </tbody>
+                        
+                    </table>
+               
+
+                </div>
+                <mat-paginator [length]="clients.length"
+                showFirstLastButtons
+                
+                [pageSize]="pageSize"
+                [pageSizeOptions]="[2, 5, clients.length]"
+                (page)="onPageChange($event)"
+              >
+                </mat-paginator>
+            </div>
+            
+        </div>
+
+       
+
+
+    </div>
+    <section id="chartscontainer">
+      <main>
+        <div class="paimenttypes">
+          <span class="text">
+            <h3>Overview -Statistics</h3>
+          </span>
+        <app-stats class="piechart"></app-stats>
+
+      </div>
+      <div class="custom-block bg-white">
+        <h5 class="mb-4">Revenu Per Monnth</h5>
+
+        <canvas id="stockChart" style="width:5px;height: 2px;"></canvas>
+
+    </div>
+        </main>
+        </section>
+        
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 
+                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</main>
+

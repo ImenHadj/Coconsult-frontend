@@ -1,0 +1,163 @@
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Employees</h1>
+  </div>
+
+  <div class="employee-details-container border-bottom pb-3 mb-3 d-flex align-items-center justify-content-between">
+    <div class="col-lg-6 col-12">
+      <input
+        type="text"
+        class="form-control"
+        id="startingLetter"
+        [(ngModel)]="startingLetter"
+        (input)="onInput($event)"
+        placeholder="Enter the department's name"
+      />
+    </div>
+    <!-- <div class="col-lg-6 col-12 d-flex justify-content-end">
+      <app-circular-chart-employee
+        [nbreEmpl]="max"
+        [percentage]="availablePercentage"
+      ></app-circular-chart-employee>
+    </div> -->
+  </div>
+  
+  <!-- <button (click)="exportExcel()">Export to Excel</button> -->
+  <div
+    class="row my-4"
+    *ngFor="
+      let employee of employees
+        | paginate : { itemsPerPage: itemsPerPage, currentPage: p }
+    "
+  >
+    <div class="col-lg-12 col-12">
+      <div class="custom-block custom-block-transation-detail bg-white">
+        <div id="exportContent">
+          <div
+            class="employee-details-container border-bottom pb-3 mb-3 d-flex align-items-center justify-content-between"
+          >
+            <div class="employee-basic-info">
+              <p>Post: {{ employee.posteEmployee }}</p>
+              <p>ID: {{ employee.id_employe }}</p>
+            </div>
+            <div class="employee-performance-info ml-3">
+              <ngb-rating
+                *ngIf="employee.performanceEmployee != null"
+                [max]="5"
+                [readonly]="true"
+                [rate]="employee.performanceEmployee.moyenne"
+              ></ngb-rating>
+              <p *ngIf="employee.performanceEmployee != null" class="performance-details-box">
+                Rating : {{ employee.performanceEmployee.commentaire }}
+              </p>
+              <p *ngIf="employee.performanceEmployee == null" class="performance-unavailable-box">
+                Performance unavailable
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-center">
+            <div class="custom-block-transation-detail-item mt-4 ms-auto">
+                <h6>Department</h6>
+                <p>
+                    {{ employee.departement != null ? employee.departement.libelle : "No appartment" }}
+                </p>
+            </div>
+            <div style="background-color: #f0f8ff; border-radius: 8px; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h6 style="color: #333;">Date of Hire</h6>
+                <p style="font-weight: bold; color: #007bff;" >{{ employee.date_embauche | date }}</p>
+            </div>
+        </div>
+        
+        
+
+          <div class="d-flex justify-content-center mt-4">
+            <div class="custom-block-transation-detail-item me-2">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="removeEmployee(employee.id_employe)"
+              >
+                Delete
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/editEmployees/' + employee.id_employe]"
+              >
+                Edit
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/addConges/' + employee.id_employe]"
+              >
+                add Leave
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/addAbsences/' + employee.id_employe]"
+              >
+                add absence
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="[
+                  '/admin/addContratEmployee/' + employee.id_employe
+                ]"
+              >
+                add Contract
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/addNote/' + employee.id_employe]"
+              >
+                add Rating
+              </button>
+            </div>
+
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="['/admin/addPrimesAndSupplementHours/' + employee.id_employe]"
+              >
+                Add Primes & Supplement Hours
+              </button>
+            </div>
+            
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="[
+                  '/admin/historiqueEmploye/' + employee.id_employe
+                ]"
+              >
+              Employee History
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</main>

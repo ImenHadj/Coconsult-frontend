@@ -1,0 +1,91 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">{{ isEditMode ? 'Update Contract' : 'Add Contract' }}</h1>
+    </div>
+
+    <div class="flex items-center row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white p-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="profile-tab">{{ isEditMode ? 'Edit' : 'Fill in' }} Contract Details</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <form class="custom-form profile-form" role="form" [formGroup]="ContratEmployeeForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <label for="rib" class="form-label">RIB</label>
+                                <input class="form-control" type="text" name="rib" id="rib" placeholder="Enter RIB" formControlName="rib" 
+                                required minlength="20" maxlength="20">
+                            </div>
+                            <div class="mb-3">
+                                <label for="numeroSecuriteSociale" class="form-label">Social Security Number</label>
+                                <input class="form-control" type="number" name="numeroSecuriteSociale" id="numeroSecuriteSociale" placeholder="Enter Social Security Number" formControlName="numeroSecuriteSociale" 
+                                required minlength="3" maxlength="3">
+                            </div>
+                            <div class="mb-3">
+                                <label for="date_debut" class="form-label">Start Date</label>
+                                <input class="form-control" type="date" name="date_debut" id="date_debut" formControlName="date_debut" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date_fin" class="form-label">End Date</label>
+                                <input class="form-control" type="date" name="date_fin" id="date_fin" formControlName="date_fin" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="typeCE" class="form-label">Contract Type</label>
+                                <select class="form-select" name="typeCE" id="typeCE" formControlName="typeCE" required>
+                                    <option *ngFor="let poste of postes" [value]="poste">{{ poste }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="duree_hebdomadaire" class="form-label">Weekly Duration</label>
+                                <input class="form-control" type="number" name="duree_hebdomadaire" id="duree_hebdomadaire" placeholder="Enter Weekly Duration" formControlName="duree_hebdomadaire" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="salaire_base" class="form-label">Base Salary</label>
+                                <input class="form-control" type="number" name="salaire_base" id="salaire_base" placeholder="Enter the salary" formControlName="salaire_base" required>
+                            </div>                            <div class="mb-3">
+                                <label for="montant_heures_supplementaires" class="form-label">Hour's price</label>
+                                <input class="form-control" type="number" name="montant_heures_supplementaires" id="montant_heures_supplementaires" placeholder="Enter hour'sprice" formControlName="montant_heures_supplementaires" required>
+                            </div>                            <div class="mb-3">
+                                <label for="montant_Conge_Absence" class="form-label">Hour of conge or absence price</label>
+                                <input class="form-control" type="number" name="montant_Conge_Absence" id="montant_Conge_Absence" placeholder="Hour of conge or absence price" formControlName="montant_Conge_Absence" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input class="form-check-input" type="checkbox" name="isArchiveCheckbox" id="isArchiveCheckbox" formControlName="isArchive">
+                                <label class="form-check-label" for="isArchiveCheckbox">Archive</label>
+                            </div>
+
+                            <div class="alert alert-danger" *ngIf="errorMessage">
+                                {{ errorMessage }}
+                              </div>
+
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-secondary me-3" (click)="onCancel()">
+                                  Cancel
+                                </button>
+                            
+                                <button type="submit" [disabled]="ContratEmployeeForm.invalid" class="btn btn-primary ms-2">
+                                  {{ isEditMode ? 'Update Contract' : 'Add Contract' }}
+                                </button>
+                              </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12 text-center">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>
+

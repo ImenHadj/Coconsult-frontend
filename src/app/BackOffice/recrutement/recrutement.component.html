@@ -1,0 +1,58 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Recrutement</h1>
+    </div>
+
+        <div class="row my-4" *ngFor="let recrutement of recrutements">
+            <div class="col-lg-12 col-12">
+                <div class="custom-block custom-block-transation-detail bg-white">
+                    <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
+                        <div class="d-flex align-items-center">
+                            
+                            <div>
+                                <p>{{ recrutement.poste }}</p>
+                                <small class="text-muted">Active Recruitment</small>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                            <small>{{ recrutement.dateDebut }}</small>
+                            <strong class="d-block text-success"><span class="me-1">+</span> ${{ recrutement.salaire }}</strong>
+                        </div>
+                    </div>
+    
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="custom-block-transation-detail-item mt-4">
+                            <h6>Type of Recruitment</h6>
+                            <p>{{ recrutement.typeRecrutement }}</p>
+                        </div>
+    
+                        <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+                            <h6>Location</h6>
+                            <p>{{ recrutement.lieu }}</p>
+                        </div>
+    
+                        <div class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3">
+                            <h6>Vacant Positions</h6>
+                            <p>{{ recrutement.postesVacants }}</p>
+                        </div>
+    
+                        <div class="custom-block-transation-detail-item mt-4 ms-auto me-auto">
+                            <h6>Experience Required</h6>
+                            <p>{{ recrutement.experience }}</p>
+                        </div>
+    
+                        <div class="d-flex justify-content-center mt-4">
+                            <div class="custom-block-transation-detail-item me-2">
+                            <button type="button" class="btn btn-outline-danger" (click)="removeRecrutement(recrutement.idRec)">Delete</button>
+                            </div>
+                            <div class="custom-block-transation-detail-item ms-2">
+                            <button type="button" class="btn btn-outline-success" [routerLink]="['/admin/updateRecrutement', recrutement.idRec]">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    

@@ -1,0 +1,14 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="custom-block bg-white">
+      <input type="date" [(ngModel)]="selectedDate" (change)="onDateChange()">
+      <canvas id="salaryStatisticsChart" class="chart" width="600" height="400"></canvas>
+      <canvas id="salaryEvolutionChart" class="chart" width="600" height="400"></canvas>
+    </div>
+    <div class="border-top pt-4 mt-4 text-center">
+        <a class="btn custom-btn" routerLink="/admin/listSalaires">
+            All salaries
+            <i class="bi-arrow-up-right-circle-fill ms-2"></i>
+        </a>
+    </div>
+  </main>
+  

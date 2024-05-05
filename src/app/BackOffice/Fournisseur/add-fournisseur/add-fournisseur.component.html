@@ -1,0 +1,54 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+      <h1 class="h2 mb-0">Add Fournisseur</h1>
+    </div>
+  
+    <div class="row my-4">
+      <div class="col-lg-7 col-12">
+        <div class="custom-block bg-white">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="profile-tab">Fill in supplier details</button>
+            </li>
+          </ul>
+  
+          <form class="custom-form profile-form" [formGroup]="fournisseurForm" (submit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nom:</label>
+                <input class="form-control" type="text" formControlName="nom">
+                <small class="text-danger" *ngIf="fournisseurForm.get('nom')?.touched && fournisseurForm.get('nom')?.hasError('required')">Name is required.</small>
+                <small class="text-danger" *ngIf="fournisseurForm.get('nom')?.touched && fournisseurForm.get('nom')?.hasError('pattern')">Name should contain only letters</small>
+              </div>
+              <div class="col-md-6">
+                <label>Address:</label>
+                <input class="form-control" type="text" formControlName="address">
+                <small class="text-danger" *ngIf="fournisseurForm.get('address')?.touched && fournisseurForm.get('address')?.hasError('required')">Address is required.</small>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <label>Contact:</label>
+                <input class="form-control" type="text" formControlName="contact">
+                <small class="text-danger" *ngIf="fournisseurForm.get('contact')?.touched && fournisseurForm.get('contact')?.hasError('required')">Contact is required.</small>
+                <small class="text-danger" *ngIf="fournisseurForm.get('contact')?.touched && fournisseurForm.get('contact')?.hasError('pattern')">Contact should contain only numbers.</small>
+              </div>
+              <div class="col-md-6">
+                <label>Type:</label>
+                <select class="form-control" formControlName="typeFournisseur">
+                  <option value="ELECTRONICS">Electronics</option>
+                  <option value="FURNITURE">Furniture</option>
+                  <option value="VEHICULES">Vehicles</option>
+                </select>
+                <small class="text-danger" *ngIf="fournisseurForm.get('typeFournisseur')?.touched && fournisseurForm.get('typeFournisseur')?.hasError('required')">Type is required.</small>
+              </div>
+            </div>
+  
+            <button type="submit" [disabled]="fournisseurForm.invalid" class="form-control ms-2">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  

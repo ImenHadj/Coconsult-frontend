@@ -1,0 +1,121 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Client contracts history</h1>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-12 col-12">
+            <div class="custom-block bg-white">
+                <div class="addbtn"> <button class="btn btn-primary" type="button"(click)="navigateToaddContracts(id)" >Add <i class="bi bi-file-earmark-plus-fill"></i></button></div>
+               
+                <div class="table-responsive">
+                    <table class="account-table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Notif Log</th>
+                                <th scope="col">Type</th>
+
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Start Date</th>
+
+                                <th scope="col">End Date</th>
+
+                               
+
+                                <th scope="col">Cost</th>
+
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Factures</th>
+                               
+
+                            </tr>
+                        </thead>
+
+                        <tbody  *ngFor="let Contract of Contracts">
+                            <tr>
+                                <td scope="row" ><img src="../assets/Back/images/alertmail.png" style="width: 35px; " class="imagelog" (click)="navtonotiflog(Contract.idContract)"></td>
+                                <td scope="row" >{{Contract.typeContrat}}</td>
+
+                                <td scope="row">{{Contract.contractDate }}</td>
+
+                                <td scope="row">{{Contract.startDate }}</td>
+
+                                <td scope="row">{{Contract.endDate }}</td>
+
+
+                                <td scope="row">{{Contract.payment_terms}}</td>
+
+                                <td scope="row">
+                                    <span class="status">
+                                        {{Contract.contract_status}}
+                                    </span>
+                                </td>
+                                <td scope="row" class="actions">
+                                    <button (click)="navtoeditcontrat(Contract.idContract)" ><i id="edit" class="bi bi-pencil-fill"></i></button>
+                                   <button (click)="removecontrat(Contract.idContract)"> <i id="delete" class="bi bi-trash-fill"></i></button>
+                                 
+                                </td>
+                                 <td scope="row" class="actions">
+                                 <button (click)="navtofacture(id,Contract.idContract,Contract.payment_terms )"><i id="facture" class="bi bi-receipt"></i></button></td>
+                            </tr>
+                            
+                           
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">Prev</span>
+                                </a>
+                            </li>
+
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+                            
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+            </div>
+        </div>
+
+       
+
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 
+                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</main>

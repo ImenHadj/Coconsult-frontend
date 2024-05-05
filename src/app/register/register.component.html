@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  </head>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="assets/Front/images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign In to <strong>Coconsult</strong></h3>
+              <p class="mb-4">All your business on one platform.
+				Simple, efficient, and affordable!</p>
+            </div>
+            <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group first">
+                <label for="username">Username</label>
+            
+				<input [(ngModel)]="form.username" id="username" name="username" type="text"  pInputText class="form-control" >
+
+              </div>
+			  <div class="form-group first">
+                <label for="username">Email</label>
+                
+				<input [(ngModel)]="form.email" id="email" name="email" type="email"  pInputText  class="form-control" >
+
+
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Password</label>
+				<input [(ngModel)]="form.password" id="password" name="password" type="password"  pInputText class="form-control">
+                
+              </div>
+			  <div class="form-group first">
+                
+                
+				<input type="file"class="form-control2" name="image" (change)="handleFileInput($event)" required>
+
+              </div>
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+              </div>
+
+              <input type="submit" value="Sign up" class="btn text-white btn-block btn-primary" style="  border-radius: 25px;">
+
+              <span class="d-block text-left my-4 text-muted"> or login in with <a routerLink="/login" style="color: rgb(127, 127, 183);">Login</a></span>
+			  
+			  <div class="alert alert-danger" *ngIf="isSignUpFailed">
+				{{ errorMessage }}
+			  </div>
+            </form>
+			<div *ngIf="isSuccessful">
+				<h2>User registered successfully!</h2>
+				<img *ngIf="qrCodeUri" [src]="qrCodeUri" alt="QR Code">
+			  </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>

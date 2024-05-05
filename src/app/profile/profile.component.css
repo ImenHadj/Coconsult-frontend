@@ -1,0 +1,36 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .jumbotron {
+    background-color: #00b7ff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .jumbotron h3 {
+    margin: 0;
+  }
+  
+  .profile-picture {
+    max-width: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .roles {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .roles li {
+    margin-bottom: 5px;
+  }
+  

@@ -1,0 +1,143 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Overview</h1>
+
+        <small class="text-muted">Hello Thomas, welcome back!</small>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block custom-block-balance" >
+                <small>Contract</small>
+
+                <h2 class="mt-2 mb-3">{{contratNotifs[0].contract?.typeContrat}}</h2>
+
+                <div class="custom-block-numbers d-flex align-items-center">
+                    <div>
+                        <small>Start Date</small>
+                        <p>{{contratNotifs[0].contract?.startDate | date:'yyyy-MM-dd HH:mm'}}</p>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div>
+                        <small>End Date</small>
+                        <p>{{contratNotifs[0].contract?.endDate | date:'yyyy-MM-dd HH:mm'}}</p>
+                    </div>
+
+                    <div class="ms-auto">
+                        <small>Client</small>
+                        <p>{{contratNotifs[0].clientname}} </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-block custom-block-exchange" >
+                <h5 class="mb-4">Notification History</h5>
+
+                <div class="d-flex align-items-center border-bottom pb-3 mb-3" *ngFor="let notif of contratNotifs">
+                    <div class="d-flex align-items-center">
+                        <img src="../assets/Back/images/alertmail.png" class="imagemail " alt="">
+
+                        <div >
+                            <p>Remainder Mail Date</p>
+                            <h6>{{notif.maildate | date:'yyyy-MM-dd HH:mm'}}</h6>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-12">
+            <div class="custom-block custom-block-profile-front custom-block-profile text-center bg-white" >
+                <div class="custom-block-profile-image-wrap mb-4">
+                    <img src="/assets/Back/images/usericon.png" class="custom-block-profile-image img-fluid" alt="">
+
+                    <a href="setting.html" class="bi-pencil-square custom-block-edit-icon"></a>
+                </div>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Name:</strong>
+
+                    <span> {{contratNotifs[0].clientname}} </span>
+                </p>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Email:</strong>
+                    
+                    <a href="#" >
+                       {{contratNotifs[0].clientemail}}
+                    </a>
+                </p>
+
+                <p class="d-flex flex-wrap mb-0">
+                    <strong>Phone:</strong>
+
+                    <a href="#">
+                        (60) 12 345 6789
+                    </a>
+                </p>
+            </div>
+
+            <div class="custom-block custom-block-bottom d-flex flex-wrap">
+
+                <div class="custom-block-bottom-item">
+                    <a class="d-flex flex-column" (click)="sendreminer(id)">
+                        <i class="custom-block-icon bi-send"></i>
+
+                        <small>Send Remainder</small>
+                    </a>
+                </div>
+                <div class="custom-block-bottom-item">
+                    <a href="#" class="d-flex flex-column">
+                  
+                        <i class="custom-block-icon bi bi-pencil-square"></i>
+
+                        <small>Contact HR</small>
+                    </a>
+                </div>
+
+                <div class="custom-block-bottom-item">
+                    <a href="#" class="d-flex flex-column">
+                        <i class="custom-block-icon bi bi-arrow-up-circle"></i>
+
+                        <small>Escalate Issue</small>
+                    </a>
+                </div>
+
+
+
+                <div class="custom-block-bottom-item">
+                    <a href="#" class="d-flex flex-column">
+                        <i class="custom-block-icon bi bi-check-square"></i>
+
+                        <small>Close Case</small>
+                    </a>
+                </div>
+            </div>
+
+           
+
+
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text">Copyright © Mini Finance 2048 
+                    - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</main>

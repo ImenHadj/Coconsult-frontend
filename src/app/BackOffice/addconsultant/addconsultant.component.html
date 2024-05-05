@@ -1,0 +1,65 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <div class="title-group mb-3">
+      <h1 class="h2 mb-0">Add Consultant</h1>
+  </div>
+
+  <div class="flex items-center row my-4">
+      <div class="col-lg-7 col-12">
+          <div class="custom-block bg-white p-4">
+              <form class="custom-form profile-form" role="form" [formGroup]="consultantForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Name:</label>
+                      <input class="form-control" type="text" id="name" formControlName="name" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="skills" class="form-label">Skills:</label>
+                      <input class="form-control" type="text" id="skills" formControlName="skills" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="availability" class="form-label">Availability</label>
+                    <div>
+                        <input type="radio" [value]="true" formControlName="availability" name="availability"> Available
+                    </div>
+                    <div>
+                        <input type="radio" [value]="false" formControlName="availability" name="availability"> Unavailable
+                    </div>
+                </div>
+
+                  <div class="mb-3">
+                      <label for="hourlyRate" class="form-label">Hourly Rate:</label>
+                      <input class="form-control" type="number" id="hourlyRate" formControlName="hourlyRate" required>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="hoursWorked" class="form-label">Hours Worked:</label>
+                      <input class="form-control" type="number" id="hoursWorked" formControlName="hoursWorked" required>
+                  </div>
+
+                  <div class="mb-3"> 
+                    <label for="projectId" class="col-sm-3 col-form-label">Project</label>
+                    <select class="form-select col-sm-9" formControlName="projectId" placeholder="Project">
+                        <option *ngFor="let project of projects" [value]="project.projectid">{{ project.projectname }}</option>
+                    </select>
+                </div>
+
+                  <div class="d-flex">
+                      <button type="button" class="form-control me-3" (click)="onCancel()">Cancel</button>
+                      <button type="submit" [disabled]="consultantForm.invalid" class="form-control ms-2">Add Consultant</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <footer class="site-footer mt-5">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-12 text-center">
+                  <p class="copyright-text">Copyright © Mini Finance 2048 - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+              </div>
+          </div>
+      </div>
+  </footer>
+</main>

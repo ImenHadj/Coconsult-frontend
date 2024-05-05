@@ -1,0 +1,107 @@
+<!--<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xl-3" *ngFor="let team of teams">
+          <div class="card mb-4 position-relative" [ngClass]="getColorClass(team)">
+            <div class="card-body text-white">
+              <h5 class="card-title mb-3" style="font-size: 1.2rem;">{{ team.team_name }}</h5>
+              <p class="card-text" style="font-size: 1rem;">
+                <span class="fw-bold text-white">Availability:</span> 
+                <span *ngIf="team.availability" class="text-success">  Available</span>
+                <span *ngIf="!team.availability" class="text-danger">  Not Available</span>
+              </p>
+              <p class="card-text" style="font-size: 1rem;">
+                <span class="fw-bold text-white">Number of team members:</span>  {{ team.nbteam }}
+              </p>
+           
+              <div class="position-absolute top-0 end-0 mt-2 me-2">
+                <div class="dropdown">
+                  <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-list"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li><button class="dropdown-item custom-dropdown-item" (click)="onDeleteTeam(team.team_id)">Delete</button></li>
+                    <li><button class="dropdown-item" (click)="onUpdateTeam(team.team_id)">Update</button></li>
+                    <
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>-->
+
+
+  <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <!-- Titre et boutons d'action -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <h5 class="card-title">team List <span class="text-muted fw-normal ms-2"></span></h5>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+           
+            <!-- Bouton "Add New" -->
+            <button class="button-43" role="button"[routerLink]="['/admin/addteam']" >Add New</button>
+          </div>
+        </div>
+      </div>
+     
+      <!-- Liste d'équipes -->
+      <div class="row">
+        <div class="col-md-4 col-xl-3" *ngFor="let team of teams">
+            <div class="anis">
+            <div class="card-body text-black">
+              <h5 class="card-title mb-3" style="font-size: 1.2rem;">{{ team.team_name }}</h5>
+              <!-- Affichage de la disponibilité -->
+              <p class="card-text" style="font-size: 1rem;">
+                <span class="fw-bold text-black">Availability:</span> 
+                <span *ngIf="team.availability" class="text-success">  <i class="bi bi-check bi-3x"></i></span>
+                <span *ngIf="!team.availability" class="text-danger"> <i class="bi bi-x bi-3x"></i> 
+                </span>
+              </p> 
+              <!-- Nombre de membres de l'équipe -->
+              <p class="card-text" style="font-size: 1rem;">
+                <span class="fw-bold text-black">Team Capacity:</span> {{ team.nbteam }}members
+              </p>
+
+              <p class="card-text" style="font-size: 1rem;">
+                <span class="fw-bold text-black">Team project:</span> {{team?.project?.projectname}}
+              </p>
+            
+          
+              <!-- Menu avec icône à trois points -->
+              <div class="position-absolute top-0 end-0 mt-2 me-2">
+                <div class="dropdown">
+                  <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-list"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- Option "Update" -->
+                    <li><button class="dropdown-item"  [routerLink]="['/admin/updateteam/' + team.team_id]">Update</button></li>
+                    <!-- Option "Delete" -->
+                    <li><button class="dropdown-item" (click)="onDeleteTeam(team.team_id)">Delete</button></li>
+                    <!-- Option "Add Members" -->
+                    <li><button class="dropdown-item" [routerLink]="['/admin/updateteam/' + team.team_id]">Add Members</button></li>
+                    <!-- Ajoutez d'autres options de menu ici si nécessaire -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Bouton "View Members" -->
+            <div class="card-footer">
+              <button class="button-33" role="button"[routerLink]="['/admin/viewmembers']"  >view members </button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+   
+  </main>
+  
+  

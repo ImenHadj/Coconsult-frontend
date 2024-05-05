@@ -1,0 +1,155 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+
+<div class="home">
+    <div class="header">
+      <h1>Dashboard</h1>
+      
+      <div class="content">
+        <div class="total-task">
+          <p class="data">%</p>
+          <p class="data-type">ProjectType</p>
+        </div>
+        <div class="total-task-chart">
+          <div class="chart">
+            <canvas #doughnutChartCanvas width="100" height="100"></canvas>
+
+          </div>
+         
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+  <button type="button" class="btn btn-custom" *ngIf="bestProject">
+    <span>Best Project of this year</span>
+    <span class="badge">{{ bestProject.projectname }}</span>
+  </button>
+  
+  
+  <!-- <div class="card">
+    <div class="table-responsive">
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">project</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Timeline</th>
+            <th class="text-secondary opacity-7"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let project of projects " >
+          <tr>
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-xs">{{project.projectname}}</h6>
+            
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-xs font-weight-bold mb-0">{{project.status}}</p>
+              
+            </td>
+            <td class="align-middle text-center text-sm">
+              <span class="badge badge-sm badge-success">{{project.priority}}</span>
+            </td>
+            <td class="align-middle text-center text-sm">
+              <p class="text-xs font-weight-bold mb-0">{{project.budget}}</p>
+            </td>
+            <td class="align-middle text-center">
+              <span class="text-secondary text-xs font-weight-normal">{{project.startDate |date}} - {{project.endDate |date}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+
+
+  <div class="table-responsive">
+    <table class="account-table table">
+        <thead>
+          <tr style="background-color: rgb(203, 209, 221);">
+            <th scope="col">Project</th>
+            <th scope="col">Status</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Budget</th>
+            <th scope="col">Timeline</th>
+            <th scope="col">Team</th>
+            <th scope="col"></th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects" (click)="toggleTasks(project.projectid)">
+            <td  scope="row">
+              <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-xs">{{project.projectname}}</h6>
+                </div>
+              </div>
+            </td>
+            <td  scope="row">
+              <p class="text-xs font-weight-bold mb-0">{{project.status}}</p>
+            </td>
+            <td  scope="row">
+              <span class="badge badge-sm badge-success">{{project.priority}}</span>
+            </td>
+            <td  scope="row">
+              <p class="text-xs font-weight-bold mb-0">{{project.budget}} DT</p>
+            </td>
+            <td  scope="row">
+              <span class="text-secondary text-xs font-weight-normal">{{project.startDate | date}} - {{project.endDate | date}}</span>
+            </td>
+
+            <td  scope="row">
+              <!-- <span class="badge badge-sm badge-success">{{project.team?.team_name}} </span> -->
+              <h6 class="mb-0 text-xs">{{project?.team?.team_name}}</h6>
+
+            </td>
+
+          </tr>
+<br>
+          <!-- Sous-tableau pour les tâches -->
+          <ng-container *ngFor="let project of projects">
+            <!-- Votre contenu HTML pour chaque projet -->
+            <ng-container *ngIf="projectTasksVisible && selectedProjectId === project.projectid">
+         
+            <tr>
+              <td colspan="6">
+                <div class="table-responsive">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">task</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">dueDate</th>
+                        <th scope="col">owner</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let task of tasks">
+                        <td  scope="row">{{ task.taskname}}</td>
+                        <td  scope="row">{{ task.status }}</td>
+                        <td  scope="row">{{ task.dueDate | date }}</td>
+                        <td  scope="row">{{ task.owner }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+  
+
+
+
+</main>

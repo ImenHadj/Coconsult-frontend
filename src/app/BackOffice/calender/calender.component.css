@@ -1,0 +1,30 @@
+.custom-calendar {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  width: 90%;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+}
+
+.calender-main {
+  margin-left: 20%;
+  margin-top: 10px;
+}
+.event-appearance {
+  background-color: #016035; /* or any other color you prefer */
+  padding: 5px;
+  border-radius: 4px;
+}
+.custom-calendar
+  a.fc-event.fc-event-start.fc-event-end.fc-event-future.fc-daygrid-event.fc-daygrid-dot-event {
+  color: blue !important;
+}
+.custom-calendar .fc-day-grid .fc-event {
+  color: blue !important;
+}

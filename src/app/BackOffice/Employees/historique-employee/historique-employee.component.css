@@ -1,0 +1,10 @@
+.fc-daygrid-event.conge-event {
+    background-color: #3788D8; /* Bleu */
+    border-color: #3788D8;
+  }
+  
+  /* Style pour les autres événements */
+  .fc-daygrid-event.absence-event {
+    background-color: #FF0000; /* Rouge */
+    border-color: #FF0000;
+  }

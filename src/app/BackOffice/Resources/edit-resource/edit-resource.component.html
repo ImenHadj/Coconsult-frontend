@@ -1,0 +1,49 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <div class="title-group mb-3">
+      <h1 class="h2 mb-0">Edit Resource</h1>
+  </div>
+
+  <div class="row my-4">
+      <div class="col-lg-7 col-12">
+          <div class="custom-block bg-white">
+              <form class="custom-form profile-form" (submit)="updateResource()">
+                  <label>Name:</label>
+                  <input class="form-control" type="text" [(ngModel)]="resource.name" name="name" required>
+
+                  <label>Description:</label>
+                  <input class="form-control" type="text" [(ngModel)]="resource.description" name="description" required>
+
+                  <label>Price:</label>
+                  <input class="form-control" type="number" [(ngModel)]="resource.price" name="price" required>
+
+                  <label class="me-2">Category:</label>
+                  <select class="form-control me-3" [(ngModel)]="resource.categorie" name="categorie" required>
+                      <option value="ELECTRONICS">Electronics</option>
+                      <option value="FURNITURE">Furniture</option>
+                      <option value="VEHICULES">Vehicles</option>
+                  </select>
+                  <label class="me-2">Status:</label>
+                  <div class="d-flex">
+                      <div class="form-check me-3">
+                          <input class="form-check-input" type="radio" value="ACTIVE" [(ngModel)]="resource.reStatus" name="reStatus" id="activeRadio">
+                          <label class="form-check-label" for="activeRadio">Active</label>
+                      </div>
+
+                      <div class="form-check me-3">
+                          <input class="form-check-input" type="radio" value="MAINTENANCE" [(ngModel)]="resource.reStatus" name="reStatus" id="maintenanceRadio">
+                          <label class="form-check-label" for="maintenanceRadio">Maintenance</label>
+                      </div>
+
+                      <div class="form-check me-3">
+                          <input class="form-check-input" type="radio" value="INACTIVE" [(ngModel)]="resource.reStatus" name="reStatus" id="inactiveRadio">
+                          <label class="form-check-label" for="inactiveRadio">Inactive</label>
+                      </div>
+                      <br>
+
+                      <button type="submit" class="form-control ms-2">Save</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</main>
