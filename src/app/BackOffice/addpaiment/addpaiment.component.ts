@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ServiceclientService } from '../serviceclient.service';
 
 @Component({
@@ -36,7 +37,16 @@ export class AddpaimentComponent implements OnInit{
         this.clientService.addpaiment(paiment,this.id!).subscribe(
           (idpaiement) => {
             console.log('paiment added successfully with ID:', idpaiement);
-            window.location.reload();
+            Swal.fire({
+              title: "Bill Paid!",
+              text: "Paiment added Successfuly",
+              icon: "success"
+            });
+  
+      
+            setTimeout(() => {
+              window.location.reload();
+          }, 2000);
           },
           (error) => {
             console.error('Error adding paiment:', error);

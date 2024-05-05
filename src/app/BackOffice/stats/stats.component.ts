@@ -33,13 +33,15 @@ export class StatsComponent  implements OnInit{
       
       this.cash = this.percentage[0].percentage;
       this.check = this.percentage[1].percentage;
-      this.card = this.percentage[2].percentage;
+      this.check = this.percentage[2].percentage;
+      console.log(this.cash+"cash");
+      console.log(this.check+"check");
+      console.log(this.cash+"card");
       
       this.initializeCharts();
     })
     this.clientservice.paimentbymonth().subscribe((datas)=>{
       this.monthlypaiment =datas as monthlypaiment[];
-      console.log("monthlypaiment"+this.monthlypaiment[0].totalPayment)
       this.bardata = [
         { y: this.monthlypaiment[0].totalPayment },
         { y: this.monthlypaiment[1].totalPayment },

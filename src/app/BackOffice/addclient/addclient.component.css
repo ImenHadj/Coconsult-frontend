@@ -1,0 +1,18 @@
+.form-select {
+  color: var(--p-color);
+  border-radius: var(--border-radius-large);
+  font-size: var(--menu-font-size);
+  margin-bottom: 54px;
+  padding: 10px 20px;
+  outline: none;
+  transition: all 0.3s;
+}
+#title h4 {
+  font-family: var(--poppins);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(86, 86, 92);
+}
+.required {
+  color: red;
+}

@@ -45,3 +45,9 @@
 .imagelog:hover {
   cursor: pointer;
 }
+#title h4 {
+  font-family: var(--poppins);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(86, 86, 92);
+}

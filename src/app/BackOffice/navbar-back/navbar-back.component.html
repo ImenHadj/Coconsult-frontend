@@ -65,7 +65,27 @@
                     </li>
                 </ul>
                <!--  ce block est notification de aziz dont touch  -->
-               
+               <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink" *ngIf="showalerts">
+                <small>Not Paid Bills</small>
+
+                <li class="notifications-block border-bottom pb-2 mb-2" *ngFor="let list of clients">
+                    <a class="dropdown-item d-flex  align-items-center" >
+                        <div class="notifications-icon-wrap bg-danger">
+                            <i class="bi bi-exclamation-lg" style="color: white; font-size:20px"></i>
+                        </div>
+
+                        <div routerLink="/admin/calendrier" >
+                            <span>Due Date Depassed</span>
+                            <p>Client :{{list.client.nom}} {{list.client.prenom}}</p>
+                            <p>Due Date :{{list.dueDate  | date:'yyyy-MM-dd HH:mm'}}</p>
+                        </div>
+                    </a>
+                </li>
+
+
+
+                
+            </ul>
                         <!--  ce block est notification de aziz dont touch  -->
             </div>
 

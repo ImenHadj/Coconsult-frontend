@@ -25,15 +25,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/Front/jsaziz/AgoraRTC_N-4.7.3.js",
               "src/assets/Front/jsaziz/main.js",
-              
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 
             ]

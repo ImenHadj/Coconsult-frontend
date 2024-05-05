@@ -2,7 +2,6 @@
 <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
     <div id="title">
       <h4>Dashbord - Clients</h4>  
-      <a href="https://wa.me/29843730">whatsapp</a>
     </div>
     <section id="content">
         <main>
@@ -44,6 +43,7 @@
         </form>
        
         <div class="filtres">
+        
             <div class="dropdown">
                 <button id="filtrebtn" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'filter-applied': isFilterApplied, 'filter-not-applied': !isFilterApplied}">
                     <i class="bi bi-funnel" ></i>  Filtre
@@ -59,6 +59,7 @@
                 </ul>
               </div>
             <button type="button" class="btn btn-outline-primary" routerLink="/admin/calendrier" ><i class="bi bi-file-pdf"></i> calendrier </button>
+            <button type="button" class="btn btn-outline-primary" (click)="exportDataToExcel()"><i class="bi bi-file-earmark-spreadsheet"></i> Export Excel </button>
 </div>
 
 </div>
@@ -147,7 +148,7 @@
       <div class="custom-block bg-white">
         <h5 class="mb-4">Revenu Per Monnth</h5>
 
-        <canvas id="stockChart" style="width:5px;height: 2px;"></canvas>
+        <canvas id="stockChart" style="width:5px;height: 2px;" ></canvas>
 
     </div>
         </main>

@@ -85,4 +85,5 @@ paimentpercentage() {
 paimentbymonth() {
   return this.http.get(this.URL + "/paimentbymonth");
 }
+
 }

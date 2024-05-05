@@ -116,7 +116,7 @@ import { NotiflogComponent } from './BackOffice/notiflog/notiflog.component';
 import { StatsComponent } from './BackOffice/stats/stats.component';
 
 import { ClienthomeComponent } from './FrontOffice/Client/clienthome/clienthome.component';
-import { MeetComponent } from './FrontOffice/meet/meet.component';
+import { MeetComponent } from './FrontOffice/Client/meet/meet.component';
 import { SliderComponent } from './FrontOffice/slider/slider.component';
 import { AddProjectComponent } from './BackOffice/add-project/add-project.component';
 import { ProjectsComponent } from './BackOffice/projects/projects.component';
@@ -153,6 +153,11 @@ import { CircularChartComponent } from './BackOffice/dashboarding/circular-chart
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { JoinmeetComponent } from './FrontOffice/joinmeet/joinmeet.component';
+import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
+import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
+import { UpdateteamComponent } from './BackOffice/Team/updateteam/updateteam.component';
+import { MembersComponent } from './BackOffice/Team/members/members.component';
 
 @NgModule({
   declarations: [
@@ -249,6 +254,12 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     DashboardProjectComponent,
     ChartComponent,
     LandingpageComponent,
+    JoinmeetComponent,
+
+    UpdateteamComponent,
+    MembersComponent,
+    ListTeamsComponent,
+    AddteamComponent
   ],
   imports: [
     BrowserModule,

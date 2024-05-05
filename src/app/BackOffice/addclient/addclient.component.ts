@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { ServiceclientService } from '../serviceclient.service';
+
 
 @Component({
   selector: 'app-addclient',
@@ -32,7 +34,17 @@ export class AddclientComponent implements OnInit {
       this.clientService.addclient(client).subscribe(
         (clientId) => {
           console.log('Client added successfully with ID:', clientId);
-          window.location.reload();
+
+          Swal.fire({
+            title: "Good job!",
+            text: "Client added Successfuly",
+            icon: "success"
+          });
+
+    
+          setTimeout(() => {
+            window.location.reload();
+        }, 2000);
         },
         (error) => {
           console.error('Error adding client:', error);

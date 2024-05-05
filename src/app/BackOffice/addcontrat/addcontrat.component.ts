@@ -44,10 +44,10 @@ export class AddcontratComponent implements OnInit{
   }
   private initForm(): void {
     this.ContratForm = this.fb.group({
-      contractDate: ['', Validators.required],
-      startDate: ['', Validators.required],
+      contractDate: [''],
+      startDate: [''],
       item_description: ['', Validators.required],
-      endDate: ['', Validators.required],
+      endDate: [''],
       version: ['', Validators.required],
       payment_terms: ['', Validators.required],
       contract_status: ['', Validators.required],

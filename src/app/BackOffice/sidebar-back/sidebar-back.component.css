@@ -7,6 +7,12 @@
   background-color: #162342;
   width: 17%;
 }
+.sidebar-sticky {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
 .mat-sidenav {
   background-color: transparent;
 }

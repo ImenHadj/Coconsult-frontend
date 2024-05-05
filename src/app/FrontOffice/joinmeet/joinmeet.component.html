@@ -5,11 +5,9 @@
     </head>
 <body>
 
-    <button id="join-btn">Join Stream</button>
-   
-    <div id="stream-wrapper">
+    <button id="join-btn" (click)="send()" >Join Meet</button>
+    <div id="stream-wrapper" [attr.data-user-id]="id" >
         <div id="video-streams">
-            
         </div>
 
         <div id="stream-controls">

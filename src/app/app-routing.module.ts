@@ -48,7 +48,7 @@ import { DetailfactureComponent } from './BackOffice/detailfacture/detailfacture
 import { AddfactureComponent } from './BackOffice/addfacture/addfacture.component';
 import { NotiflogComponent } from './BackOffice/notiflog/notiflog.component';
 import { StatsComponent } from './BackOffice/stats/stats.component';
-import { MeetComponent } from './FrontOffice/meet/meet.component';
+import { MeetComponent } from './FrontOffice/Client/meet/meet.component';
 import { SliderComponent } from './FrontOffice/slider/slider.component';
 import { ClienthomeComponent } from './FrontOffice/Client/clienthome/clienthome.component';
 import { AddProjectComponent } from './BackOffice/add-project/add-project.component';
@@ -81,6 +81,9 @@ import { AddPrimesAndSHoursComponent } from './BackOffice/Note/add-primes-and-sh
 import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { JoinmeetComponent } from './FrontOffice/joinmeet/joinmeet.component';
+import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
+import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
 
 
 const routes: Routes = [
@@ -194,12 +197,15 @@ const routes: Routes = [
     { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
     { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
     { path: 'charthr', component: CharthrComponent },
+    { path: 'addteam', component: AddteamComponent } ,
+    { path: 'teams', component: ListTeamsComponent } ,
      
   ]},
 {
   path:'stats',component:StatsComponent
 },
 { path: 'video', component: MeetComponent },
+{ path: 'joinmeet', component: JoinmeetComponent },
 { path: 'slider', component: SliderComponent },
   
 

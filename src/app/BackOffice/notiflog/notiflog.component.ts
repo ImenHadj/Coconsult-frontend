@@ -25,7 +25,7 @@ export class NotiflogComponent implements OnInit{
         this.clientservice.lognotification(this.id).subscribe((datas) => {
           this.contratNotifs = datas as contratNotif[];
           this.contratNotifs.forEach(notif => {
-            console.log("heheh", notif); // Log each contratNotif object separately
+            console.log("heheh", notif); 
           });
         });
       }
@@ -46,5 +46,7 @@ export class NotiflogComponent implements OnInit{
 
   }
 
-
+testreminder(){
+  this.clientservice.singleremiender(3).subscribe();
+}
 }

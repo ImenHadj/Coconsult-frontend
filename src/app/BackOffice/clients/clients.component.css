@@ -32,9 +32,11 @@
 .filtres {
   display: flex;
   justify-content: flex-end;
+  gap: 2px;
 }
 .filtres button {
   height: 40px;
+  width: 150px;
 }
 .dropdown button {
   width: 100%;

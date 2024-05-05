@@ -1,5 +1,7 @@
+
+
 const APP_ID = "d4065a8eb1eb45af97c1aec67be8b1c6"
-const TOKEN = "007eJxTYDiXrmVaecvvmcWrsGWfPq54MbXg3KvF9zx8lxwOFsj816aiwJBiYmBmmmiRmmSYmmRimphmaZ5smJiabGaelGqRZJhsVlGkntYQyMiwICyKkZEBAkF8Foa8/NIiBgYAQlkiUw=="
+const TOKEN = "007eJxTYHhr/D0gKKzOulL/Lfe9kOk6EkduZLOcarniOftR1IZfN5kVGFJMDMxMEy1SkwxTk0xME9MszZMNE1OTzcyTUi2SDJPNJk42S2sIZGR4Xx3HxMgAgSA+C0NefmkRAwMAm2shAw=="
 const CHANNEL = "nour"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
@@ -8,6 +10,12 @@ let localTracks = []
 let remoteUsers = {}
 
 let joinAndDisplayLocalStream = async () => {
+    /****/
+    const userID = document.getElementById('stream-wrapper').getAttribute('data-user-id');
+    console.log("User ID:", userID);
+    window.userID = userID;
+    /****/
+    
 
     client.on('user-published', handleUserJoined)
     
@@ -72,6 +80,8 @@ let leaveAndRemoveLocalStream = async () => {
     document.getElementById('join-btn').style.display = 'block'
     document.getElementById('stream-controls').style.display = 'none'
     document.getElementById('video-streams').innerHTML = ''
+
+   
 }
 
 let toggleMic = async (e) => {
