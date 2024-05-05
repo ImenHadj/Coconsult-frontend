@@ -17,6 +17,7 @@ export class ListCongeComponent implements OnInit {
   selectedStatus:string = 'All';
   filteredAbsences: any[] = [];
   usernames: { [userId: number]: string } = {}; 
+  status:StatutC[]=[];
 
 
   constructor(private congeService: ServiceCongeService,
@@ -30,7 +31,10 @@ export class ListCongeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadAbsences();  
-  }
+    this.status.push(StatutC.PENDING);
+    this.status.push(StatutC.REJECTED);
+    this.status.push(StatutC.VALIDATED);
+    }
 
   
   private loadAbsences(): void {

@@ -10,5 +10,5 @@ input[type="date"] {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   .spacer {
-    height: 20px; /* Adjust the height as needed */
+    height: 20px;
   }

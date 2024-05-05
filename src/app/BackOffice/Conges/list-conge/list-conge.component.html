@@ -65,10 +65,10 @@
             <p>{{ absence.typeC }}</p>
           </div>
 
-          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4" [ngClass]="{ 'text-yellow': absence.statutC == status[1], 'text-red': absence.statutC == status[1], 'text-green': absence.statutC == status[1] }">
             <h6>Status</h6>
             <p>{{ absence.statutC }}</p>
-          </div>
+        </div>
 
           <div
             class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
