@@ -47,7 +47,14 @@ export class ServiceAbsenceService {
     return this.http.get<Absence[]>(url);
   }
   
+  getAbsencesByUserId(userId: number) {
+    const url = `${this.URL}/getAbsencesByUserId/${userId}`;
+    return this.http.get<Absence[]>(url);
+  }
+  
   updateAbsence(id: number, updatedAbsence: Absence) {
     return this.http.put<Absence>(this.URL + "/updateAbsence/" + id, updatedAbsence);
   }
+
+
 }

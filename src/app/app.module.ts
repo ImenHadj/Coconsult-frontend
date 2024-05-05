@@ -157,6 +157,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
 import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
+import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.component';
 
 @NgModule({
   declarations: [
@@ -260,7 +261,8 @@ import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component'
     LandingpageComponent,
     AddLeaveComponent,
     MyLeavesComponent,
-    MyNotesComponent
+    MyNotesComponent,
+    MyAbsencesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Departement } from './../../../core/models/departement.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee.model';
 import { SericeEmployeeService } from 'src/app/core/services/serice-employee.service';
 import { ServiceDepartementService } from 'src/app/core/services/service-departement.service';
@@ -19,6 +20,8 @@ export class AddDepartementComponent implements OnInit {
   employees: any[] = [];
   selectedEmployees: Employee[] = [];
   usernames: { [userId: number]: string } = {}; 
+  departements: any[] = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -36,34 +39,67 @@ export class AddDepartementComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.checkEditMode();
+
+
     this.employeeService.getall().subscribe(
       (data: Employee[]) => {
         this.employees = data;
-        this.employees.forEach(department => {
-          if (department.userId) {
-            this.getUserNameById(department.userId);
-          }
-        });
+        // this.employees.forEach(employee => {
+        //   if (this.isSelected(employee)) {
+        //     employee.selected = true;
+        //   }
+        //   if (employee.userId) {
+        //     this.getUserNameById(employee.userId);
+        //   }
+        // });
+        this.selectEmployees();
       },
       (error) => {
         console.error('Error fetching employees:', error);
       }
     );
-
-    if (this.isEditMode && this.selectedEmployees.length > 0) {
-      this.selectedEmployees.forEach((employee) => {
-        const foundEmployee = this.employees.find(
-          (emp) => emp.id_employe === employee.id_employe
-        );
-        if (foundEmployee) {
-          foundEmployee.selected = true;
-        }
-      });
-    }
+  
     if (this.isEditMode && this.departementId !== null) {
       this.fetchEmployeesForDepartment(this.departementId);
     }
   }
+  
+  // ngOnInit(): void {
+  //   this.initForm();
+  //   this.checkEditMode();
+
+  //   const usernameObservables = this.employees
+  //   .filter(department => department.userId)
+  //   .map(department => this.noteService.getUsernameById(department.userId));
+
+  //   this.employeeService.getall().subscribe(
+  //     (data: Employee[]) => {
+  //       this.employees = data;
+  //       this.employees.forEach(department => {
+  //         if (department.userId) {
+  //           this.getUserNameById(department.userId);
+  //         }
+  //       });
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching employees:', error);
+  //     }
+  //   );
+
+  //   if (this.isEditMode && this.selectedEmployees.length > 0) {
+  //     this.selectedEmployees.forEach((employee) => {
+  //       const foundEmployee = this.employees.find(
+  //         (emp) => emp.id_employe === employee.id_employe
+  //       );
+  //       if (foundEmployee) {
+  //         foundEmployee.selected = true;
+  //       }
+  //     });
+  //   }
+  //   if (this.isEditMode && this.departementId !== null) {
+  //     this.fetchEmployeesForDepartment(this.departementId);
+  //   }
+  // }
   onCheckboxChange(employee: Employee): void {
     const foundEmployee = this.selectedEmployees.find(
       (emp) => emp.id_employe === employee.id_employe
@@ -83,6 +119,7 @@ export class AddDepartementComponent implements OnInit {
       (emp) => emp.id_employe === employee.id_employe
     );
   }
+
 
   private checkEditMode(): void {
     this.route.params.subscribe((params) => {
@@ -105,14 +142,13 @@ export class AddDepartementComponent implements OnInit {
           });
 
           if (conge.employees && Array.isArray(conge.employees)) {
-            this.selectedEmployees = [];
-            conge.employees.forEach((employee: Employee) => {
-              this.selectedEmployees.push(employee);
-            });
+            this.selectedEmployees = conge.employees;
+            this.selectEmployees();
           }
         });
     }
   }
+
 
   private initForm(): void {
     this.DepartementForm = this.fb.group({
@@ -122,18 +158,41 @@ export class AddDepartementComponent implements OnInit {
     });
   }
   
+  // fetchEmployeesForDepartment(departmentId: number): void {
+  //   this.departementService.retrieveEmployeesByDepartement(departmentId).subscribe(
+  //     (employees: Employee[]) => {
+  //       this.selectedEmployees = employees;
+  //       this.employees.forEach((employee) => {
+  //         employee.selected = this.isSelected(employee);
+  //       });
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching employees for department:', error);
+  //     }
+  //   );
+  // }
   fetchEmployeesForDepartment(departmentId: number): void {
-    this.departementService.retrieveEmployeesByDepartement(departmentId).subscribe(
-      (employees: Employee[]) => {
-        this.selectedEmployees = employees;
-        this.employees.forEach((employee) => {
-          employee.selected = this.isSelected(employee);
-        });
-      },
-      (error) => {
-        console.error('Error fetching employees for department:', error);
+    this.departementService
+      .retrieveEmployeesByDepartement(departmentId)
+      .subscribe(
+        (employees: Employee[]) => {
+          this.selectedEmployees = employees;
+          this.selectEmployees();
+        },
+        (error) => {
+          console.error('Error fetching employees for department:', error);
+        }
+      );
+  }
+  private selectEmployees(): void {
+    this.employees.forEach((employee) => {
+      if (this.isSelected(employee)) {
+        employee.selected = true;
       }
-    );
+      if (employee.userId) {
+        this.getUserNameById(employee.userId);
+      }
+    });
   }
   
 
@@ -141,7 +200,7 @@ export class AddDepartementComponent implements OnInit {
     if (this.DepartementForm.valid) {
       const CongeData = this.DepartementForm.value;
       if (this.isEditMode && this.departementId !== null) {
-        this.departementService
+        this.departementService 
           .updateDepartement(this.departementId, CongeData)
           .subscribe(() => {
             console.log('departement updated successfully');

@@ -28,8 +28,7 @@
                             <p> {{ absence.motif }}</p>
                         </div>
                         <div>
-                            <!-- <p>{{absence.emp!=null? absence.emp.posteEmployee:' no empl' }}</p> -->
-                            <p>{{ usernames[absence.emp?.userId] ? usernames[absence.emp?.userId] : 'no employee' }}</p>
+                            <h5>{{ usernames[absence.emp?.userId] ? usernames[absence.emp?.userId] : 'no employee' }}</h5>
 
                         </div>
                     

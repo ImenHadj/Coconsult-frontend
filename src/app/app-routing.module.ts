@@ -85,6 +85,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
 import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
+import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.component';
 
 
 const routes: Routes = [
@@ -117,6 +118,9 @@ const routes: Routes = [
     },
     {
       path:'myLeaves',component:MyLeavesComponent
+    },
+    {
+      path:'myAbsences',component:MyAbsencesComponent
     },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 //  { path: '', redirectTo: 'home', pathMatch: 'full' },

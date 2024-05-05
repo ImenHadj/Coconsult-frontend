@@ -59,5 +59,8 @@ export class ServiceCongeService {
   getLeavesByEmployee() {
     return this.http.get<any>(`${this.URL}/dashBoard`);
   }
+  getIdEmplByIdUSer(id: number){
+    return this.http.get<number>(this.URL+"/getIdEmplByIdUSer/" + id);
+  }
   
 }

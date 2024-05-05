@@ -3,13 +3,11 @@
 >
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div class="title-group">
-      <h1 class="h2 mb-0">Leaves</h1>
+      <h1 class="h2 mb-0">My Leaves</h1>
     </div>
   </div>
-
-
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
+    <!-- <div>
       <input
         type="text"
         class="form-control"
@@ -18,13 +16,18 @@
         (input)="onInput($event)"
         placeholder="Enter the comment"
       />
+    </div> -->
+    <div class="custom-block-transation-detail-item ms-2">
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        [routerLink]="['/accueil/addLeave/']"
+      ><i class="bi bi-calendar-plus"></i> 
+        add Leave
+      </button>
     </div>
-    <!-- <ng-container *ngIf="absences">
-      <app-circular-chart-conge></app-circular-chart-conge>
-    </ng-container> -->
   </div>
   <div class="mb-3 d-flex justify-content-between align-items-center">
-    <!-- <button class="btn btn-outline-primary mr-3" [routerLink]="['/admin/calendar/']"><i class="bi bi-file-pdf"></i>Go to calendar</button> -->
     <div style="margin-top: 20px;">
       <select id="stateFilter" [(ngModel)]="selectedStatus" (change)="filterActivitiesByState()" class="custom-select">
         <option value="All">All</option>
@@ -34,10 +37,6 @@
       </select>
     </div>
   </div>
-    
-  
-  
-
   <div class="row my-4" *ngFor="let absence of filteredAbsences  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
 
     <div class="col-lg-12 col-12">
@@ -45,18 +44,10 @@
         <div
           class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3"
         >
-          <div>
-            <p> Comment : {{ absence.commentaire }}</p>
+          <div class="d-flex flex-wrap align-items-center mr-10">
+            <h5> Comment : </h5>{{ absence.commentaire }}
           </div>
-
           <div>
-            <p>
-              {{
-                absence.employee != null
-                  ? absence.employee.posteEmployee
-                  : " there's no employee"
-              }}
-            </p>
           </div>
         </div>
         <div class="d-flex flex-wrap align-items-center">
@@ -64,12 +55,10 @@
             <h6>Type</h6>
             <p>{{ absence.typeC }}</p>
           </div>
-
           <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
             <h6>Status</h6>
             <p>{{ absence.statutC }}</p>
           </div>
-
           <div
             class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
             style="
@@ -98,10 +87,11 @@
               {{ absence.date_fin }}
             </p>
           </div>
-          <div
+
+          <!-- <div
             class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3"
           >
-            <h4>Justification</h4>
+            <h6>Justification</h6>
             <div class="card mb-3" *ngIf="absence.image">
               <img
                 src="{{ absence.image.imageUrl }}"
@@ -110,19 +100,25 @@
                 style="max-height: 100px"
               />
             </div>
-          </div>
+          </div> -->
 
-          <div class="d-flex justify-content-center mt-4">
-            <div class="custom-block-transation-detail-item me-2">
-              <button
-                type="button"
-                class="btn btn-outline-danger"
-                (click)="removeAbsence(absence.id_conge)"
-              >
-                Delete
-              </button>
+          <div class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3">
+            <h6>Justification</h6>
+            <div class="card mb-3" *ngIf="absence.image && absence.image.imageUrl">
+              <div class="card-body">
+                <h6 class="card-title">Image</h6>
+                <img src="{{ absence.image.imageUrl }}" class="card-img-top" alt="Image 1" style="max-height: 100px">
+              </div>
+            </div>
+            <div class="card mb-3" *ngIf="!absence.image || !absence.image.imageUrl">
+              <div class="card-body">
+                <h6 class="card-title text-red">There is no justification</h6>
+              </div>
             </div>
           </div>
+          
+
+
         </div>
       </div>
     </div>

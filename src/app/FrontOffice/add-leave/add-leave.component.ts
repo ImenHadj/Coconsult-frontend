@@ -46,15 +46,16 @@ export class AddLeaveComponent {
     this.checkEditMode();
 
   }
-  
 
   private getUserIdFromSession(): void {
     const userData = sessionStorage.getItem('auth-user');
     if (userData) {
       const user = JSON.parse(userData); 
       if (user && user.id) {
-        this.userId = user.id; 
+        this.congeService.getIdEmplByIdUSer(user.id).subscribe((anis)=>{
+          this.userId = anis; 
         console.log("aaaaaaaaaaaa" + this.userId);
+        })
       }
     }
   }

@@ -39,9 +39,7 @@
                 <p> {{ absence.rib }}</p>
             </div>
               <div>
-                <!-- <p>{{ absence.empl != null ? absence.empl.posteEmployee : "there's no employee" }}</p> -->
-                <p>{{ usernames[absence.empl?.userId] ? usernames[absence.empl?.userId] : 'no employee' }}</p>
-
+                <h5>{{ usernames[absence.empl?.userId] ? usernames[absence.empl?.userId] : 'no employee' }}</h5>
               </div>
             </div>
           </div>
@@ -60,50 +58,15 @@
             <h6>Base Salary</h6>
             <p>{{ absence.salaire_base }}</p>
           </div>          
-          <!-- <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-            <h6>Hour work</h6>
-            <p>{{ absence.montant_heures_supplementaires }}</p>
-          </div>          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-            <h6>Hour conge</h6>
-            <p>{{ absence.montant_Conge_Absence }}</p>
-          </div> -->
-
-          <!-- <div
-            class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
-            style="
-              background-color: #f0f8ff;
-              border-radius: 8px;
-              padding: 15px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            "
-          >
-            <h6 style="color: #333">Start date</h6>
-            <p style="font-weight: bold; color: #007bff">
-              {{ absence.date_debut }}
-            </p>
-          </div>
-          <div
-            class="custom-block-transation-detail-item mt-4 ms-auto me-auto"
-            style="
-              background-color: #f0f8ff;
-              border-radius: 8px;
-              padding: 15px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            "
-          >
-            <h6 style="color: #333">End date</h6>
-            <p style="font-weight: bold; color: #007bff">
-              {{ absence.date_fin }}
-            </p>
-          </div> -->
+        
 
           <div
             class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3"
           >
             <h6>Archive</h6>
-            <p class="{{ absence.isArchive ? 'text-success' : 'text-danger' }}">
-              {{ absence.isArchive ? "Validée" : "Non Validée" }}
-            </p>
+            <h6 class="{{ absence.isArchive ? 'text-success' : 'text-danger' }}">
+              {{ absence.isArchive ? "Valid" : "Not Valid" }}
+            </h6>
           </div>
 
           <div class="d-flex justify-content-center mt-4">
