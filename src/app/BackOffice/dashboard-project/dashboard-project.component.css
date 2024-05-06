@@ -10,7 +10,7 @@
   border-radius: 5px; /* Coins arrondis */
   padding: 10px 20px; /* Espacement à l'intérieur du bouton */
   cursor: pointer; /* Curseur de souris de type pointeur */
-  transition: background-color 0.3s; /* Transition de couleur de fond */
+  transition: background-color 0.3s; 
 }
 
 /* Style pour le texte à l'intérieur du bouton */
