@@ -1,0 +1,52 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Assign Resource</h1>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block bg-white">
+                <form class="custom-form profile-form" [formGroup]="resourceForm" (submit)="affectResourcesToProject()">
+                    <label>Select Project:</label>
+                    <br><br>
+                    <div class="container">
+                        <ul class="list-group table-hover">
+                            <li class="list-group-item" *ngFor="let project of projects" (click)="onSelectProject(project)"
+                                [class.selected]="selectedProject === project">
+                                {{ project.projectname }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="container" *ngIf="selectedProject">
+                        <br>
+                        <h2>Selected Project: {{ selectedProject.projectname }}</h2>
+
+                        <div formArrayName="resources">
+                            <div *ngFor="let resourceField of resourceFields.controls; let i = index" [formGroupName]="i">
+                                <div class="form-group">
+                                    <label for="resource{{i}}">Select Resource</label>
+                                    <select formControlName="resource" class="form-control" id="resource{{i}}">
+                                        <option *ngFor="let resource of resources" [value]="resource.resourceID">{{ resource.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity{{i}}">Quantity</label>
+                                    <input formControlName="quantity" type="number" class="form-control" id="quantity{{i}}" min="1" required>
+                                </div>
+                                <button type="button" class="btn btn-danger" (click)="removeResourceField(i)">Remove Resource</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-2" (click)="addResourceField()">Add Resource</button>
+                        <button type="button" class="btn btn-danger mt-2" (click)="onDeselectProject()">Deselect Project</button>
+                        <button type="submit" class="btn btn-primary mt-2 float-end">Affect Resources</button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showSuccessMessage" class="success-message">
+        Ressources affectées avec succès!
+      </div>
+</main>

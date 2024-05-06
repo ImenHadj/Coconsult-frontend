@@ -1,0 +1,26 @@
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="custom-block bg-white">
+      <input type="date" [(ngModel)]="selectedDate" (change)="onDateChange()">
+      <div class="spacer"></div> 
+
+      <div *ngIf="noSalariesFound" class="message-container">
+        <p class="message">No salary records found for the specified month.</p>
+      </div>
+      <div *ngFor="let employee of salaryStatistics" class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ employee.Position }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Total Salary: {{ employee.TotalSalary }}</h6>
+          <p class="card-text">Salary Details:</p>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let component of employee['Salary Details'] | keyvalue">
+              <span class="detail-name">{{ component.key }}</span>: <span class="detail-value">{{ component.value }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  
+  

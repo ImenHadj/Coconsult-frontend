@@ -1,0 +1,16 @@
+.email-checkbox-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.email-checkbox-container input[type="checkbox"] {
+    margin-right: 5px; 
+}
+
+.email-checkbox-container label {
+    font-weight: bold; 
+}
+.spacer {
+    height: 20px;
+  }
