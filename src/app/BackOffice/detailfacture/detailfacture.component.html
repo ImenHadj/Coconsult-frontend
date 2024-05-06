@@ -11,7 +11,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 
-                <a class="nav-link" id="paybill" (click)="navtoaddpaiment(facture.idFacture)"> Pay Bill <i class="bi bi-credit-card"></i></a>
+                <button class="nav-link" id="paybill" type="button" (click)="navtoaddpaiment(facture.idFacture)" [disabled]="facture.total_amount === facture.paid_amount"> Pay Bill <i class="bi bi-credit-card"></i></button>
               </li>
              
               <li class="nav-item">

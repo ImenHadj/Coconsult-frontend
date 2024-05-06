@@ -2,9 +2,11 @@
   background: none;
   border: none;
 }
+
 #edit {
   color: rgb(73, 190, 73);
 }
+
 #edit:hover {
   color: rgb(20, 93, 20);
 }
@@ -12,22 +14,27 @@
 #delete {
   color: red;
 }
+
 #delete:hover {
   color: rgb(142, 74, 74);
 }
+
 .status {
   color: cadetblue;
   font-weight: bold;
 }
+
 #facture {
   color: cornflowerblue;
   font-size: 16px;
   margin-left: 15px;
 }
+
 #facture:hover {
   color: blue;
   font-size: 18px;
 }
+
 .addbtn button {
   background-color: #004cff71;
   color: white;
@@ -35,13 +42,23 @@
   border: none;
   margin-bottom: 2px;
 }
+
 .addbtn {
   display: flex;
   justify-content: flex-end;
 }
+
 .account-table td {
   vertical-align: middle;
 }
+
 .imagelog:hover {
   cursor: pointer;
+}
+
+#title h4 {
+  font-family: var(--poppins);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(86, 86, 92);
 }

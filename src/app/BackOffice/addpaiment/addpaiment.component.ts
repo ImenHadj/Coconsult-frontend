@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ServiceclientService } from '../serviceclient.service';
 
 @Component({
@@ -8,18 +9,18 @@ import { ServiceclientService } from '../serviceclient.service';
   templateUrl: './addpaiment.component.html',
   styleUrls: ['./addpaiment.component.css']
 })
-export class AddpaimentComponent implements OnInit{
+export class AddpaimentComponent implements OnInit {
   Paimentform!: FormGroup;
-  id: number | undefined ;
+  id: number | undefined;
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, private clientService: ServiceclientService) {}
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private clientService: ServiceclientService) { }
 
   ngOnInit(): void {
     this.initForm();
     this.route.queryParams.subscribe(params => {
       this.id = +params['id'];
       console.log(this.id);
-      
+
     });
   }
   private initForm(): void {
@@ -27,22 +28,32 @@ export class AddpaimentComponent implements OnInit{
       payment_date: ['', Validators.required],
       amount: ['', Validators.required],
       typepaiment: ['', Validators.required],
-    });}
+    });
+  }
 
-    onSubmit(): void {
-      if (this.Paimentform.valid) {
-      
-        const paiment = this.Paimentform.value;
-        this.clientService.addpaiment(paiment,this.id!).subscribe(
-          (idpaiement) => {
-            console.log('paiment added successfully with ID:', idpaiement);
+  onSubmit(): void {
+    if (this.Paimentform.valid) {
+
+      const paiment = this.Paimentform.value;
+      this.clientService.addpaiment(paiment, this.id!).subscribe(
+        (idpaiement) => {
+          console.log('paiment added successfully with ID:', idpaiement);
+          Swal.fire({
+            title: "Bill Paid!",
+            text: "Paiment added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
             window.location.reload();
-          },
-          (error) => {
-            console.error('Error adding paiment:', error);
-          }
-        );
-      }
+          }, 2000);
+        },
+        (error) => {
+          console.error('Error adding paiment:', error);
+        }
+      );
     }
+  }
 
 }

@@ -12,9 +12,9 @@ import { monthlypaiment } from '../monthlypaiment.model';
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
-export class StatsComponent  implements OnInit{
-  percentage?: paymentpercentage[] ;
-  monthlypaiment?:monthlypaiment[];
+export class StatsComponent implements OnInit {
+  percentage?: paymentpercentage[];
+  monthlypaiment?: monthlypaiment[];
   cash?: number;
   check?: number;
   card?: number;
@@ -25,21 +25,23 @@ export class StatsComponent  implements OnInit{
   donutData: { name: string; y: number | undefined; color: string; }[] | undefined;
   bardata: { y: number; color?: string }[] = [];
 
-  constructor(private clientservice:ServiceclientService){}
+  constructor(private clientservice: ServiceclientService) { }
   ngOnInit(): void {
-   
-    this.clientservice.paimentpercentage().subscribe((datas)=>{
-      this.percentage=datas as paymentpercentage[];
-      
+
+    this.clientservice.paimentpercentage().subscribe((datas) => {
+      this.percentage = datas as paymentpercentage[];
+
       this.cash = this.percentage[0].percentage;
       this.check = this.percentage[1].percentage;
-      this.card = this.percentage[2].percentage;
-      
+      this.check = this.percentage[2].percentage;
+      console.log(this.cash + "cash");
+      console.log(this.check + "check");
+      console.log(this.cash + "card");
+
       this.initializeCharts();
     })
-    this.clientservice.paimentbymonth().subscribe((datas)=>{
-      this.monthlypaiment =datas as monthlypaiment[];
-      console.log("monthlypaiment"+this.monthlypaiment[0].totalPayment)
+    this.clientservice.paimentbymonth().subscribe((datas) => {
+      this.monthlypaiment = datas as monthlypaiment[];
       this.bardata = [
         { y: this.monthlypaiment[0].totalPayment },
         { y: this.monthlypaiment[1].totalPayment },
@@ -51,27 +53,27 @@ export class StatsComponent  implements OnInit{
         { y: this.monthlypaiment[7].totalPayment },
         { y: this.monthlypaiment[8].totalPayment, color: '#fc5185' },
         { y: this.monthlypaiment[9].totalPayment },
-        { y: this.monthlypaiment[10].totalPayment  },
-        { y: this.monthlypaiment[11].totalPayment  }
+        { y: this.monthlypaiment[10].totalPayment },
+        { y: this.monthlypaiment[11].totalPayment }
       ];
-      
+
       this.initializeCharts();
     })
   }
 
   initializeCharts() {
-  this.donutData = [
+    this.donutData = [
       { name: 'cash', y: this.cash, color: 'lightblue' },
       { name: 'check', y: this.check, color: '#393e46' },
       { name: 'credit card', y: this.card, color: '#506ef9' },
     ];
 
 
-  
-  this.chart = new Chart(getDonutChartOptions(this.donutData));
-  this.areaSplineChart = new Chart(areaChartOptions);
-  this.barChart = new Chart(barChart(this.bardata));
-  this.oneLineBar = new Chart(oneLineBar);
+
+    this.chart = new Chart(getDonutChartOptions(this.donutData));
+    this.areaSplineChart = new Chart(areaChartOptions);
+    this.barChart = new Chart(barChart(this.bardata));
+    this.oneLineBar = new Chart(oneLineBar);
   }
 
 

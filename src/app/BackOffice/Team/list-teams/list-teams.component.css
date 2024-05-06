@@ -1,0 +1,145 @@
+body{margin-top:20px;
+    background-color:#eee;
+    }
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #eff0f2;
+        border-radius: 1rem;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 3px #e4e8f0;
+    }
+    .anis {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #eff0f2;
+        border-radius: 1rem;
+        margin-bottom: 32px; /* Augmentation de la marge inférieure */
+        padding: 24px; /* Augmentation du rembourrage */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Réglage de l'ombre */
+    }
+    
+    .card-body {
+        color: black; /* Changer la couleur du texte en noir */
+    }
+    .avatar-md {
+        height: 4rem;
+        width: 5rem;
+    }
+    .rounded-circle {
+        border-radius: 50%!important;
+    }
+    .img-thumbnail {
+        padding: 0.70rem;
+        background-color: #f1f3f7;
+        border: 1px solid #eff0f2;
+        border-radius: 0.75rem;
+    }
+    .avatar-title {
+        align-items: center;
+        background-color: #3b76e1;
+        color: #fff;
+        display: flex;
+        font-weight: 500;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+    }
+    .bg-soft-primary {
+        background-color: rgba(59,118,225,.25)!important;
+    }
+    a {
+        text-decoration: none!important;
+    }
+    .badge-soft-danger {
+        color: #f56e6e !important;
+        background-color: rgba(245,110,110,.1);
+    }
+    .badge-soft-success {
+        color: #63ad6f !important;
+        background-color: rgba(99,173,111,.1);
+    }
+    .mb-0 {
+        margin-bottom: 0!important;
+    }
+    .badge {
+        display: inline-block;
+        padding: 0.25em 0.6em;
+        font-size: 75%;
+        font-weight: 500;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.75rem;
+    }
+    
+   
+
+
+/* CSS */
+.button-43 {
+  background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  width: 25%;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-43:hover {
+  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+
+@media (min-width: 768px) {
+  .button-43 {
+    padding: 1rem 2rem;
+  }
+}
+.button-33 {
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 10px;
+    justify-content: center;
+    padding: 0.5rem 1.75rem; /* Ajuster le padding pour une taille de bouton plus petite */
+    text-decoration: none;
+    width: auto; /* Utiliser la largeur automatique pour s'adapter au contenu */
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-33:hover {
+    background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+
+@media (min-width: 768px) {
+    .button-33 {
+        padding: 0.5rem 3rem;
+    }
+}

@@ -1,25 +1,48 @@
 <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
-    <div class="title-group mb-3">
-        <h1 class="h2 mb-0">Add Client</h1>
-    </div>
+    <div id="title">
+        <h4>Dashbord - Client - Add Client</h4>  
+      </div>
 
     <div class="row my-4">
         <div class="col-lg-7 col-12">
             <div class="custom-block bg-white">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="profile-tab">Fill in Client details</button>
-                    </li>
-                </ul>
+
 
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <form class="custom-form profile-form"  role="form" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-                            <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="last name" formControlName="nom" required>
-                            <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="name" formControlName="prenom" required>
-                            <input class="form-control" type="email" name="profile-email" id="profile-email" placeholder="email :Johndoe@gmail.com" formControlName="email" required>
-                            <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="phone" formControlName="phone" required>
-                            <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="companyAddress" formControlName="companyAddress" required>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="contractDate">Last Name <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="last name" formControlName="nom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="contractDate">Name <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="name" formControlName="prenom" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="contractDate">Email<span class="required">*</span></label>
+                                    <input class="form-control" type="email" name="profile-email" id="profile-email" placeholder="email :Johndoe@gmail.com" formControlName="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="contractDate">Phone<span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="phone" formControlName="phone" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="contractDate">Company Address <span class="required">*</span></label>
+                                    <input class="form-control" type="text" name="profile-name" id="profile-name" placeholder="companyAddress" formControlName="companyAddress" required>
+                                </div>
+                              
+                            </div>
+                           
+                           
+
+                          
+                          
                             
 
                             <div class="d-flex">

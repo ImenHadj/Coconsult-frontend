@@ -48,7 +48,7 @@ import { DetailfactureComponent } from './BackOffice/detailfacture/detailfacture
 import { AddfactureComponent } from './BackOffice/addfacture/addfacture.component';
 import { NotiflogComponent } from './BackOffice/notiflog/notiflog.component';
 import { StatsComponent } from './BackOffice/stats/stats.component';
-import { MeetComponent } from './FrontOffice/meet/meet.component';
+import { MeetComponent } from './FrontOffice/Client/meet/meet.component';
 import { SliderComponent } from './FrontOffice/slider/slider.component';
 import { ClienthomeComponent } from './FrontOffice/Client/clienthome/clienthome.component';
 import { AddProjectComponent } from './BackOffice/add-project/add-project.component';
@@ -97,6 +97,9 @@ import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.compo
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { ChatComponent } from './chat/chat.component';
+import { JoinmeetComponent } from './FrontOffice/joinmeet/joinmeet.component';
+import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
+import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
 
 
 
@@ -105,152 +108,157 @@ const routes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'landingpage', component: LandingpageComponent },
   { path: 'register', component: RegisterComponent },
-  { path: "accueil", component:TemplateFComponent,
-  
-  children: [
-    
-    {
-      path:'Clienthome',component:ClienthomeComponent
-    },
-    { path: 'chat', component: ChatComponent },
+  {
+    path: "accueil", component: TemplateFComponent,
 
-    { path: 'homef', component: HomeFrontComponent },
-    { path: 'home', component: HomeComponent },
-   
-    { path: 'profile', component: ProfileComponent },
-    { path: 'user', component: BoardUserComponent },
-    { path: 'mod', component: BoardModeratorComponent },
-    { path: 'admin', component: TemplateBComponent },
-    { path: 'recrutement', component: RecrutementComponent},
-    { path: 'password', component: PasswordComponent },
-    { path: 'allrecrutement.html', component: AllrecrutementComponent },
-    { path: 'allrecrutement', component: AllrecrutementComponent }, 
-    { path: 'candidat/:idRec', component: CandidatComponent },
+    children: [
 
-    {
-      path:'addLeave',component:AddLeaveComponent
-    },
-    {
-      path:'myLeaves',component:MyLeavesComponent
-    },
-    {
-      path:'myAbsences',component:MyAbsencesComponent
-    },
+      {
+        path: 'Clienthome', component: ClienthomeComponent
+      },
+      { path: 'chat', component: ChatComponent },
 
-    { path: 'commande', component: CommandeComponent },
-    { path: 'addCommande', component: AddComponentComponent },
-    { path: 'stock', component: ShowStockfComponent },
-    { path: 'editStock/:id', component: EditStockfComponent },
-    { path: 'resource', component: ShowResourcefComponent },
-    { path: 'editResource/:id', component: EditResourcefComponent },
-    { path: 'addResource', component: AddResourcefComponent },
-    { path: 'affectResource', component: AffectResourcefComponent },
-   
-   
-   
-    
+      { path: 'homef', component: HomeFrontComponent },
+      { path: 'home', component: HomeComponent },
+
+      { path: 'profile', component: ProfileComponent },
+      { path: 'user', component: BoardUserComponent },
+      { path: 'mod', component: BoardModeratorComponent },
+      { path: 'admin', component: TemplateBComponent },
+      { path: 'recrutement', component: RecrutementComponent },
+      { path: 'password', component: PasswordComponent },
+      { path: 'allrecrutement.html', component: AllrecrutementComponent },
+      { path: 'allrecrutement', component: AllrecrutementComponent },
+      { path: 'candidat/:idRec', component: CandidatComponent },
+
+      {
+        path: 'addLeave', component: AddLeaveComponent
+      },
+      {
+        path: 'myLeaves', component: MyLeavesComponent
+      },
+      {
+        path: 'myAbsences', component: MyAbsencesComponent
+      },
+
+      { path: 'commande', component: CommandeComponent },
+      { path: 'addCommande', component: AddComponentComponent },
+      { path: 'stock', component: ShowStockfComponent },
+      { path: 'editStock/:id', component: EditStockfComponent },
+      { path: 'resource', component: ShowResourcefComponent },
+      { path: 'editResource/:id', component: EditResourcefComponent },
+      { path: 'addResource', component: AddResourcefComponent },
+      { path: 'affectResource', component: AffectResourcefComponent },
 
 
-   // { path: 'admin', component: BoardAdminComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-//  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  ]
-  
-},
-{
-  path:"admin",
-  component:TemplateBComponent,
-  children: [
-    { path: 'homeb', component: HomeBackComponent },
-       { path: 'admin', component: BoardAdminComponent },
 
-    { path: 'edit-resource/:id', component: EditResourceComponent },
-    { path: 'resources', component: ResourceComponent },
-    { path: 'addResource', component: AddResourceComponent },
-    { path: 'affectResource', component: AffecterResProjComponent },
-    { path: 'stock', component: AfficherStockComponent },
-    { path: 'edit-stock/:id', component: EditStockComponent },
-    { path: 'addStock', component: AddStockComponent },
-    { path: 'addFournisseur', component: AddFournisseurComponent },
-    { path: 'fournisseur', component: AfficherFournisseurComponent },
-    { path: 'edit-fournisseur/:id', component: EditFournisseurComponent },
-    { path: 'commande', component: AfficherCommandeComponent },
-    { path: 'addCommande', component: AddCommandeComponent },
-    { path: 'addReclamation', component: ReclamationComponent },
-    { path: 'reclamation', component: ShowReclamationComponent },
-    { path: 'statrsf', component: StatRSFComponent },
 
-    { path: 'addProject', component: AddProjectComponent  } ,
-    { path: 'projects', component: ProjectsComponent  } ,
-    { path: 'addtask', component: AddtaskComponent  } ,
-    { path: 'tasks/:id', component: TasksComponent  } ,
-    { path: 'updateP', component: UpdateprojectComponent  } ,
-    { path: 'updateT', component: UpdatetaskComponent  } ,
-    { path: 'calendarT/:id', component: TaskCalenderComponent  } ,
-    { path: 'kanban', component: KanbanBoardComponent  } ,
-    { path: 'addconsultant', component: AddconsultantComponent } ,
-    { path: 'dash', component: DashboardProjectComponent  } ,
-    { path: 'chart', component: ChartComponent } ,
 
-    { path: 'addemployees', component: AddEmployeeComponent },
-    { path: 'editEmployees/:id', component: AddEmployeeComponent },
-    { path: 'EditAbsence/:id', component: AbsenceComponent },
-    { path: 'addAbsences/:p', component: AbsenceComponent },
-    { path: 'listAbsences', component: AbsenceListComponent },
-    { path: 'listEmployees', component: ListEmployeesComponent },
-    { path: 'addConges/:p', component: AddCongeComponent },
-    { path: 'EditConge/:id', component: AddCongeComponent },
-    { path: 'listConge', component: ListCongeComponent },
-    { path: 'addDepartments', component: AddDepartementComponent },
-    { path: 'EditDepartement/:id', component: AddDepartementComponent },
-    { path: 'listDepartments', component: ListDepartementComponent },
-    { path: 'addNote/:p', component: AddNoteComponent },
-    { path: 'addContratEmployee/:p', component: AddContratEmployeComponent },
-    { path: 'editContratEmployee/:id', component: AddContratEmployeComponent },
-    { path: 'ListContratEmployee', component: ListContratEmployeeComponent },
-    { path: 'upload/:id', component: ImageComponent }, 
-    { path: 'historiqueEmploye/:employeeId', component: HistoriqueEmployeeComponent },
-    { path: 'calendar', component: CalendarComponent },
-    { path: 'calendarAbsence', component: CalendarAbsencesComponent },
-    { path: 'addPrimesAndSupplementHours/:p', component: AddPrimesAndSHoursComponent },
-    { path: 'listSalaires', component: ListSalairesComponent },
-    { path: 'reportSalaires', component: SalaryReportComponent },
-    { path: 'hisNotes/:p', component: MyNotesComponent },
+      // { path: 'admin', component: BoardAdminComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-    { path: 'clients', component: ClientsComponent },
-    { path: 'addclient', component: AddclientComponent },
-    {path: 'editclient', component: EditclientComponent},
-    {path: 'contrat', component: ContratComponent},
-    {path: 'addcontrat', component: AddcontratComponent},
-    {path: 'editcontrat', component: EditcontratComponent},
-    {path: 'facture', component: FactureComponent},
-    {path: 'addpaiment', component: AddpaimentComponent},
-    {path: 'calendrier', component: CalenderComponent},
-    {path: 'detailfacture', component: DetailfactureComponent},
-    {path: 'addfacture', component: AddfactureComponent},
-    {path: 'notiflog', component: NotiflogComponent},
-    { path: 'homeb', component: HomeBackComponent },
-    { path: 'modifier-recrutement/:id', component:  ModifierRecrutementComponent },
-    { path: 'allcandidat', component: AllcandidatComponent },
-    { path: 'rendezvous', component: RendezvousComponent },
-    { path: 'recrutement', component: RecrutementComponent },
-    { path: 'addrecrutement', component: AddrecrutementComponent},
-    { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
-    { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
-    { path: 'charthr', component: CharthrComponent },
-     
-  ]},
-{
-  path:'stats',component:StatsComponent
-},
-{ path: 'video', component: MeetComponent },
-{ path: 'slider', component: SliderComponent },
-  
+      //  { path: '', redirectTo: 'home', pathMatch: 'full' },
+    ]
 
-   // { path: 'SidebarBack', component: SidebarBackComponent },
+  },
+  {
+    path: "admin",
+    component: TemplateBComponent,
+    children: [
+      { path: 'homeb', component: HomeBackComponent },
+      { path: 'admin', component: BoardAdminComponent },
 
-  
+      { path: 'edit-resource/:id', component: EditResourceComponent },
+      { path: 'resources', component: ResourceComponent },
+      { path: 'addResource', component: AddResourceComponent },
+      { path: 'affectResource', component: AffecterResProjComponent },
+      { path: 'stock', component: AfficherStockComponent },
+      { path: 'edit-stock/:id', component: EditStockComponent },
+      { path: 'addStock', component: AddStockComponent },
+      { path: 'addFournisseur', component: AddFournisseurComponent },
+      { path: 'fournisseur', component: AfficherFournisseurComponent },
+      { path: 'edit-fournisseur/:id', component: EditFournisseurComponent },
+      { path: 'commande', component: AfficherCommandeComponent },
+      { path: 'addCommande', component: AddCommandeComponent },
+      { path: 'addReclamation', component: ReclamationComponent },
+      { path: 'reclamation', component: ShowReclamationComponent },
+      { path: 'statrsf', component: StatRSFComponent },
+
+      { path: 'addProject', component: AddProjectComponent },
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'addtask', component: AddtaskComponent },
+      { path: 'tasks/:id', component: TasksComponent },
+      { path: 'updateP', component: UpdateprojectComponent },
+      { path: 'updateT', component: UpdatetaskComponent },
+      { path: 'calendarT/:id', component: TaskCalenderComponent },
+      { path: 'kanban', component: KanbanBoardComponent },
+      { path: 'addconsultant', component: AddconsultantComponent },
+      { path: 'dash', component: DashboardProjectComponent },
+      { path: 'chart', component: ChartComponent },
+
+      { path: 'addemployees', component: AddEmployeeComponent },
+      { path: 'editEmployees/:id', component: AddEmployeeComponent },
+      { path: 'EditAbsence/:id', component: AbsenceComponent },
+      { path: 'addAbsences/:p', component: AbsenceComponent },
+      { path: 'listAbsences', component: AbsenceListComponent },
+      { path: 'listEmployees', component: ListEmployeesComponent },
+      { path: 'addConges/:p', component: AddCongeComponent },
+      { path: 'EditConge/:id', component: AddCongeComponent },
+      { path: 'listConge', component: ListCongeComponent },
+      { path: 'addDepartments', component: AddDepartementComponent },
+      { path: 'EditDepartement/:id', component: AddDepartementComponent },
+      { path: 'listDepartments', component: ListDepartementComponent },
+      { path: 'addNote/:p', component: AddNoteComponent },
+      { path: 'addContratEmployee/:p', component: AddContratEmployeComponent },
+      { path: 'editContratEmployee/:id', component: AddContratEmployeComponent },
+      { path: 'ListContratEmployee', component: ListContratEmployeeComponent },
+      { path: 'upload/:id', component: ImageComponent },
+      { path: 'historiqueEmploye/:employeeId', component: HistoriqueEmployeeComponent },
+      { path: 'calendar', component: CalendarComponent },
+      { path: 'calendarAbsence', component: CalendarAbsencesComponent },
+      { path: 'addPrimesAndSupplementHours/:p', component: AddPrimesAndSHoursComponent },
+      { path: 'listSalaires', component: ListSalairesComponent },
+      { path: 'reportSalaires', component: SalaryReportComponent },
+      { path: 'hisNotes/:p', component: MyNotesComponent },
+
+      { path: 'clients', component: ClientsComponent },
+      { path: 'addclient', component: AddclientComponent },
+      { path: 'editclient', component: EditclientComponent },
+      { path: 'contrat', component: ContratComponent },
+      { path: 'addcontrat', component: AddcontratComponent },
+      { path: 'editcontrat', component: EditcontratComponent },
+      { path: 'facture', component: FactureComponent },
+      { path: 'addpaiment', component: AddpaimentComponent },
+      { path: 'calendrier', component: CalenderComponent },
+      { path: 'detailfacture', component: DetailfactureComponent },
+      { path: 'addfacture', component: AddfactureComponent },
+      { path: 'notiflog', component: NotiflogComponent },
+      { path: 'homeb', component: HomeBackComponent },
+      { path: 'modifier-recrutement/:id', component: ModifierRecrutementComponent },
+      { path: 'allcandidat', component: AllcandidatComponent },
+      { path: 'rendezvous', component: RendezvousComponent },
+      { path: 'recrutement', component: RecrutementComponent },
+      { path: 'addrecrutement', component: AddrecrutementComponent },
+      { path: 'updateRecrutement/:id', component: ModifierRecrutementComponent },
+      { path: 'candidatsacceptes', component: CandidatsacceptesComponent },
+      { path: 'charthr', component: CharthrComponent },
+      { path: 'addteam', component: AddteamComponent },
+      { path: 'teams', component: ListTeamsComponent },
+
+    ]
+  },
+  {
+    path: 'stats', component: StatsComponent
+  },
+  { path: 'video', component: MeetComponent },
+  { path: 'joinmeet', component: JoinmeetComponent },
+  { path: 'slider', component: SliderComponent },
+
+
+  // { path: 'SidebarBack', component: SidebarBackComponent },
+
+
 
 ];
 

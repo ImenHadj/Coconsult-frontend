@@ -114,9 +114,9 @@ import { DetailfactureComponent } from './BackOffice/detailfacture/detailfacture
 import { AddfactureComponent } from './BackOffice/addfacture/addfacture.component';
 import { NotiflogComponent } from './BackOffice/notiflog/notiflog.component';
 import { StatsComponent } from './BackOffice/stats/stats.component';
-
 import { ClienthomeComponent } from './FrontOffice/Client/clienthome/clienthome.component';
-import { MeetComponent } from './FrontOffice/meet/meet.component';
+import { JoinmeetComponent } from './FrontOffice/joinmeet/joinmeet.component';
+import { MeetComponent } from './FrontOffice/Client/meet/meet.component';
 import { SliderComponent } from './FrontOffice/slider/slider.component';
 import { AddProjectComponent } from './BackOffice/add-project/add-project.component';
 import { ProjectsComponent } from './BackOffice/projects/projects.component';
@@ -167,6 +167,10 @@ import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
 import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.component';
 import { ChatComponent } from './chat/chat.component';
+import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
+import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
+import { UpdateteamComponent } from './BackOffice/Team/updateteam/updateteam.component';
+import { MembersComponent } from './BackOffice/Team/members/members.component';
 
 
 @NgModule({
@@ -233,8 +237,6 @@ import { ChatComponent } from './chat/chat.component';
     MeetComponent,
     SliderComponent,
     ClienthomeComponent,
-
-
     AddProjectComponent,
     ProjectsComponent,
     AddtaskComponent,
@@ -244,6 +246,7 @@ import { ChatComponent } from './chat/chat.component';
     TaskCalenderComponent,
     KanbanBoardComponent,
     AddconsultantComponent,
+    JoinmeetComponent,
     // ChartComponent,
 
     AddEmployeeComponent,
@@ -283,6 +286,10 @@ import { ChatComponent } from './chat/chat.component';
     AddResourcefComponent,
     EditResourcefComponent,
     AffectResourcefComponent,
+    UpdateteamComponent,
+    MembersComponent,
+    ListTeamsComponent,
+    AddteamComponent
 
   ],
   imports: [

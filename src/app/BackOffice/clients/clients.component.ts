@@ -1,48 +1,55 @@
-import { Component, ViewChild ,ViewEncapsulation} from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ServiceclientService } from '../serviceclient.service';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Chart from 'chart.js/auto';
 import { monthlypaiment } from '../monthlypaiment.model';
+import { ExcelService } from 'src/app/core/services/excel.service';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css'],
-  providers:[ServiceclientService],
-  encapsulation : ViewEncapsulation.None,
+  providers: [ServiceclientService],
+  encapsulation: ViewEncapsulation.None,
 })
-export class ClientsComponent implements OnInit{
+export class ClientsComponent implements OnInit {
   clients: any[] = [];
   paginatedclients: any[] = [];
-  numberOfClients: number = 0; 
+  numberOfClients: number = 0;
   totalAmountLeftToPay: any;
   stocks: any[] = [];
   pageSize: number = 2;
   monthlyPayments: monthlypaiment[] = [];
-  monthlypaiment?:monthlypaiment[];
-  constructor(private router: Router,private clientservice:ServiceclientService){}
-  @ViewChild(MatPaginator)paginator!: MatPaginator;
-  
+  monthlypaiment?: monthlypaiment[];
+  monthNames: string[] = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  isFilterApplied = false;
+  constructor(private router: Router, private clientservice: ServiceclientService, private excelService: ExcelService) { }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-/*getall*/
+
+
+  /*getall*/
   ngOnInit(): void {
     console.log("onit.......................");
-    this.clientservice.getall().subscribe((datas)=>{
-      this.clients=datas as any[];
+    this.clientservice.getall().subscribe((datas) => {
+      this.clients = datas as any[];
       this.onPageChange({
         pageIndex: 0, pageSize: this.pageSize,
         length: 0
       });
       this.numberOfClients = this.clients.length;
-      console.log("  this.numberOfClients = "+  this.numberOfClients )
+      console.log("  this.numberOfClients = " + this.numberOfClients)
       this.calculateTotalAmountLeftToPay();
     })
-    this.clientservice.paimentbymonth().subscribe((datas)=>{
-      this.monthlypaiment =datas as monthlypaiment[];
-      console.log("monthlypaiment"+this.monthlypaiment[0].totalPayment)
-     
+    this.clientservice.paimentbymonth().subscribe((datas) => {
+      this.monthlypaiment = datas as monthlypaiment[];
+      console.log("monthlypaiment" + this.monthlypaiment[0].totalPayment)
+
       this.monthlyPayments = [
         { month: 1, year: 2024, totalPayment: this.monthlypaiment[0].totalPayment },
         { month: 2, year: 2024, totalPayment: this.monthlypaiment[1].totalPayment },
@@ -62,66 +69,16 @@ export class ClientsComponent implements OnInit{
     })
 
   }
-
-  onPageChange(event: PageEvent) {
-    const startIndex = event.pageIndex * event.pageSize;
-    this.paginatedclients = this.clients.slice(startIndex, startIndex + event.pageSize);
-}
-  calculateTotalAmountLeftToPay(): void {
-    this.totalAmountLeftToPay = this.clients.reduce((total, client) => total + client.amount, 0);
-    console.log("totalAmountLeftToPay"+this.totalAmountLeftToPay)
+  exportDataToExcel(): void {
+    const dataToExport = this.clients.map(client => ({
+      LastName: client.nom,
+      FirstName: client.prenom,
+      email: client.email,
+      companyAddress: client.companyAddress,
+      LeftToPay: client.amount
+    }));
+    this.excelService.exportToExcel(dataToExport, 'Clients-List');
   }
-  isFilterApplied = false;
-  /*filtre*/
-  btnfiltrage() {
-    if (this.isFilterApplied) {
-      this.undofiltrage();
-    } else {
-      this.filtrage();
-    }
-    this.isFilterApplied = !this.isFilterApplied;
-  }
-  undofiltrage(): void {
-    console.log("undo");
-    this.clientservice.getall().subscribe((datas)=>{
-      this.clients=datas as any[];
-    })
-  }
-
-  filtrage():void{
-    console.log("filtrage");
-    this.clientservice.filtrage().subscribe((datas)=>{
-      this.clients=datas as any[];
-    })
-  }
-  see(nombre:number):void{
-    console.log("duedate");
-    this.clientservice.duedate(nombre).subscribe((datas)=>{
-      this.clients=datas as any[];
-    })
-  }
-
-  /*remove*/
-  removeClient(id: number): void {
-    this.clientservice.removeClient(id).subscribe(() => {  
-      this.clientservice.getall().subscribe((datas) => {
-        this.clients = datas as any[];
-      });
-    });
-  }
-  navigateToContracts(idClient: number): void {
-    this.router.navigate(['/admin/contrat'], { queryParams: { id: idClient } });
-  }
-
-  navigateToeditclient(idClient: number): void {
-    this.router.navigate(['/admin/editclient'], { queryParams: { id: idClient } });
-  }
-  navigateToaddContracts(idClient: number): void {
-    this.router.navigate(['/admin/addcontrat'], { queryParams: { id: idClient } });
-  }
-
-
-  /******/
   drawGraph(): void {
     const months = this.monthlyPayments.map(payment => payment.month);
 
@@ -134,7 +91,7 @@ export class ClientsComponent implements OnInit{
     }, {});
     // Convertir les catégories en chaînes de caractères pour les utiliser comme libellés
     const data = Object.entries(totalPaymentsPerMonth).map(([month, total]) => total);
-    const labels = months.map(month => `Month ${month}`); // Assuming month labels are numbers
+    const labels = months.map(month => `${this.monthNames[month - 1]}`); // Assuming month labels are numbers
 
 
     const ctx = document.getElementById('stockChart') as HTMLCanvasElement;
@@ -166,5 +123,71 @@ export class ClientsComponent implements OnInit{
       });
     }
   }
+
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    this.paginatedclients = this.clients.slice(startIndex, startIndex + event.pageSize);
+  }
+  calculateTotalAmountLeftToPay(): void {
+    this.totalAmountLeftToPay = this.clients.reduce((total, client) => total + client.amount, 0);
+    console.log("totalAmountLeftToPay" + this.totalAmountLeftToPay)
+  }
+
+
+  btnfiltrage() {
+    if (this.isFilterApplied) {
+      this.undofiltrage();
+    } else {
+      this.filtrage();
+
+    }
+    this.isFilterApplied = !this.isFilterApplied;
+
+  }
+  undofiltrage(): void {
+    console.log("undo");
+    this.clientservice.getall().subscribe((datas) => {
+      this.clients = datas as any[];
+    })
+  }
+
+  filtrage(): void {
+    console.log("filtrage");
+    this.clientservice.filtrage().subscribe((datas) => {
+      this.clients = datas as any[];
+      console.log("filtrage" + this.clients);
+    })
+
+  }
+  see(nombre: number): void {
+    console.log("duedate");
+    this.clientservice.duedate(nombre).subscribe((datas) => {
+      this.clients = datas as any[];
+    })
+  }
+
+  /*remove*/
+  removeClient(id: number): void {
+    this.clientservice.removeClient(id).subscribe(() => {
+      window.location.reload();
+      this.clientservice.getall().subscribe((datas) => {
+        this.clients = datas as any[];
+      });
+    });
+  }
+  navigateToContracts(idClient: number): void {
+    this.router.navigate(['/admin/contrat'], { queryParams: { id: idClient } });
+  }
+
+  navigateToeditclient(idClient: number): void {
+    this.router.navigate(['/admin/editclient'], { queryParams: { id: idClient } });
+  }
+  navigateToaddContracts(idClient: number): void {
+    this.router.navigate(['/admin/addcontrat'], { queryParams: { id: idClient } });
+  }
+
+
+  /******/
+
 
 }
