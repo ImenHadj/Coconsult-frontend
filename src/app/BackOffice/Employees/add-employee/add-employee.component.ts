@@ -5,6 +5,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SericeEmployeeService } from '../../../core/services/serice-employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceDepartementService } from 'src/app/core/services/service-departement.service';
+import { Team } from '../../team.model';
+import { TeamserviceService } from '../../teamservice.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -16,6 +18,7 @@ export class AddEmployeeComponent implements OnInit {
   isEditMode: boolean = false;
   employeeId: number | null = null;
   Departements: Departement[] = [];
+  Teams: Team[] = [];
   selectedDepartement: any;
   selectedTeam:any;
 
@@ -23,6 +26,7 @@ export class AddEmployeeComponent implements OnInit {
     private fb: FormBuilder,
     private employeeService: SericeEmployeeService,
     private departmentService: ServiceDepartementService,
+    private teamService: TeamserviceService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -41,10 +45,25 @@ export class AddEmployeeComponent implements OnInit {
         console.error('Erreur fetching');
       }
     );
+    this.teamService.getAllTeams().subscribe(
+      (data: Team[]) => {
+        this.Teams = data;
+        if (this.isEditMode) {
+          this.fetchEmployeeDetails();
+        }
+      },
+      (error) => {
+        console.error('Erreur fetching');
+      }
+    );
   
     // Subscribe to value changes of the form
     this.EmployeeForm.valueChanges.subscribe(() => {
       this.selectedDepartement = this.EmployeeForm.get('selectedDepartement')?.value;
+    });
+
+    this.EmployeeForm.valueChanges.subscribe(() => {
+      this.selectedTeam = this.EmployeeForm.get('selectedTeam')?.value;
     });
   }
   
@@ -53,7 +72,11 @@ export class AddEmployeeComponent implements OnInit {
       this.selectedDepartement = event.target.value;
     }
   }
-
+  changeTeams(event: any): void {
+    if (event.target.value) {
+      this.selectedTeam = event.target.value;
+    }
+  }
   postes = Object.values(PosteEmployee)
     .filter((value) => typeof value === 'string')
     .sort();
@@ -79,6 +102,8 @@ export class AddEmployeeComponent implements OnInit {
             date_embauche: date.toISOString().split('T')[0],
             posteEmployee: employee.posteEmployee,
             selectedDepartement: employee.departement.id_departement, // Set the value of the form control directly
+            selectedTeam: employee.teams.team_id, // Set the value of the form control directly
+            
           });
         });
     }
@@ -90,7 +115,9 @@ export class AddEmployeeComponent implements OnInit {
       posteEmployee: ['', Validators.required],
       selectedDepartement: [null, Validators.required], // Define the selectedDepartement control
       departements: this.fb.array([]),
-       selectedTeam: [null, Validators.required],
+      selectedTeam: [null, Validators.required],
+      teams: this.fb.array([]),
+
     });
   }
 
@@ -111,19 +138,19 @@ export class AddEmployeeComponent implements OnInit {
               this.router.navigate(['admin/listEmployees']);
             },
             (error) => {
-              console.error('Error adding conge:', error);
-              console.log('Error details:', error.error); // Log the complete error response
-              console.log('Request payload:', employeeData); // Log the request payload
               console.log(
                 'this.selectedDepartement :',
                 this.selectedDepartement
+              );
+              console.log(
+                'this.selectedDepartement :',
+                this.selectedTeam
               ); // Log the request payload
-              // window.location.reload();
             }
           );
       } else {
         this.employeeService
-          .addEmployee(employeeData, this.selectedDepartement)
+          .addEmployee(employeeData, this.selectedDepartement,this.selectedTeam)
           .subscribe(
             (clientId) => {
               console.log('Employee added successfully with ID:', clientId);

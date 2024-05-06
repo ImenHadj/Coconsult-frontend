@@ -95,7 +95,8 @@
             </div>
             <!-- Bouton "View Members" -->
             <div class="card-footer">
-              <button class="button-33" role="button"[routerLink]="['/admin/viewmembers']"  >view members </button>
+              <button class="button-33" role="button" (click)="members(team.team_id)" >view members </button>
+             
             </div>
           </div>
         </div>

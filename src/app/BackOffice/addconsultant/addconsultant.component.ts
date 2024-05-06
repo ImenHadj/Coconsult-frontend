@@ -11,7 +11,7 @@ import { ProjectServiceService } from '../project-service.service';
 })
 export class AddconsultantComponent implements OnInit{
 onCancel() {
-throw new Error('Method not implemented.');
+  this.router.navigate(['admin/projects']);  
 }
   consultantForm!: FormGroup;
   projects: any[] =[]; 

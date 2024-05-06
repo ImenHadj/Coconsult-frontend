@@ -18,7 +18,7 @@ export class AddteamComponent {
   employees: Employee[] | undefined;
   selectedEmployees: Employee[] = [];
   selectedProjectId: number | undefined;
-
+  productowners: any[] | undefined;
   constructor(
     private fb: FormBuilder, 
     private route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class AddteamComponent {
     this.initForm();
     this.loadEmployees();
     this.loadProjects();
-  
+    this.loadProductOwners();
  
   }
 
@@ -43,6 +43,7 @@ export class AddteamComponent {
       nbteam: ['', Validators.required],
       project: [null, Validators.required], // Ajout d'un contrôle pour le projet
       employees: [[]], // Utilisation d'un tableau vide pour stocker les employés sélectionnés
+      idprod :[''],
     });
   }
 
@@ -58,14 +59,21 @@ export class AddteamComponent {
     });
   }
 
+  loadProductOwners():void{
+    this.teamservice.getProductowners().subscribe((datas)=>{
+      this.productowners = datas as any[];
+      console.log(  this.productowners);
+    });
+  }
+
   onSubmit(): void {
     if (this.TeamForm && this.TeamForm.valid) {
       const formData = this.TeamForm.value;
       if (formData && formData.project ) {
-        this.teamservice.addTeamAndAssignToProject(formData, formData.project).subscribe(
+        this.teamservice.addTeamAndAssignToProject(formData, formData.project,formData.idprod).subscribe(
           (result) => {
             console.log('Team added and assigned to project:', result);
-            this.assignEmployeesToTeam(result.team_id, this.selectedEmployees);
+          //  this.assignEmployeesToTeam(result.team_id, this.selectedEmployees);
             this.router.navigate([`admin/projects`]);
           },
           (error) => {
@@ -79,6 +87,7 @@ export class AddteamComponent {
       console.error('Form is invalid');
     }
   }
+  
   
   assignEmployeesToTeam(teamId: number, employees: Employee[]): void {
     this.teamservice.assignEmployeesToTeam(employees, teamId).subscribe(

@@ -31,6 +31,13 @@ export class ServiceNoteService {
 
   getNote(id: number){
     return this.http.get<Note>(this.URL+"/getNote/" + id);
+
   }
- 
+  getUsernameById(id: number){
+    return this.http.get<any>(this.URL+"/getUsername/" + id);
+  }
+  
+  getUserByIdEmpl(id: number){
+    return this.http.get<any>(this.URL+"/getUserByIdEmpl/" + id);
+  }
 }

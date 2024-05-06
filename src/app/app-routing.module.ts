@@ -82,6 +82,7 @@ import { ChartComponent } from './BackOffice/chart/chart.component';
 import { DashboardProjectComponent } from './BackOffice/dashboard-project/dashboard-project.component';
 import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
 import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
+import { MembersComponent } from './BackOffice/Team/members/members.component';
 
 
 
@@ -150,6 +151,8 @@ const routes: Routes = [
     { path: 'chart', component: ChartComponent } ,
     { path: 'addteam', component: AddteamComponent } ,
     { path: 'teams', component: ListTeamsComponent } ,
+    { path: 'viewmembers', component: MembersComponent } ,
+
 
     { path: 'addemployees', component: AddEmployeeComponent },
     { path: 'editEmployees/:id', component: AddEmployeeComponent },

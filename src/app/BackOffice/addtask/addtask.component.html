@@ -25,18 +25,10 @@
                         <input class="form-control col-sm-9" type="date" name="endDate" placeholder="End Date" formControlName="endDate" required>
                     </div>
                     <div class="mb-1 rounded row"> 
-                        <label for="duration" class="col-sm-3 col-form-label">Duration</label>
-                        <input class="form-control col-sm-9" type="text" name="duration" placeholder="Duration" formControlName="duration" required>
-                    </div>
-                    <div class="mb-1 rounded row"> 
                         <label for="priority" class="col-sm-3 col-form-label">Priority</label>
                         <select class="form-select col-sm-9" formControlName="priority" placeholder="Priority">
                             <option *ngFor="let priority of priorityOptions" [value]="priority">{{ priority }}</option>
                         </select>
-                    </div>
-                    <div class="mb-1 rounded row"> 
-                        <label for="progression" class="col-sm-3 col-form-label">Progression</label>
-                        <input class="form-control col-sm-9" type="number" name="progression" placeholder="Progression" formControlName="progression" required>
                     </div>
                     <div class="mb-1 rounded row"> 
                         <label for="status" class="col-sm-3 col-form-label">Status</label>
@@ -69,8 +61,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Add other content or remove this section as needed -->
 
     <footer class="site-footer">
         <div class="container">

@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-teams.component.css']
 })
 export class ListTeamsComponent {
+members(teamId: number) {
+  this.router.navigate(['/admin/viewmembers'], { queryParams: { id: teamId } });
+}
 projects: any;
 onAddMembers(teamId: number): void {
-  this.router.navigate(['/admin/updateteam'], { queryParams: { id: teamId } });
+  this.router.navigate(['/admin/addemployees'], { queryParams: { id: teamId } });
 }
 onUpdateTeam(teamId: number): void {
   this.router.navigate(['/admin/updateteam'], { queryParams: { id: teamId } });

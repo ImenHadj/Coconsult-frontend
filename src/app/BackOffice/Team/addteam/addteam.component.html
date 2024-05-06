@@ -41,6 +41,12 @@
                                     <option *ngFor="let project of projects" [value]="project.projectid">{{ project.projectname }}</option>
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="project" class="form-label">Product owner</label>
+                                <select class="form-select"  formControlName="idprod" >
+                                    <option *ngFor="let po of productowners" [value]="po.id">{{ po.username }}</option>
+                                </select>
+                            </div>
                             
                             <!-- <div class="mb-3">
                                 <label>Select employees to add:</label>

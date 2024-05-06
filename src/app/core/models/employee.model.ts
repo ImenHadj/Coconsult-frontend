@@ -1,3 +1,4 @@
+import { Team } from "src/app/BackOffice/team.model";
 import { Absence } from "./absence.model";
 import { Conge } from "./conge.model";
 import { ContratEmployee } from "./contratEmployee.model";
@@ -16,13 +17,11 @@ export interface Employee{
     performanceEmployee: PerformanceEmployee;
     contratEmployees: ContratEmployee[];
     absences: Absence[];
-    team: Team;
+    teams: Team;
     userId: number;
 }
 
-export interface Team{
 
-}
 
 export enum PosteEmployee {
     ADMINISTRATIVE_ASSISTANT,

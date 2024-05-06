@@ -36,5 +36,7 @@ export class TaskServiceService {
       return this.http.get<any[]>(`${this.baseUrl}/gettaskbyproject/${projectId}`);
     }
 
-    
+    getSortedTasks() {
+      return this.http.get<Task[]>(`${this.baseUrl}/sorted`);
+    }
 }

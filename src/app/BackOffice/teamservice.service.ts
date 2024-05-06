@@ -14,8 +14,11 @@ export class TeamserviceService {
     return this.http.post<number>(`${this.baseUrl}/addTeam`, team);
   }
 
-  addTeamAndAssignToProject(team: Team, projectId: number) {
-    return this.http.post<Team>(`${this.baseUrl}/addteamaff/${projectId}`, team);
+  addTeamAndAssignToProject(team: Team, projectId: number,idprod:number) {
+    return this.http.post<Team>(`${this.baseUrl}/addteamaff/${projectId}/${idprod}`, team);
+  }
+  getProductowners(){
+    return this.http.get(this.baseUrl + "/getPo");
   }
  
   getAllTeams(){
@@ -35,5 +38,9 @@ export class TeamserviceService {
   }
   getTeamById(teamId: number) {
     return this.http.get<Team>(`${this.baseUrl}/team/${teamId}`);
+   }
+   
+   getEmployeeByTeam(teamId: number) {
+    return this.http.get<Employee[]>(`${this.baseUrl}/getempl/${teamId}`);
    }
 }

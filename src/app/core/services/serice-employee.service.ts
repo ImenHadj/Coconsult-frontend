@@ -32,8 +32,8 @@ export class SericeEmployeeService {
 
   }
 
-  addEmployee(employee: Employee,id:any){
-    return this.http.post<number>(`${this.URL}/addEmployee/`+id, employee);
+  addEmployee(employee: Employee,id:any,T:any){
+    return this.http.post<number>(`${this.URL}/addEmployee/${id}/${T}`, employee);
   }
   
   updateEmployee(p: number, updatedemployee: Employee,pp:number,T:number){
