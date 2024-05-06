@@ -40,12 +40,23 @@
 				<input [(ngModel)]="form.password" id="password" name="password" type="password"  pInputText class="form-control">
                 
               </div>
+              <div class="form-group first">
+                <label for="role">Role</label>
+                <select [(ngModel)]="form.role" id="role" name="role" class="form-control">
+                  <option value="admin">Admin</option>
+                  <option value="rh">RH</option>
+                  <option value="employee">Employee</option>
+                  <!-- Ajoutez d'autres options de rôle au besoin -->
+                </select>
+              </div>
+              
 			  <div class="form-group first">
                 
                 
 				<input type="file"class="form-control2" name="image" (change)="handleFileInput($event)" required>
 
               </div>
+             
               
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>

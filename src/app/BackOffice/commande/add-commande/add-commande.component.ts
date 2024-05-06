@@ -30,14 +30,7 @@ export class AddCommandeComponent {
   }
 
   ngOnInit(): void {
-    this.fournisseurservice.getFournisseurs().subscribe(
-      (data) => {
-        this.fournisseurs = data;
-      },
-      (error) => {
-        console.error('Error fetching fournisseurs:', error);
-      }
-    );
+   
   }
 
   selectFournisseur(fournisseur: Fournisseur): void {
@@ -67,6 +60,20 @@ export class AddCommandeComponent {
         },
         (error) => {
           console.error('Error adding commande:', error);
+        }
+      );
+    }
+  }
+
+  onCategorySelect(): void {
+    const categorie = this.commandeForm.get('categorieStock')?.value;
+    if (categorie) {
+      this.commandeservice.retrieveFournisseurByCategorie(categorie).subscribe(
+        (fournisseurs) => {
+          this.fournisseurs = fournisseurs;
+        },
+        (error) => {
+          console.error('Error fetching fournisseurs by category:', error);
         }
       );
     }

@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms'; 
-import {ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -74,22 +74,22 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { MatOptionModule } from '@angular/material/core';
@@ -98,7 +98,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'angular-highcharts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbCalendar, NgbDatepickerModule, NgbDatepicker,NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbDatepickerModule, NgbDatepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClientsComponent } from './BackOffice/clients/clients.component';
 import { AddclientComponent } from './BackOffice/addclient/addclient.component';
@@ -166,6 +166,7 @@ import { AddLeaveComponent } from './FrontOffice/add-leave/add-leave.component';
 import { MyLeavesComponent } from './FrontOffice/my-leaves/my-leaves.component';
 import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component';
 import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -205,6 +206,7 @@ import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.compo
     RecrutementComponent,
     AddrecrutementComponent,
     ModifierRecrutementComponent,
+    ChatComponent,
     AllrecrutementComponent,
     CandidatComponent,
     SearchFilterPipe,
@@ -281,12 +283,12 @@ import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.compo
     AddResourcefComponent,
     EditResourcefComponent,
     AffectResourcefComponent,
-   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatSidenavModule,
@@ -329,20 +331,20 @@ import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.compo
     ChartModule,
     NgbModule,
     NgbModalModule,
-   
-     NgbDatepickerModule,
-     NgbDatepicker,
 
-     KanbanModule,
+    NgbDatepickerModule,
+    NgbDatepicker,
+
+    KanbanModule,
     MaterialFileInputModule,
 
 
   ],
-  
 
 
-    
-  
+
+
+
   providers: [httpInterceptorProviders], // Assurez-vous que httpInterceptorProviders est importé correctement
   bootstrap: [AppComponent]
 })

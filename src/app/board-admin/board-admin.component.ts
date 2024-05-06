@@ -18,6 +18,8 @@ export class BoardAdminComponent implements OnInit {
   chart: any;
   performanceData: any;
   averageNotesByCriteria: any[] = []; // Initialisez averageNotesByCriteria avec un tableau vide
+  activationSuccessMessage: string = '';
+
 
   constructor(private userService: UserService) { }
   ngOnInit(): void {
@@ -60,6 +62,22 @@ export class BoardAdminComponent implements OnInit {
  
  
   }
+
+  activateUser(userId: number) {
+    this.userService.activateAccount(userId).subscribe(
+      response => {
+        console.log('Account activated successfully:', response);
+        this.activationSuccessMessage = 'User activated successfully.';
+
+        window.location.reload();
+
+      },
+      error => {
+        console.error('Error activating account:', error);
+        // Gérer les erreurs ou afficher un message d'erreur à l'utilisateur
+        // par exemple : this.errorMessage = 'Failed to activate account';
+      }
+    );}
 
   getAdvancedUserStats(): void {
     this.userService.getAdvancedUserStats().subscribe(

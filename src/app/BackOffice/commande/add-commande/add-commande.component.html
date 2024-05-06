@@ -38,7 +38,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label>Category:</label>
-                                <select class="form-control custom-select" formControlName="categorieStock" required>
+                                <select class="form-control custom-select" formControlName="categorieStock" required (change)="onCategorySelect()">
                                     <option value="">-- Select Category --</option>
                                     <option value="ELECTRONICS">Electronics</option>
                                     <option value="FURNITURE">Furniture</option>
@@ -68,7 +68,7 @@
                     <tbody>
                         <tr *ngFor="let fournisseur of fournisseurs" (click)="selectFournisseur(fournisseur)" [class.table-primary]="isSelected(fournisseur)">
                             <td>{{ fournisseur.nom }}</td>
-                            <td>{{ fournisseur.score }}</td>
+                            <td><ngb-rating [max]="5" [readonly]="true" [rate]="fournisseur.score / 20"></ngb-rating></td>
                             <td>{{ fournisseur.typeFournisseur }}</td>
                         </tr>
                     </tbody>

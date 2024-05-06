@@ -1,96 +1,8 @@
-/*import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-
-// Dans le fichier path/to/api-url-file.ts
-//export const API_URL = 'http://localhost:8090/api/auth/';
-
-const AUTH_API = 'http://localhost:8090/api/auth/';
-
-
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthService {
-  constructor(private http: HttpClient) {}
-
-  /*login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signin',
-      { username, password },
-      httpOptions
-    ).pipe(
-      tap((data: any) => {
-        this.storeToken(data.accessToken);
-      })
-    );
-  }*/
-
-  /*login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signin',
-      { username, password },
-      httpOptions
-    );
-  }
-
-  register(username: string, email: string, password: string, image: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('image', image);
-
-    return this.http.post(
-      AUTH_API + 'signup',
-      formData,
-      {
-        reportProgress: true,
-        observe: 'events'
-      }
-    );
-  }
-  // Cette fonction doit être appelée après l'inscription réussie
- public storeToken(token: string): void {
-  sessionStorage.setItem('TOKEN_KEY', token);
-  }
-
- 
-
-  getToken(): string | null {
-    return sessionStorage.getItem('TOKEN_KEY') ;
-  }
-
-  removeToken(): void {
-    sessionStorage.removeItem('TOKEN_KEY');
-    
-  }
-
- 
-
-
-
-  logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
-    
-  }
-  getProfile(): Observable<any> {
-    return this.http.get(AUTH_API + 'profile', httpOptions);
-  }
-  /*getUserImage(userId: number): Observable<any> {
-    return this.http.get(API_URL + 'profile');
-  }*/
-  
-//}
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
-
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { UserService } from './user.service';
+import { SericeEmployeeService } from '../core/services/serice-employee.service';
 const AUTH_API = 'http://localhost:8090/api/auth/';
 
 const httpOptions = {
@@ -106,18 +18,19 @@ export class AuthService {
 
   qrCodeUri: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   
 
 
-  register(username: string, email: string, password: string, image: File): Observable<any> {
+  register(username: string, email: string, password: string, image: File, role: string): Observable<any> {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password', password);
     formData.append('image', image);
-
+    formData.append('role', role); // Ajouter le rôle à FormData
+  
 
     return this.http.post<any>(
       AUTH_API + 'signup',
@@ -140,6 +53,7 @@ export class AuthService {
   public storeToken(token: string): void {
     sessionStorage.setItem('TOKEN_KEY', token);
   }
+  
 
   getToken(): string | null {
     return sessionStorage.getItem('TOKEN_KEY');
@@ -180,5 +94,17 @@ export class AuthService {
       })
     );
   }
+  getUserId(): string | null {
+    // Récupérer l'ID de l'utilisateur depuis le sessionStorage
+    const userId = sessionStorage.getItem('userId');
+    
+    // Afficher l'ID de l'utilisateur dans la console pour le débogage
+    console.log('ID de l\'utilisateur récupéré :', userId);
+    
+    // Retourner l'identifiant de l'utilisateur s'il est défini, sinon retourner null
+    return userId !== null ? userId : null;
+  }
+  
+  
+ 
 }
-

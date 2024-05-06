@@ -96,6 +96,7 @@ import { MyNotesComponent } from './BackOffice/Note/my-notes/my-notes.component'
 import { MyAbsencesComponent } from './FrontOffice/my-absences/my-absences.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -111,6 +112,8 @@ const routes: Routes = [
     {
       path:'Clienthome',component:ClienthomeComponent
     },
+    { path: 'chat', component: ChatComponent },
+
     { path: 'homef', component: HomeFrontComponent },
     { path: 'home', component: HomeComponent },
    

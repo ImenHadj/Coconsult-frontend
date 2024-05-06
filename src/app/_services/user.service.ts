@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../user';
 
 const API_URL = 'http://localhost:8090/api/test/';
 
@@ -72,5 +73,10 @@ export class UserService {
   getAverageNotesByCriteria(): Observable<any> {
     return this.http.get<any[]>(`${this.backendUrl}/perfomanceEmpl/average-by-criteria`);
   }
-  
+  activateAccount(userId: number): Observable<any> {
+    return this.http.put(`${this.backendUrl}/api/auth/activate/${userId}`, {});
+  }
+  adduser(user: User): Observable<Object> {
+    return this.http.post(this.backendUrl + "/user/add", user);
+  }
 }

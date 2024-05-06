@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
     username: null,
     email: null,
     password: null,
-    image: null
+    image: null,
+    role: 'user'
   };
   qrCodeUri: string = '';
 
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
     this.form.image = file;
   }
   onSubmit(): void {
-    const { username, email, password, image} = this.form;
+    const { username, email, password, image, role} = this.form;
 
    /* this.authService.register(username, email, password, image).subscribe({
       next: data => {
@@ -48,7 +49,7 @@ export class RegisterComponent implements OnInit {
       }
     });
   }*/
-  this.authService.register(username, email, password, image).subscribe({
+  this.authService.register(username, email, password, image,role).subscribe({
     next: (response: any) => {
       console.log(response);
       this.qrCodeUri = response.body.qrCodeUri; // Assurez-vous que qrCodeUri est correctement défini

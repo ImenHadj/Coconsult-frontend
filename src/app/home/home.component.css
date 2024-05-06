@@ -1,0 +1,63 @@
+.hero-section {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 36px;
+    color: #13547a;
+  }
+  
+  .hero-section p {
+    font-size: 18px;
+    color: #6c757d;
+  }
+  
+  .hero-section .btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    background-color: #13547a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .features-section {
+    padding: 80px 0;
+  }
+  
+  .features-section h2 {
+    font-size: 32px;
+    color: #13547a;
+    text-align: center;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .feature {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+  }
+  
+  .feature i {
+    font-size: 48px;
+    color: #13547a;
+  }
+  
+  .feature h3 {
+    font-size: 24px;
+    color: #13547a;
+    margin-top: 20px;
+  }
+  
+  .feature p {
+    font-size: 18px;
+    color: #6c757d;
+  }
+  
