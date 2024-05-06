@@ -1,0 +1,5 @@
+.custom-select {
+    max-width: 100%; /* Ajustez la largeur maximale selon vos besoins */
+    height: auto; /* Pour permettre à la liste déroulante de s'adapter à son contenu */
+    min-height: 2.25rem; /* Définissez la hauteur minimale de la liste déroulante */
+}

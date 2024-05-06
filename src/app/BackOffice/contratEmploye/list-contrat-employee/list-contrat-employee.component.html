@@ -1,0 +1,101 @@
+<main
+  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start"
+>
+  <div class="title-group mb-3">
+    <h1 class="h2 mb-0">Contracts</h1>
+  </div>
+
+
+  <div style="margin-top: 20px;">
+    <select id="stateFilter" [(ngModel)]="selectedStatus" (change)="filterActivitiesByState()" class="custom-select">
+      <option value="All">All</option>
+      <option value="CDI_CLASSIQUE">CDI CLASSIQUE</option>
+      <option value="CIVP">CIVP</option>
+      <option value="CDI_INTERIM">CDI INTERIM</option>
+      <option value="CDI_CHANTIER">CDI CHANTIER</option>
+      <option value="CDD_USAGE">CDD USAGE</option>
+      <option value="CDD_SAISONNIER">CDD_SAISONNIER</option>
+      <option value="CDD_INSERTION">CDD_INSERTION</option>
+      <option value="CDD_PROJET">CDD_PROJET</option>
+      <option value="CONTRAT_APPRENTISSAGE">CONTRAT_APPRENTISSAGE</option>
+      <option value="CONTRAT_PROFESSIONNALISATION">CONTRAT_PROFESSIONNALISATION</option>
+      <option value="CUI">CUI</option>
+    </select>
+  </div>
+
+  <div
+    class="row my-4"
+    *ngFor="
+      let absence of filteredAbsences
+        | paginate : { itemsPerPage: itemsPerPage, currentPage: p }
+    "
+  >
+    <div class="col-lg-12 col-12">
+      <div class="custom-block custom-block-transation-detail bg-white">
+        <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
+            <div class="d-flex justify-content-between w-100">
+              <div style="display: flex; align-items: center;">
+                <h6 style="color: #333; margin-right: 5px;">RIB :</h6>
+                <p> {{ absence.rib }}</p>
+            </div>
+              <div>
+                <h5>{{ usernames[absence.empl?.userId] ? usernames[absence.empl?.userId] : 'no employee' }}</h5>
+              </div>
+            </div>
+          </div>
+          
+        <div class="d-flex flex-wrap align-items-center">
+          <div class="custom-block-transation-detail-item mt-4">
+            <h6>Type Contract</h6>
+            <p>{{ absence.typeCE }}</p>
+          </div>
+
+          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+            <h6>Weekly duration</h6>
+            <p>{{ absence.duree_hebdomadaire }}</p>
+          </div>
+          <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
+            <h6>Base Salary</h6>
+            <p>{{ absence.salaire_base }}</p>
+          </div>          
+        
+
+          <div
+            class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3"
+          >
+            <h6>Archive</h6>
+            <h6 class="{{ absence.isArchive ? 'text-success' : 'text-danger' }}">
+              {{ absence.isArchive ? "Valid" : "Not Valid" }}
+            </h6>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <div class="custom-block-transation-detail-item me-2">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="removeAbsence(absence.id_contrat_e)"
+              >
+                Delete
+              </button>
+            </div>
+            <div class="custom-block-transation-detail-item ms-2">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                [routerLink]="[
+                  '/admin/editContratEmployee/' + absence.id_contrat_e
+                ]"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</main>

@@ -1,0 +1,17 @@
+.button-space {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.btn-outline-custom {
+  color: #007bff; /* Blue color */
+  border-color: #007bff; /* Blue color */
+}
+
+.btn-outline-custom:hover {
+  background-color: #007bff; /* Blue color on hover */
+  color: #fff; /* White text color on hover */
+}
+
+.button-space {
+  margin-right: 20px; /* Adjust as needed */
+}

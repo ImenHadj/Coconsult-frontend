@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-white text-center">add Order</h2>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div *ngIf="showStep1" class="row my-4">
+                <div class="col-lg-12">
+                    <div class="custom-block bg-white">
+        
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="profile-tab">Fill in order details</button>
+                            </li>
+                        </ul> 
+        
+                        <form class="custom-form profile-form" [formGroup]="commandeForm" (submit)="onNextStep()">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label>Quantity:</label>
+                                        <input class="form-control" type="number" formControlName="quantity" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label>Location:</label>
+                                        <select class="form-control custom-select" formControlName="location" required>
+                                            <option value="">-- Select Location --</option>
+                                            <option value="Tunis-centre">Tunis-centre</option>
+                                            <option value="Ariana">Ariana</option>
+                                            <option value="Ghazela">Ghazela</option>
+                                            <option value="Lac 1">Lac 1</option>
+                                            <option value="Lac 2">Lac 2</option>
+                                            <option value="Charguia">Charguia</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+        
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label>Category:</label>
+                                        <select class="form-control custom-select" formControlName="categorieStock" required (change)="onCategorySelect()">
+                                            <option value="ELECTRONICS">Electronics</option>
+                                            <option value="FURNITURE">Furniture</option>
+                                            <option value="VEHICULES">Vehicles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <button type="submit" [disabled]="commandeForm.invalid" class="btn btn-primary float-end">Next</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+            <div *ngIf="!showStep1" class="row my-4">
+                <div class="col-lg-12">
+                    <div class="custom-block bg-white">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Score</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let fournisseur of fournisseurs" (click)="selectFournisseur(fournisseur)" [class.table-primary]="isSelected(fournisseur)">
+                                    <td>{{ fournisseur.nom }}</td>
+                                    <td>{{ fournisseur.score }}</td>
+                                    <td>{{ fournisseur.typeFournisseur }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center">
+                        <button type="submit" (click)="onSave()" class="form-control ms-2" >Save</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</main>
+
+<script src="/src/assets/Front/jsaziz/AgoraRTC_N-4.7.3.js"></script>
+<script src='/src/assets/Front/jsaziz/agora.js'></script>
+</body>
+</html>

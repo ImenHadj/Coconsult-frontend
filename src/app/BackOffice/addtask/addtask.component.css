@@ -1,0 +1,14 @@
+.rounded {
+    border-radius: 10px; /* Ajustez la valeur en fonction de l'apparence souhaitée */
+}
+.form-select {
+    color: var(--p-color);
+    border-radius: var(--border-radius-large);
+    font-size: var(--menu-font-size);
+    margin-bottom: 24px;
+    padding: 10px 20px;
+    outline: none;
+    transition: all 0.3s;
+  }
+  
+  

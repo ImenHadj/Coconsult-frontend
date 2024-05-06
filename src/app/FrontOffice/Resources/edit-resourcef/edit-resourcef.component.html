@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-white text-center">edit Resource</h2>
+                </div>
+            </div>
+            <br><br>
+
+            <div class="row my-4">
+                <div class="d-flex justify-content-center">
+                <div class="col-lg-7 col-12">
+                    <div class="custom-block bg-white">
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="profile-tab">Fill in resource details</button>
+                            </li>
+                        </ul> 
+                        <form class="custom-form profile-form" (submit)="updateResource()">
+                            <label>Name:</label>
+                            <input class="form-control" type="text" [(ngModel)]="resource.name" name="name" required>
+          
+                            <label>Description:</label>
+                            <input class="form-control" type="text" [(ngModel)]="resource.description" name="description" required>
+          
+                            <label>Price:</label>
+                            <input class="form-control" type="number" [(ngModel)]="resource.price" name="price" required>
+          
+                            <label class="me-2">Category:</label>
+                            <select class="form-control me-3 custom-select" [(ngModel)]="resource.categorie" name="categorie" required>
+                                <option value="ELECTRONICS">Electronics</option>
+                                <option value="FURNITURE">Furniture</option>
+                                <option value="VEHICULES">Vehicles</option>
+                            </select>
+                            <label class="me-2">Status:</label>
+                            <div class="d-flex">
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="radio" value="ACTIVE" [(ngModel)]="resource.reStatus" name="reStatus" id="activeRadio">
+                                    <label class="form-check-label" for="activeRadio">Active</label>
+                                </div>
+          
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="radio" value="MAINTENANCE" [(ngModel)]="resource.reStatus" name="reStatus" id="maintenanceRadio">
+                                    <label class="form-check-label" for="maintenanceRadio">Maintenance</label>
+                                </div>
+          
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="radio" value="INACTIVE" [(ngModel)]="resource.reStatus" name="reStatus" id="inactiveRadio">
+                                    <label class="form-check-label" for="inactiveRadio">Inactive</label>
+                                </div>
+                                <br>
+          
+                                <button type="submit" class="form-control ms-2">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<script src="/src/assets/Front/jsaziz/AgoraRTC_N-4.7.3.js"></script>
+<script src='/src/assets/Front/jsaziz/agora.js'></script>
+</body>
+</html>
+
+
