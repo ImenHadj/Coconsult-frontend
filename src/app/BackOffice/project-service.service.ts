@@ -20,8 +20,9 @@ export class ProjectServiceService {
   addProject(project: Project) {
     return this.http.post<number>(`${this.baseUrl}/addProject`, project);
   }
-  
- 
+  addProjectandasseignclient(idc:number,project: Project) {
+    return this.http.post<number>(`${this.baseUrl}/addandasseignclient/`+idc, project);
+  }
  
  getAllProjects(): Observable<any[]> {
   return this.http.get<any[]>(this.baseUrl + "/getAll");
@@ -57,6 +58,9 @@ export class ProjectServiceService {
   calculateProfitabilityByYear(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/profitability-by-year`);
   }
-  
+   
+  calculateProjectProgression(projectId: number) {
+    return this.http.get<any>(`${this.baseUrl}/progression/${projectId}`, {});
+  }
   
 }

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/_services/storage.service'; 
 import { AuthService } from 'src/app/_services/auth.service'; 
 import { EventBusService } from 'src/app/_shared/event-bus.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-front',
@@ -11,39 +12,46 @@ import { EventBusService } from 'src/app/_shared/event-bus.service';
 })
 export class NavbarFrontComponent {
 
-private roles: string[] = [];
-isLoggedIn = false;
-showAdminBoard = false;
-showModeratorBoard = false;
-username?: string;
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
 
-eventBusSub?: Subscription;
-currentUser: any;
+  eventBusSub?: Subscription;
+  currentUser: any;
+  showforemploye: boolean = false;
+  showmoderator: boolean = false;
 
-constructor(
-  private storageService: StorageService,
-  private authService: AuthService,
-  private eventBusService: EventBusService
-) {}
+  constructor(
+    private storageService: StorageService,
+    private authService: AuthService,
+    private eventBusService: EventBusService,
+    private router: Router
 
-ngOnInit(): void {
-  console.log(this.username)
-  this.isLoggedIn = this.storageService.isLoggedIn();
+  ) { }
 
-  // Si l'utilisateur est connecté, obtenir son rôle
-  if (this.isLoggedIn) {
-    const user = this.storageService.getUser();
-    this.roles = user.roles;
+  ngOnInit(): void {
+    console.log(this.username)
+    this.isLoggedIn = this.storageService.isLoggedIn();
 
-    // Vérifier si l'utilisateur a le rôle d'administrateur
-    this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    // Si l'utilisateur est connecté, obtenir son rôle
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+      console.log(this.roles[0])
+      this.username=user.username;
+      // Vérifier si l'utilisateur a le rôle d'administrateur
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showforemploye = this.roles.includes('ROLE_EMPLOYEE') || this.roles.includes('ROLE_ADMIN');
+      this.showmoderator = this.roles.includes('ROLE_MODERATOR') || this.roles.includes('ROLE_ADMIN');
+    }
+
+    // Abonnement à l'événement de déconnexion
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
   }
-
-  // Abonnement à l'événement de déconnexion
-  this.eventBusSub = this.eventBusService.on('logout', () => {
-    this.logout();
-  });
-}
   /*this.currentUser = this.storageService.getUser();
 
   this.isLoggedIn = this.storageService.isLoggedIn();
@@ -62,14 +70,12 @@ ngOnInit(): void {
     this.logout();
   });
 }*/
-
 logout(): void {
   this.authService.logout().subscribe({
     next: res => {
       console.log(res);
       this.storageService.clean();
-
-      window.location.reload();
+      this.router.navigate(['/landingpage']);
     },
     error: err => {
       console.log(err);

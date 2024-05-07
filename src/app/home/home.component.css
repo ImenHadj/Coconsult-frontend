@@ -1,7 +1,10 @@
 .hero-section {
     background-color: #f8f9fa;
-    padding: 100px 0;
+    padding: 40px 0;
     text-align: center;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    height:150px;
   }
   
   .hero-section h1 {

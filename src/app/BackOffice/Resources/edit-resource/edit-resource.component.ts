@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Resources } from '../resources.model';
 import { ResourcesService } from '../resources.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -47,7 +48,17 @@ export class EditResourceComponent implements OnInit {
       this.resourceService.updateResource(this.resource).subscribe(
         () => {
           console.log('Resource updated successfully');
-          this.router.navigate(['admin/resources']); 
+          Swal.fire({
+            title: "Good job!",
+            text: "Resource updated Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            
+          
+          this.router.navigate(['admin/resources']); }, 2000);
         },
         (error) => {
           console.error('Error updating resource:', error);

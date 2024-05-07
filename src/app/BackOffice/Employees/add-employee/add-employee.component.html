@@ -71,6 +71,21 @@
                   </option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label for="team" class="form-label">Team</label>
+                <select
+                  class="form-select"
+                  formControlName="selectedTeam"
+                  (change)="changeTeams($event)"
+                >
+                  <option
+                    *ngFor="let depart of Teams"
+                    [value]="depart.team_id"
+                  >
+                    {{ depart.team_name }}
+                  </option>
+                </select>
+              </div>
 
               <div class="d-flex">
                 <button

@@ -6,6 +6,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Chart from 'chart.js/auto';
 import { monthlypaiment } from '../monthlypaiment.model';
 import { ExcelService } from 'src/app/core/services/excel.service';
+import { ProjectServiceService } from '../project-service.service';
 
 @Component({
   selector: 'app-clients',
@@ -28,7 +29,9 @@ export class ClientsComponent implements OnInit {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
   isFilterApplied = false;
-  constructor(private router: Router, private clientservice: ServiceclientService, private excelService: ExcelService) { }
+  projects: any[] | undefined;
+  numberofprojects: number =0;
+  constructor(private router: Router, private clientservice: ServiceclientService, private excelService: ExcelService,private projectService: ProjectServiceService) { }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
@@ -67,7 +70,11 @@ export class ClientsComponent implements OnInit {
       ];
       this.drawGraph();
     })
-
+    this.projectService.getAllProjects().subscribe((datas)=>{
+      this.projects=datas as any[];
+      this.numberofprojects = this.projects.length;
+      // Pour chaque projet, récupérez la progression du projet
+    })
   }
   exportDataToExcel(): void {
     const dataToExport = this.clients.map(client => ({

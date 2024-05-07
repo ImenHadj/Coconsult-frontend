@@ -1,4 +1,8 @@
-import { consultant } from "./consultant.model";
+import { Consultant } from "./consultant.model";
+import { Team } from "./team.model";
+import { Task } from "./task.model";
+import { Resources } from "./Resources/resources.model";
+import { Client } from "./client.model";
 
 export interface Project {
     projectid?: number;
@@ -14,8 +18,9 @@ export interface Project {
     priority: Priority;
     team: Team;
     tasks: Task[];
-    consultants: consultant[];
+    consultants: Consultant[];
     resources: Resources[];
+    client:Client;
   }
   
   export enum ProjectStatus {
@@ -37,20 +42,6 @@ export interface Project {
     none='none'
   }
   
-  export interface Team {
-    // Définissez la structure de l'équipe ici
-  }
+ 
   
-  export interface Task {
-   
-    // Définissez la structure de la tâche ici
-  }
-  
-  export interface Consultant {
-    // Définissez la structure du consultant ici
-  }
-  
-  export interface Resources {
-    // Définissez la structure des ressources ici
-  }
   

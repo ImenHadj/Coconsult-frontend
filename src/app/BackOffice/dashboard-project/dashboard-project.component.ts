@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProjectServiceService } from '../project-service.service';
 import { Project } from '../project.model';
+import { Task } from '../task.model';
 import { Router } from '@angular/router';
 import { Chart, ChartOptions, ChartType, Color } from 'chart.js';
+import { TaskServiceService } from '../task-service.service';
 
 
 @Component({
@@ -17,8 +19,12 @@ export class DashboardProjectComponent implements OnInit {
   projects: any[] = [];
   bestProject: Project | undefined;
   chartInstance: Chart | null = null;
+  
+  tasks: Task[] = [];
+  projectTasksVisible: boolean = false;
+  selectedProjectId: number | null = null;
 
-  constructor(private projectService: ProjectServiceService) {}
+  constructor(private projectService: ProjectServiceService,private taskService: TaskServiceService) {}
 
   ngOnInit(): void {
     this.projectService.getAllProjects().subscribe((datas) => {
@@ -80,5 +86,25 @@ export class DashboardProjectComponent implements OnInit {
     );
   }
 
+  toggleTasks(projectId: number): void {
+    if (this.selectedProjectId === projectId) {
+      this.projectTasksVisible = !this.projectTasksVisible;
+    } else {
+      this.selectedProjectId = projectId;
+      this.projectTasksVisible = true;
+      this.loadTasks(projectId);
+    }
+  }
+
+  loadTasks(projectId: number): void {
+    this.taskService.getTasksByProject(projectId).subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des tâches du projet : ', error);
+      }
+    );
+  }
 
 }

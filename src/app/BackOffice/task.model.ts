@@ -1,3 +1,5 @@
+import { Project } from "./project.model";
+
 export interface Task {  
     taskid: number;
     taskname: string;
@@ -33,7 +35,6 @@ export interface Task {
     FF='FF'
   }
   
-  export interface Project {
     
-  }
+  
   

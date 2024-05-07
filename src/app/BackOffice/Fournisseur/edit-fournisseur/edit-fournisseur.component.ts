@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fournisseur } from '../fournisseur.model';
 import { FournisseurService } from '../fournisseur.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-fournisseur',
@@ -47,7 +48,17 @@ export class EditFournisseurComponent {
       this.fournisseurService.updateFournisseur(this.fournisseur).subscribe(
         () => {
           console.log('fournisseur updated successfully');
-          this.router.navigate(['admin/fournisseur']); 
+          Swal.fire({
+          
+            text: "Supplier updated Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            
+         
+          this.router.navigate(['admin/fournisseur']);  }, 2000);
         },
         (error) => {
           console.error('Error updating fournisseur:', error);

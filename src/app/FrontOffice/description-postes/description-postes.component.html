@@ -1,0 +1,60 @@
+<div>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description Poste</title>
+
+    <!-- Section principale -->
+    <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+        <div class="container">
+            <!-- Section de description du poste -->
+            <div class="row my-4">
+                <!-- Colonne principale (détails du poste) -->
+                <div class="col-lg-7 col-12">
+                    <div class="recrutement-container" *ngIf="recrutement">
+                        <!-- Cadre pour les détails du poste -->
+                        <div class="cadre-details">
+                            <!-- Type de recrutement et lieu -->
+                            <div class="type-lieu">
+                                <h3>{{ recrutement.typeRecrutement }}</h3>
+                                <p class="text-orange">{{ recrutement.poste }}</p>
+                                <p class="d-flex align-items-center">
+                                    <i class="bi bi-geo-alt-fill me-2 text-info"></i>
+                                    {{ recrutement.lieu }}
+                                </p>
+                            </div>
+    
+                            <!-- Autres informations sur le recrutement -->
+                            <div class="autres-informations">
+                                <p>Expérience : {{ recrutement.experience }}</p>
+                                <p>Niveau d'étude : {{ recrutement.niveauDetude }}</p>
+                                <p>Postes vacants : {{ recrutement.postesVacants }}</p>
+                                <p>Date d'expiration : {{ recrutement.dateCloture | date: 'yyyy/MM/dd' }}</p>
+                                <p>Langue : {{ recrutement.langue }}</p>
+                                <p>Critères de sélection : {{ recrutement.criteresSelection }}</p>
+                                <p>Objectifs : {{ recrutement.objectifs }}</p>
+                                <p>Travail demandé : {{ recrutement.responsableRecrutement }}</p>
+                                <p>Salaire : {{ recrutement.salaire }} dt</p>
+                            </div>
+    
+                            <!-- Lien pour postuler -->
+                            <div class="encouragement">
+                                <p>
+                                    N'attendez pas pour vous garantir ce poste !
+                                    <span class="fleche">&#8594;</span> <!-- Flèche vers la droite -->
+                                    <a [routerLink]="['/accueil/candidat', recrutement.idRec]" class="btn btn-primary">Postuler</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne pour l'`iframe` Dialogflow -->
+                <div class="col-lg-5 col-12">
+                    <iframe width="350" height="430" allow="microphone;" bottom="40" src="https://console.dialogflow.com/api-client/demo/embedded/ed17ef60-4e0d-4a06-b374-95409437c8dc"></iframe>
+  
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

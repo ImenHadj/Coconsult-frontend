@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Reclamation } from '../reclamation.model';
 import { ReclamationService } from '../reclamation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reclamation',
@@ -31,6 +32,16 @@ export class ReclamationComponent {
       this.reclamationService.addReclamation(reclamationData).subscribe(
         (reclamationId) => {
           console.log('Reclamation added successfully with ID:', reclamationId);
+          Swal.fire({
+          
+            text: "Complaint added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         },
         (error) => {
           console.error('Error adding reclamation:', error);

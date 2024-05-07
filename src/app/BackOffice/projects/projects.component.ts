@@ -12,7 +12,7 @@ export class ProjectsComponent implements OnInit {
 
   projectCost: number | null = null;
   projects: any[] = []; 
-
+  projectProgress: { [projectId: number]: number } = {}; 
   constructor( private projectService: ProjectServiceService,private router: Router ) {}
   
  
@@ -20,6 +20,8 @@ export class ProjectsComponent implements OnInit {
     console.log("mini.......................");
     this.projectService.getAllProjects().subscribe((datas)=>{
       this.projects=datas as any[];
+      // Pour chaque projet, récupérez la progression du projet
+      this.projects.forEach(project => this.getProjectProgress(project.projectid));
     })
   }
 
@@ -80,5 +82,30 @@ goToCalendar(projectId: number): void {
 
 
 
+  getProjectProgress(projectId: number): void {
+    this.projectService.calculateProjectProgression(projectId)
+      .subscribe(progress => {
+        // Stocker la progression dans l'objet projectProgress
+        this.projectProgress[projectId] = progress;
+      });
+  }
+ 
+
+  // getProjectProgress(projectId: number): void {
+  //   this.projectService.calculateProjectProgression(projectId)
+  //     .subscribe(progress => {
+  //       // Trouver le projet correspondant dans la liste projects
+  //       const projectToUpdate = this.projects.find(project => project.projectid === projectId);
+        
+  //       // Mettre à jour la progression du projet
+  //       if (projectToUpdate) {
+  //         projectToUpdate.progress = progress;
+  //       }
+  //     });
+  // }
+  
+  truncatePercentage(percentage: number): number {
+    return Math.floor(percentage); // Utiliser Math.floor pour arrondir vers le bas
+  }
 
 }

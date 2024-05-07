@@ -111,6 +111,7 @@ export class SidebarBackComponent {
       this.router.navigate(['/accueil']);
       return false;
   }
+
   
   return true;
 }

@@ -4,6 +4,7 @@ import { Fournisseur } from '../../Fournisseur/fournisseur.model';
 import { FournisseurService } from '../../Fournisseur/fournisseur.service';
 import { Commande } from '../commande.model';
 import { CommandeService } from '../commande.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-commande',
@@ -54,9 +55,20 @@ export class AddCommandeComponent {
         (commandeId) => {
           console.log('commande added successfully with ID:', commandeId);
           // Réinitialiser le formulaire et le fournisseur sélectionné après l'ajout de la commande
+          Swal.fire({
+           
+            text: "Order added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            
+          
           this.commandeForm.reset();
           this.selectedFournisseur = null;
           this.showStep1 = true;
+          window.location.reload();}, 2000);
         },
         (error) => {
           console.error('Error adding commande:', error);

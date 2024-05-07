@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DetailsrecrutementService } from '../detailsrecrutement.service';
 import { Candidat } from 'src/app/FrontOffice/Candidat/candidat.model';
-
+import { DetailRecrutement } from './detail-recrutement.model';
 
 @Component({
   selector: 'app-details-recrutement-modal',

@@ -1,171 +1,181 @@
 <head> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 
 <main>
-    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-        <div class="container">
-            <div class="row">
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
 
-                <div class="col-lg-8 col-12 mx-auto">
-                    <h1 class="text-white text-center">Current Clients </h1>
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center">Current Clients </h1>
 
-                    <h6 class="text-center">platform for creatives around the world</h6>
+                <h6 class="text-center">platform for creatives around the world</h6>
 
-                
-                </div>
-                <div class="wrapper">
-                    <i id="left" class="fa-solid fa-angle-left"></i>
-                    <ul class="carousel">
-                      <li class="card" *ngFor="let p of projects">
-                        
-
-                     <h2> {{p.client.nom}} {{p.client.prenom}}</h2>
-                        <p>{{p.client.email}}</p>
-                        <span (click)="scrollToContent()" (click)="showproject(p.client.idClient,p.client.nom,p.client.prenom)" style="color: rgb(115, 170, 189);">related project </span>
-                     
-                      </li>
-                     
-                    </ul>
-                    <i id="right" class="fa-solid fa-angle-right"></i>
-                  </div>
+            
             </div>
-        </div>
-    </section>
+            <div class="wrapper">
+                <i id="left" class="fa-solid fa-angle-left"></i>
+                <ul class="carousel">
+                  <li class="card" *ngFor="let p of projects">
+                    
 
-
-
-    <section class="explore-section section-padding" id="section_2">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-12 text-center">
-                    <h2 class="mb-4">Project for Client :{{nom}} {{prenom}}</h2>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Project</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Contact Team</button>
-                    </li>
+                 <h2> {{p.client.nom}} {{p.client.prenom}}</h2>
+                    <p>{{p.client.email}}</p>
+                    <span (click)="scrollToContent()" (click)="showproject(p.client.idClient,p.client.nom,p.client.prenom)" style="color: rgb(115, 170, 189);">related project </span>
+                 
+                  </li>
+                 
                 </ul>
-            </div>
+                <i id="right" class="fa-solid fa-angle-right"></i>
+              </div>
         </div>
-
-        <div class="container" id="scroll">
-            <div class="row">
-
-                <div class="col-12">
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
-                            <div class="row" >
-                                <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-                                    <div class="custom-block bg-white shadow-lg">
-                                        <a href="topics-detail.html">
-                                            <div class="d-flex">
-                                                <div>
-                                                    <h5 class="mb-2">Contact via Messages</h5>
-                                                   
-                                                </div>
-                                                <span class="badge bg-design rounded-pill ms-auto"><i class="bi bi-chat-dots"></i></span>
-                                            </div>
-                                           
-                                        </a>
-                                    </div>
-                                </div>
-                            
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-block bg-white shadow-lg">
-                                        <a href="topics-detail.html">
-                                            <div class="d-flex">
-                                                <div>
-                                                    <h5 class="mb-2">Video Conference Project Team </h5>
-                                                    <a  class="btn custom-btn mt-2 mt-lg-3" href="/video">Video Call <i class="bi bi-telephone-fill"></i></a>
-                                                </div>
-                                                <span class="badge bg-design rounded-pill ms-auto"><i class="bi bi-telephone-fill"></i></span>
-                                            </div>
-                                            
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                          
-                        </div>
+    </div>
+</section>
 
 
 
-                        <div class="tab-pane fade show active" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0" *ngFor="let p of sprojects"> 
-                              <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-                                    <div class="custom-block bg-white shadow-lg">
-                                        <a href="topics-detail.html">
-                                            <div class="d-flex">
-                                                <div>
-                                                    <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span style="color: #000000;font-weight:bold;">Project Name :</span>{{p.projectname}}</h5>
+<section class="explore-section section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
 
-                                                    <p class="mb-0" class="descp">{{p.projectdescription}}</p>
-                                                </div>
+            <div class="col-12 text-center">
+                <h2 class="mb-4">Project for Client :{{nom}} {{prenom}}</h2>
+            </div>
 
-                                                <span class="badge bg-finance rounded-pill ms-auto" style="width: auto;">{{p.status}}</span>
-                                            </div>
+        </div>
+    </div>
 
-                                          
-                                        </a>
-                                        <div class="dates">
-                                        <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span  style="color: #606166;">Start Date :</span>{{p.startDate | date:'yyyy-MM-dd HH:mm'}}</h5>
-                                        <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span  style="color: #606166;">End Date :</span>{{p.endDate | date:'yyyy-MM-dd HH:mm'}}</h5>
-                                        </div>
-                                        <a  class="btn custom-btn mt-2 mt-lg-3">Track Project Porgress</a>
-                                    </div>
-                                </div>
+    <div class="container-fluid">
+        <div class="row">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Project</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Contact Team</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-block bg-white shadow-lg">
-                                        <a href="topics-detail.html">
-                                            <div class="d-flex">
-                                                <div>
-                                                    <h5 class="mb-2">Video Conference Project Team </h5>
-                                                    <a  class="btn custom-btn mt-2 mt-lg-3" id="vidcall" href="/video">Video Call <i class="bi bi-telephone-fill"></i></a>
-                                                   
-                                                </div>
-                                                <span class="badge bg-design rounded-pill ms-auto" id="vidcall"><i class="bi bi-telephone-fill"></i></span>
-                                            </div>
-                                            
-                                        </a>
-                                        <br>
-                                        <a class="secondrow">
+    <div class="container" id="scroll">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
+                        <div class="row" >
+                            <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="topics-detail.html">
                                         <div class="d-flex">
                                             <div>
-                                                <h5 class="mb-2">Contact Via Messages</h5>
-                                                <a  class="btn custom-btn mt-2 mt-lg-3" id="sendmess">Send Message <i class="bi bi-messenger"></i></a>
+                                                <h5 class="mb-2">Contact via Messages</h5>
                                                
                                             </div>
-                                            <span class="badge bg-design rounded-pill ms-auto"  id="sendmess"><i class="bi bi-messenger"></i></span>
+                                            <span class="badge bg-design rounded-pill ms-auto"><i class="bi bi-chat-dots"></i></span>
                                         </div>
-                                        </a>
-                                    </div>
-                    
+                                       
+                                    </a>
                                 </div>
-                                
+                            </div>
+                        
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="topics-detail.html">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Video Conference Project Team </h5>
+                                                <a  class="btn custom-btn mt-2 mt-lg-3" href="/video">Video Call <i class="bi bi-telephone-fill"></i></a>
+                                            </div>
+                                            <span class="badge bg-design rounded-pill ms-auto"><i class="bi bi-telephone-fill"></i></span>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
                             </div>
                         </div>
-
-
-
+                      
                     </div>
+
+
+
+                    <div class="tab-pane fade show active" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0" *ngFor="let p of sprojects"> 
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="topics-detail.html">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span style="color: #000000;font-weight:bold;">Project Name :</span>{{p.projectname}}</h5>
+
+                                                <p class="mb-0" class="descp">{{p.projectdescription}}</p>
+                                            </div>
+
+                                            <span class="badge bg-finance rounded-pill ms-auto" style="width: auto;">{{p.status}}</span>
+                                        </div>
+
+                                      
+                                    </a>
+                                    <div class="dates">
+                                    <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span  style="color: #606166;">Start Date :</span>{{p.startDate | date:'yyyy-MM-dd HH:mm'}}</h5>
+                                    <h5 class="mb-2" style="color: #536DFE;font-weight:bold;"><span  style="color: #606166;">End Date :</span>{{p.endDate | date:'yyyy-MM-dd HH:mm'}}</h5>
+                                    </div>
+                                    <a >Track Project Porgress</a>
+                                    <span class="progress-label">{{ truncatePercentage(projectProgress[p.projectid]) }}%</span>                         <!-- Ajoutez une barre de progression -->
+                                    <div class="progress w-100 mt-3 custom-progress-bar">
+                                      <div class="progress-bar bg-info text-dark custom-progress-bar-fill" role="progressbar" 
+                                           [style.width.%]="projectProgress[p.projectid]" 
+                                           aria-valuemin="0" aria-valuemax="100" 
+                                           [style.height.px]="12">
+                                         
+                                      </div>
+                                      
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="topics-detail.html">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Video Conference Project Team </h5>
+                                                <a  class="btn custom-btn mt-2 mt-lg-3" id="vidcall" href="/video">Video Call <i class="bi bi-telephone-fill"></i></a>
+                                               
+                                            </div>
+                                            <span class="badge bg-design rounded-pill ms-auto" id="vidcall"><i class="bi bi-telephone-fill"></i></span>
+                                        </div>
+                                        
+                                    </a>
+                                    <br>
+                                    <a class="secondrow">
+                                    <div class="d-flex">
+                                        <div>
+                                            <h5 class="mb-2">Contact Via Messages</h5>
+                                            <a  class="btn custom-btn mt-2 mt-lg-3" id="sendmess">Send Message <i class="bi bi-messenger"></i></a>
+                                           
+                                        </div>
+                                        <span class="badge bg-design rounded-pill ms-auto"  id="sendmess"><i class="bi bi-messenger"></i></span>
+                                    </div>
+                                    </a>
+                                </div>
+                
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 </main>
 

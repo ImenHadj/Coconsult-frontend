@@ -10,6 +10,9 @@ import { ProjectServiceService } from '../project-service.service';
   styleUrls: ['./addconsultant.component.css']
 })
 export class AddconsultantComponent implements OnInit{
+onCancel() {
+  this.router.navigate(['admin/projects']);  
+}
   consultantForm!: FormGroup;
   projects: any[] =[]; 
  
@@ -36,28 +39,39 @@ export class AddconsultantComponent implements OnInit{
       availability: [true, Validators.required],
       hourlyRate:[0, Validators.required],
       hoursWorked:[0, Validators.required],
-      projectIds: [] // Champ pour sélectionner les projets
+      projectId: ['', Validators.required] // Champ pour sélectionner les projets
     });
   }
 
 
 
   onSubmit(): void {
-    if (this.consultantForm && this.consultantForm.valid) {
-      const formData = this.consultantForm.value;
-      const projectIds: any[] = formData.projectIds;
-  
-  
-      this.consultantService.addAndAssignConsultantToProjects(formData, projectIds).subscribe(
-        result => {
-          console.log('Consultant added and assigned to projects:', result);
-        },
-        error => {
-          console.error('Error adding consultant:', error);
+      if (this.consultantForm) {
+        // Vérifier si le formulaire est valide
+        if (this.consultantForm.valid) {
+          // Récupérer les données du formulaire
+          const formData = this.consultantForm.value;
+          // Vérifier si formData et formData.projectId sont définis
+          if (formData && formData.projectId) {
+            // Appeler le service pour ajouter la tâche et l'associer au projet
+            this.consultantService.addConsultantAndAssignToProject(formData.projectId, formData).subscribe(result => {
+              console.log('consultant added and assigned to project:', result);
+            },
+            
+            error => {
+              console.error('Error adding task:', error);
+            });
+            this.router.navigate(['admin/projects']);  
+          }
+    
+        } else {
+          console.error('Form is invalid');
         }
-      );
-    } else {
-      console.error('Form is invalid');
+      } else {
+        console.error('Form is not initialized');
+      }
     }
-}
+  
+  
+  
 }

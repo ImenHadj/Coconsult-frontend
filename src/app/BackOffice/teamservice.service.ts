@@ -38,4 +38,8 @@ export class TeamserviceService {
   getTeamById(teamId: number) {
     return this.http.get<Team>(`${this.baseUrl}/team/${teamId}`);
    }
+   
+   getEmployeeByTeam(teamId: number) {
+    return this.http.get<Employee[]>(`${this.baseUrl}/getempl/${teamId}`);
+   }
 }

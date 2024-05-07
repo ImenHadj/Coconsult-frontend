@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stock } from 'src/app/BackOffice/Stock/stock.model';
 import { StockService } from 'src/app/BackOffice/Stock/stock.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-stockf',
@@ -47,7 +48,16 @@ export class EditStockfComponent implements OnInit {
       this.stockservice.updateStock(this.stock).subscribe(
         () => {
           console.log('stock updated successfully');
-          this.router.navigate(['accueil/stock']); 
+          Swal.fire({
+            text: "Stock update Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+           
+         
+          this.router.navigate(['accueil/stock']);  }, 2000);
         },
         (error) => {
           console.error('Error updating stock:', error);

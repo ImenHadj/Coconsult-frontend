@@ -62,6 +62,11 @@ getNombreCandidatsParPoste(): Observable<Map<string, number>> {
 ParExperiencePro(): Observable<Map<string, number>> {
   // Assurez-vous que l'URL est correcte
   return this.http.get<Map<string, number>>(`${this.apiUrl}/candidatsAcceptesParPosteParExperiencPro`);
+
+}
+
+getRecruttById(idRec: number): Observable<Recrutement> {
+  return this.http.get<Recrutement>(`${this.apiUrl}/getByid/${idRec}`);
 }
    
 }

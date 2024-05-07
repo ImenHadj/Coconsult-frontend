@@ -103,8 +103,4 @@ export class AuthService {
     
     // Retourner l'identifiant de l'utilisateur s'il est défini, sinon retourner null
     return userId !== null ? userId : null;
-  }
-  
-  
- 
-}
+  }}

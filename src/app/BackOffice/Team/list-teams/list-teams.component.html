@@ -34,7 +34,7 @@
   </main>-->
 
 
-  <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+  <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
     <div class="container">
       <div class="row align-items-center mb-3">
         <!-- Titre et boutons d'action -->
@@ -47,7 +47,7 @@
           <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
            
             <!-- Bouton "Add New" -->
-            <button class="button-43" role="button"[routerLink]="['/admin/addteam']" >Add New</button>
+            <button class="button-43" role="button"[routerLink]="['/admin/addteam']" > <i id="team" class="bi bi-microsoft-teams"></i> Add New </button>
           </div>
         </div>
       </div>
@@ -95,7 +95,8 @@
             </div>
             <!-- Bouton "View Members" -->
             <div class="card-footer">
-              <button class="button-33" role="button"[routerLink]="['/admin/viewmembers']"  >view members </button>
+              <button class="button-33" role="button" (click)="members(team.team_id)" >view members </button>
+             
             </div>
           </div>
         </div>

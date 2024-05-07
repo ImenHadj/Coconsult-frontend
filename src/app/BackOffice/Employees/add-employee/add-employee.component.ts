@@ -5,6 +5,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SericeEmployeeService } from '../../../core/services/serice-employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceDepartementService } from 'src/app/core/services/service-departement.service';
+import { TeamserviceService } from '../../teamservice.service';
+import { Team } from '../../team.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -17,11 +19,14 @@ export class AddEmployeeComponent implements OnInit {
   employeeId: number | null = null;
   Departements: Departement[] = [];
   selectedDepartement: any;
+  Teams: Team[] = [];
+  selectedTeam:any;
 
   constructor(
     private fb: FormBuilder,
     private employeeService: SericeEmployeeService,
     private departmentService: ServiceDepartementService,
+    private teamService: TeamserviceService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -40,16 +45,37 @@ export class AddEmployeeComponent implements OnInit {
         console.error('Erreur fetching');
       }
     );
+    this.teamService.getAllTeams().subscribe(
+      (data: Team[]) => {
+        this.Teams = data;
+        if (this.isEditMode) {
+          this.fetchEmployeeDetails();
+        }
+      },
+      (error) => {
+        console.error('Erreur fetching');
+      }
+    );
   
     // Subscribe to value changes of the form
     this.EmployeeForm.valueChanges.subscribe(() => {
       this.selectedDepartement = this.EmployeeForm.get('selectedDepartement')?.value;
+    });
+    
+    this.EmployeeForm.valueChanges.subscribe(() => {
+      this.selectedTeam = this.EmployeeForm.get('selectedTeam')?.value;
     });
   }
   
   changeDepartments(event: any): void {
     if (event.target.value) {
       this.selectedDepartement = event.target.value;
+    }
+  }
+
+  changeTeams(event: any): void {
+    if (event.target.value) {
+      this.selectedTeam = event.target.value;
     }
   }
 
@@ -78,6 +104,8 @@ export class AddEmployeeComponent implements OnInit {
             date_embauche: date.toISOString().split('T')[0],
             posteEmployee: employee.posteEmployee,
             selectedDepartement: employee.departement.id_departement, // Set the value of the form control directly
+            selectedTeam: employee.teams.team_id, // Set the value of the form control directly
+
           });
         });
     }
@@ -89,6 +117,9 @@ export class AddEmployeeComponent implements OnInit {
       posteEmployee: ['', Validators.required],
       selectedDepartement: [null, Validators.required], // Define the selectedDepartement control
       departements: this.fb.array([]),
+      selectedTeam: [null, Validators.required],
+      teams: this.fb.array([]),
+
     });
   }
 
@@ -100,7 +131,9 @@ export class AddEmployeeComponent implements OnInit {
           .updateEmployee(
             this.employeeId,
             employeeData,
-            this.selectedDepartement
+            this.selectedDepartement,
+            this.selectedTeam
+
           )
           .subscribe(
             () => {
@@ -116,11 +149,15 @@ export class AddEmployeeComponent implements OnInit {
                 this.selectedDepartement
               ); // Log the request payload
               // window.location.reload();
+              console.log(
+                'this.selectedDepartement :',
+                this.selectedTeam
+              ); // Log the request payload
             }
           );
       } else {
         this.employeeService
-          .addEmployee(employeeData, this.selectedDepartement)
+          .addEmployee(employeeData, this.selectedDepartement,this.selectedTeam)
           .subscribe(
             (clientId) => {
               console.log('Employee added successfully with ID:', clientId);

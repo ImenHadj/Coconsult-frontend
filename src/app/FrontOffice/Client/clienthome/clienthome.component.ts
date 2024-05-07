@@ -4,6 +4,7 @@ import { ProjclientService } from '../projclient.service';
  import { Client } from "src/app/BackOffice/client.model";
  import { StorageService } from 'src/app/_services/storage.service';
  import { meethistory } from '../meethistory.model';
+import { ProjectServiceService } from 'src/app/BackOffice/project-service.service';
 
 @Component({
   selector: 'app-clienthome',
@@ -13,7 +14,8 @@ import { ProjclientService } from '../projclient.service';
 export class ClienthomeComponent implements OnInit{
   numberOfClients: number | undefined;
   currentuser: any;
-  constructor(private route: ActivatedRoute,private router: Router,private projclient:ProjclientService, private storageService: StorageService){}
+  projectProgress: { [projectId: number]: number } = {}; 
+  constructor(private route: ActivatedRoute,private router: Router,private projclient:ProjclientService, private storageService: StorageService,private projectService: ProjectServiceService){}
   clients: any[] = [];
   projects: any[] = [];
   sprojects: any[] = [];
@@ -44,15 +46,27 @@ export class ClienthomeComponent implements OnInit{
         this.prenom=prenom;
   this.projclient.projbyidclient(idClient).subscribe((datas) => {
     this.sprojects = datas as any[];
+    this.sprojects.forEach(project => this.getProjectProgress(project.projectid));
     console.log(this.sprojects)
    
   });
 }
+getProjectProgress(projectId: number): void {
+  this.projectService.calculateProjectProgression(projectId)
+    .subscribe(progress => {
+      // Stocker la progression dans l'objet projectProgress
+      this.projectProgress[projectId] = progress;
+    });
+}
+
 scrollToContent() {
   const contentElement = document.getElementById('scroll');
   if (contentElement) {
     contentElement.scrollIntoView({ behavior: 'smooth' });
   }
+}
+truncatePercentage(percentage: number): number {
+  return Math.floor(percentage); // Utiliser Math.floor pour arrondir vers le bas
 }
 
 

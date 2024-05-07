@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fournisseur } from '../fournisseur.model';
 import { FournisseurService } from '../fournisseur.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-fournisseur',
@@ -30,7 +31,17 @@ export class AddFournisseurComponent {
       const fournisseurData: Fournisseur = this.fournisseurForm.value;
       this.fournisseurService.addFournisseur(fournisseurData).subscribe(
         (fournisseurId) => {
-          console.log('Fournisseur added successfully with ID:', fournisseurId);          
+          console.log('Fournisseur added successfully with ID:', fournisseurId); 
+          Swal.fire({
+         
+            text: "Supplier added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);         
         },
         (error) => {
           console.error('Error adding fournisseur:', error);

@@ -11,12 +11,12 @@ import { DetailsrecrutementService } from '../detailsrecrutement.service';
   providers: [ServicecandidatService]
 })
 export class AllcandidatComponent implements OnInit {
-
-  candidats: Candidat[] = [];
-  selectedCandidat: Candidat | null = null;
+ 
   http: any;
   selectedCandidatDetails: any; 
-  
+  candidats: Candidat[] = [];
+  selectedCandidat: Candidat | null = null;
+
   constructor(private router: Router, private servicecandidat: ServicecandidatService) {}
 
   ngOnInit(): void {
@@ -51,9 +51,7 @@ export class AllcandidatComponent implements OnInit {
     this.selectedCandidat = candidat;
   }
 
-  navigateToAcceptedCandidates(): void {
-    this.router.navigate(['/candidats-acceptes']);
-  }
+ 
 
 
   fetchCandidats(): void {
@@ -77,5 +75,10 @@ export class AllcandidatComponent implements OnInit {
     }
   }
   
+  navigateToAcceptedCandidates(): void {
+    this.router.navigate(['/candidats-acceptes']);
+  }
+
+
   
 }

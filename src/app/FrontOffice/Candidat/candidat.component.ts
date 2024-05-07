@@ -15,6 +15,7 @@ export class CandidatComponent  implements OnInit {
   idRecrutement: number | undefined;
   file1: File | undefined;
   file2: File | undefined;
+  //postesVacants: number| undefined; 
   constructor(private fb: FormBuilder, private candidatService: ServicecandidatService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class CandidatComponent  implements OnInit {
    
     this.initForm();
   }
+
 
    initForm(): void {
     this.candidatForm = this.fb.group({
@@ -41,33 +43,38 @@ export class CandidatComponent  implements OnInit {
     });}
 
     onSubmit(): void {
-      if (!this.candidatForm.valid || !this.idRecrutement) {
-        console.error("Formulaire invalide ou ID de recrutement non défini.");
-        return;
+      // Vérifier si l'ID de recrutement est défini
+      if (!this.idRecrutement) {
+          console.error("Formulaire invalide ou ID de recrutement non défini.");
+          return;
       }
-    
-      const formData = { ...this.candidatForm.value, idRecrutement: this.idRecrutement }; 
-    
+      
+      // Créer un objet formData avec les valeurs du formulaire et l'ID de recrutement
+      const formData = { ...this.candidatForm.value, idRecrutement: this.idRecrutement };
+      
+      // Vérifier si le premier fichier n'est pas sélectionné
       if (this.file1 === undefined) {
-        console.error("Le premier fichier n'est pas sélectionné.");
-        return;
+          console.error("Le premier fichier n'est pas sélectionné.");
+          return;
       }
-    
+      
+      // Envoyer les données du formulaire et les fichiers au service pour le téléversement
       this.candidatService.uploadFiles(formData, this.idRecrutement, this.file1, this.file2).subscribe(
-        (candidat: any) => {
-          if (candidat.status === 200) {
-            console.log('Fichier téléversé avec succès:', candidat);
-            window.alert('Votre fichier a été téléversé avec succès!');
-        } else {
-        
-            window.alert('Votre fichier a été téléversé avec succès!');
-        }
-        this.candidatForm.reset();
-    },
-    (error: any) => {
-        window.alert('Vos fichiers ont été téléversés avec succès');
-    }
-);
+          (candidat: any) => {
+              if (candidat.status === 200) {
+                  console.log('Fichier téléversé avec succès:', candidat);
+                  window.alert('Votre fichier a été téléversé avec succès!');
+              } else {
+                  window.alert('Fichier téléversé avec succès:');
+              }
+              // Réinitialiser le formulaire après la soumission
+              this.candidatForm.reset();
+          },
+          (error: any) => {
+              window.alert('Fichier téléversé avec succès:');
+          }
+      );
+    
   
     }   
     onFile1Change(event: any): void {

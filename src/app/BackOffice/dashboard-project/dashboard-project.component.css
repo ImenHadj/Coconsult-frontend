@@ -1,6 +1,6 @@
 .chart {
-  width: 400px; /* Largeur souhaitée */
-  height: 500px; /* Hauteur souhaitée */
+  width: 200px; /* Largeur souhaitée */
+  height: 2200px; /* Hauteur souhaitée */
 }
 /* Style pour le bouton */
 .btn-custom {
@@ -10,7 +10,7 @@
   border-radius: 5px; /* Coins arrondis */
   padding: 10px 20px; /* Espacement à l'intérieur du bouton */
   cursor: pointer; /* Curseur de souris de type pointeur */
-  transition: background-color 0.3s; /* Transition de couleur de fond */
+  transition: background-color 0.3s; 
 }
 
 /* Style pour le texte à l'intérieur du bouton */
@@ -47,4 +47,106 @@
 .text-xs {
   font-size: 14px; /* Taille de la police */
   margin-bottom: 0; /* Supprimer la marge inférieure */
+}
+
+ .box-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 24px;
+  margin-top: 20px;
+  height: 100px;
+}
+
+#content main .box-info li {
+  padding: 24px;
+  height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  grid-gap: 24px;
+  background-color: #cfe8ff;
+}
+#content #maa{
+  margin-top: 1px;
+  background-color:transparent;
+}
+#content main .box-info li .bx {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content main .box-info li:nth-child(1) .bx {
+  background-color: lightblue;
+  color: blue;
+}
+
+#content main .box-info li:nth-child(2) .bx {
+  background-color: lightyellow;
+  color: yellow;
+}
+
+#content main .box-info li:nth-child(3) .bx {
+  background-color: rgb(255, 248, 224);
+  color: orange;
+}
+
+#content main .box-info li .text h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(34, 34, 45);
+}
+
+#content main .box-info li .text p {
+  color: var(--dark);
+}
+
+#content main {
+  width: 100%;
+  padding: 36px 24px;
+  font-family: var(--poppins);
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 5px;
+  height: 200px;
+}
+
+#title h4 {
+  font-family: var(--poppins);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(86, 86, 92);
+}
+
+.mat-mdc-paginator-container {
+  background: var(--secondary-color);
+  color: rgb(27, 27, 63);
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+#chartscontainer {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.paimenttypes h3 {
+  margin-left: 60px;
+}
+
+.paimenttypes {
+  padding-top: 20px;
+}
+.cont{
+  display: flex;
+  flex-direction: row;
+  gap: 250px;
 }

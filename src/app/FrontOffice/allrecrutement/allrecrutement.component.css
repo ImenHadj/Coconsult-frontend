@@ -1,0 +1,51 @@
+.text-orange {
+    color: #be8720; /* Orange clair */
+}
+.recrutement-item p {
+    font-size: 0.9rem; /* Ajustez la taille selon vos préférences */
+}
+
+
+
+
+
+/* Conteneur du champ de recherche */
+.search-container {
+    width: 400px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex; /* Affichage flex pour aligner l'icône et le champ de recherche */
+    align-items: center; /* Aligner les éléments verticalement au centre */
+    border: 1px solid #ccc; /* Bordure pour le conteneur */
+    border-radius: 4px; /* Coins arrondis */
+    padding: 5px; /* Espacement interne */
+    
+}
+
+/* Icône de recherche */
+.search-icon {
+    margin-right: 10px; /* Espacement entre l'icône et le champ de recherche */
+    color: #007bff; /* Couleur de l'icône (bleue) */
+}
+
+/* Champ de recherche */
+.input-search {
+    width: 50%;
+    flex: 1; /* Le champ de recherche prend tout l'espace restant */
+    border: none; /* Pas de bordure interne car le conteneur a déjà une bordure */
+    outline: none; /* Pas d'effet de focus bleu */
+}
+
+iframe {
+    border: none; /* Supprime les bordures de l'iframe */
+    border-radius: 20px; /* Arrondit les coins pour donner l'apparence d'une bulle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre portée pour un effet en relief */
+    /* Permet à l'iframe de rester en position fixe */
+    bottom: 50px; /* Place l'iframe à 50px du bas de l'écran */
+    right: 20px; /* Place l'iframe à 20px de la droite de l'écran */
+    width: 350px; /* Définit la largeur de l'iframe */
+    height: 430px; /* Définit la hauteur de l'iframe */
+    background-color: #f5f5f5; /* Définit la couleur de fond de l'iframe */
+    padding: 10px; /* Ajoute un espace intérieur à l'iframe */
+    margin-top: 250px;
+}

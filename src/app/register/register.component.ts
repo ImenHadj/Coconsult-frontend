@@ -34,21 +34,6 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(): void {
     const { username, email, password, image, role} = this.form;
-
-   /* this.authService.register(username, email, password, image).subscribe({
-      next: data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.authService.storeToken(data.token); // Stocker le token après l'inscription réussie
-
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    });
-  }*/
   this.authService.register(username, email, password, image,role).subscribe({
     next: (response: any) => {
       console.log(response);

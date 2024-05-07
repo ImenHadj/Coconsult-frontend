@@ -4,6 +4,7 @@ import { Commande } from 'src/app/BackOffice/commande/commande.model';
 import { CommandeService } from 'src/app/BackOffice/commande/commande.service';
 import { Fournisseur } from 'src/app/BackOffice/Fournisseur/fournisseur.model';
 import { FournisseurService } from 'src/app/BackOffice/Fournisseur/fournisseur.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-component',
@@ -54,9 +55,19 @@ export class AddComponentComponent {
         (commandeId) => {
           console.log('commande added successfully with ID:', commandeId);
           // Réinitialiser le formulaire et le fournisseur sélectionné après l'ajout de la commande
+          Swal.fire({
+            text: "Order added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+         
+         
           this.commandeForm.reset();
           this.selectedFournisseur = null;
           this.showStep1 = true;
+          window.location.reload(); }, 2000);
         },
         (error) => {
           console.error('Error adding commande:', error);

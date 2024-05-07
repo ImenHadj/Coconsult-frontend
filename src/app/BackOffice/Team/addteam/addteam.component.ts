@@ -75,7 +75,7 @@ export class AddteamComponent {
         this.teamservice.addTeamAndAssignToProject(formData, formData.project,formData.idprod).subscribe(
           (result) => {
             console.log('Team added and assigned to project:', result);
-            this.assignEmployeesToTeam(result.team_id, this.selectedEmployees);
+          //  this.assignEmployeesToTeam(result.team_id, this.selectedEmployees);
             this.router.navigate([`admin/projects`]);
           },
           (error) => {

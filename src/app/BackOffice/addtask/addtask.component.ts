@@ -38,9 +38,7 @@ typeDependanceOptions:string[] = [];
         taskdescription: ['', Validators.required],
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
-        duration: ['', Validators.required],
-        priority: ['', Validators.required],
-        progression: ['', Validators.required], 
+        priority: ['', Validators.required], 
         status: ['', Validators.required],
         dueDate: ['', Validators.required], 
         typeDependance: ['', Validators.required], 
@@ -71,7 +69,7 @@ typeDependanceOptions:string[] = [];
         error => {
           console.error('Error adding task:', error);
         });
-        this.router.navigate(['admin/tasks/:id']);  
+        this.router.navigate(['admin/projects']);  
       }
 
     } else {

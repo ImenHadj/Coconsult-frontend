@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Resources } from 'src/app/BackOffice/Resources/resources.model';
 import { ResourcesService } from 'src/app/BackOffice/Resources/resources.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-resourcef',
@@ -47,7 +48,16 @@ export class EditResourcefComponent {
       this.resourceService.updateResource(this.resource).subscribe(
         () => {
           console.log('Resource updated successfully');
-          this.router.navigate(['accueil/resource']); 
+          Swal.fire({
+            text: "Resource updated Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+        
+         
+          this.router.navigate(['accueil/resource']);  }, 2000);
         },
         (error) => {
           console.error('Error updating resource:', error);

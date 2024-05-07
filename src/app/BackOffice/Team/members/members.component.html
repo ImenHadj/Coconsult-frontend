@@ -1,1 +1,41 @@
-<p>members works!</p>
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-primary title">
+                <span class="glyphicon glyphicon-align-justify icon"></span>
+                <span class="title-text" style="color: #68c3d1; font-family: 'Arial', sans-serif;">Employees list</span>
+            </h2>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 bootstrap snippets bootdeys" class="card" *ngFor="let member of members">
+                <div class="product-content product-wrap clearfix">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <div class="product-image">
+                                <img src="./assets/Back/images/image.jpeg" style="max-width: 150px;"> <!-- Définir la largeur maximale de l'image -->
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="product-deatil">
+                                <h5 class="name">
+                                    <a id="titrename">
+                                      {{ usernames[member.userId]}}
+                                    </a>
+                                </h5>
+                                <p class="human">
+                                    <span>{{ member.posteEmployee }}</span>
+                                </p>
+                                <span class="tag1"></span>
+                            </div>
+                            <div class="description">
+                                <p><span id="blue">Date of Hire:</span> {{ member.date_embauche }}</p>
+                                <p><span id="blue">Department:</span> {{ member.departement.libelle }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

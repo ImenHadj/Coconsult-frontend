@@ -7,3 +7,20 @@
   right: 0;
   left: auto;
 }
+.gohome a{
+color: white;
+font-size: larger;}
+ #home{
+  color: yellow;
+}
+
+.gohome a:hover{
+  color:yellow;
+}
+.gohome{
+  background-color:rgb(26, 90, 163);
+  border-radius: 15px;
+  height: 30px;
+  width: 100px;
+  text-align: center
+}

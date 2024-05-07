@@ -19,6 +19,7 @@ export class EditclientComponent implements OnInit{
     this.route.queryParams.subscribe(params => {
       this.id = +params['id'];
       
+      
     });
     
   }

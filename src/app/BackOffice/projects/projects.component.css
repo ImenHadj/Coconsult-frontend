@@ -13060,3 +13060,38 @@ p {
     margin-top: 10px; /* Ajoute un espacement en haut du coût affiché */
   }
   
+  .custom-dropdown-item:hover {
+    background-color: #162342;
+   
+  }
+  
+  /* Ajoutez ces styles dans votre fichier CSS global ou dans le fichier de styles de votre composant */
+.custom-progress-bar-fill {
+    background-color: #1E457C;
+}
+
+.custom-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+
+
+.custom-progress-bar {
+    /* Ajoutez vos styles personnalisés ici */
+    background-color: #f0f0f0; /* Couleur de fond */
+    border-radius: 8px; /* Bord arrondi */
+}
+
+.dropdown-menu button.dropdown-item {
+    background-color: transparent; /* Couleur de fond par défaut */
+  }
+  
+  /* Changer la couleur de fond lorsque survolé */
+  .dropdown-menu button.dropdown-item:hover {
+    background-color: #384382 ; /* Couleur de fond au survol */
+  }
+  .progress-label {
+    font-size: 14px; /* Définir la taille de la police */
+    color: blue; /* Changer la couleur du texte */
+    margin-left: 5px; /* Ajouter une marge à gauche pour l'éloigner de la barre de progression */
+}

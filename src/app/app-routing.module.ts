@@ -100,6 +100,8 @@ import { ChatComponent } from './chat/chat.component';
 import { JoinmeetComponent } from './FrontOffice/joinmeet/joinmeet.component';
 import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
 import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
+import { DescriptionPostesComponent } from './FrontOffice/description-postes/description-postes.component';
+import { MembersComponent } from './BackOffice/Team/members/members.component';
 
 
 
@@ -124,12 +126,15 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'user', component: BoardUserComponent },
       { path: 'mod', component: BoardModeratorComponent },
-      { path: 'admin', component: TemplateBComponent },
+     // { path: 'admin', component: TemplateBComponent },
       { path: 'recrutement', component: RecrutementComponent },
       { path: 'password', component: PasswordComponent },
       { path: 'allrecrutement.html', component: AllrecrutementComponent },
       { path: 'allrecrutement', component: AllrecrutementComponent },
       { path: 'candidat/:idRec', component: CandidatComponent },
+      {path:'DescriptionPostesComponent', component:DescriptionPostesComponent },
+      { path: 'description-postes/:idRec', component: DescriptionPostesComponent },
+    
 
       {
         path: 'addLeave', component: AddLeaveComponent
@@ -196,7 +201,10 @@ const routes: Routes = [
       { path: 'addconsultant', component: AddconsultantComponent },
       { path: 'dash', component: DashboardProjectComponent },
       { path: 'chart', component: ChartComponent },
-
+      { path: 'addteam', component: AddteamComponent } ,
+      { path: 'teams', component: ListTeamsComponent } ,
+      { path: 'viewmembers', component: MembersComponent } ,
+  
       { path: 'addemployees', component: AddEmployeeComponent },
       { path: 'editEmployees/:id', component: AddEmployeeComponent },
       { path: 'EditAbsence/:id', component: AbsenceComponent },

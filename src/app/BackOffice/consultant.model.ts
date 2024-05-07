@@ -1,5 +1,5 @@
-
-export  interface consultant {  
+import { Project } from "./project.model";
+export  interface Consultant {  
     id: number;
     name: string;
     skills: string;
@@ -9,6 +9,4 @@ export  interface consultant {
 
     projects: Project[];
   }
-  export interface Project {
-    
-  }
+  

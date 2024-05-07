@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from 'src/app/BackOffice/Resources/resources.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-resourcef',
@@ -39,6 +40,15 @@ export class AddResourcefComponent {
       this.resourceService.addResource(formData).subscribe(
         (resourceId) => {
           console.log('Resource added successfully with ID:', resourceId);
+          Swal.fire({
+            text: "Resource added Successfuly",
+            icon: "success"
+          });
+
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         },
         (error) => {
           console.error('Error adding resource:', error);

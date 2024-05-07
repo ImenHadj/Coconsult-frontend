@@ -1,7 +1,4 @@
 <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
-
-
-
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link" routerLink="/admin/kanban" routerLinkActive="active">Kanban</a>
@@ -10,64 +7,70 @@
       <a class="nav-link" routerLink="/admin/calendarT/:id" routerLinkActive="active">Calendar</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Gantt</a>
+      <a class="nav-link" routerLink="#" routerLinkActive="active">Gantt</a>
+    </li>
+    <li class="nav-item">
+       <button class="button-40 float-md-end" role="button" [routerLink]="['/admin/addtask']">Add Task</button>
     </li>
   </ul>
-  <button class="button-40" role="button" [routerLink]="['/admin/addtask']">Add Task</button>
-    <!-- Iterate over tasks -->
-    <div class="row my-4" *ngFor="let task of tasks | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
-      <div class="col-lg-12 col-12">
-        <div class="custom-block custom-block-transation-detail bg-white">
-          <div class="d-flex flex-wrap align-items-center border-bottom pb-3 mb-3">
-            <!-- Task name -->
-            <div class="d-flex align-items-center">
-              <div>
-                <h2>{{ task.taskname }}</h2>
+  <br>
+  <br>
+  <div class="d-flex justify-content-end mb-3"> <!-- Utiliser la classe "justify-content-end" pour aligner le bouton à droite -->
+    <button type="button" class="btn btn-primary btn-sm me-2" (click)="sortTasks()">Sort Tasks</button> <!-- Ajouter la classe "btn-sm" pour un bouton plus petit -->
+  </div>
+
+  <div class="row">
+    <div class="col-xl-12"> <!-- Utiliser col-xl-12 pour occuper toute la largeur sur les écrans extra larges -->
+      <!-- Iterate over tasks -->
+      <div class="card border shadow-none mb-4 col-12" *ngFor="let task of tasks | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <div class="card-body">
+          <div class="task-status">
+            <span *ngIf="task.status === 'DONE'">
+              <i class="bi bi-check-circle-fill text-success"></i> <!-- Icône de coche pour le statut "Terminé" -->
+            </span>
+            <span *ngIf="task.status === 'IN_PROGRESS'">
+              <i class="bi bi-clock-fill text-warning"></i> <!-- Icône de pendule pour le statut "En cours" -->
+            </span>
+          </div>
+          <!-- Task name -->
+          <h5 class="font-size-18 mb-0">{{ task.taskname }}</h5>
+          <br>
+          <!-- Task description -->
+          <p class="text-muted mb-2">{{ task.taskdescription }}</p>
+
+          <div class="row">
+            <!-- Start Date -->
+            <div class="col-md-4">
+              <div class="mt-3">
+                <p class="text-muted mb-2">Start Date:</p>
+                <h6 class="mb-0">{{ task.startDate | date }}</h6>
               </div>
             </div>
-  
-            <!-- Additional task details -->
-            <div class="d-flex flex-wrap align-items-center">
-              <!-- Task description -->
-              <div class="custom-block-transation-detail-item mt-4">
-                <p>{{ task.taskdescription }}</p>
+
+            <!-- End Date -->
+            <div class="col-md-4">
+              <div class="mt-3">
+                <p class="text-muted mb-2">End Date:</p>
+                <h6 class="mb-0">{{ task.endDate | date }}</h6>
               </div>
-  
-              <!-- Start Date -->
-              <div class="custom-block-transation-detail-item mt-4 mx-auto px-4">
-                <h6>Start Date:</h6>
-                <p>{{ task.startDate }}</p>
-              </div>
-  
-              <!-- End Date -->
-              <div class="custom-block-transation-detail-item mt-4 ms-lg-auto px-lg-3 px-md-3">
-                <h6>End Date:</h6>
-                <p>{{ task.endDate }}</p>
-              </div>
-  
-              <!-- Action buttons -->
-              <div class="d-flex justify-content-center mt-4">
-                <div class="custom-block-transation-detail-item me-2">
-                  <button class="btn custom-btn-delete" (click)="onDeleteTask(task.taskid)">
-                    <i class="bi bi-trash"></i> Delete
-                  </button>
-                </div>
-                <div class="custom-block-transation-detail-item">
-                  <button class="btn custom-btn-update" (click)="onUpdateTask(task.taskid)">
-                    <i class="bi bi-pencil"></i> Update
-                  </button>
-                </div>
-              </div>
-              
-    
+            </div>
+
+            <!-- Action buttons -->
+            <div class="col-md-4">
+              <div class="mt-3">
+                <button class="btn btn-danger me-2" (click)="onDeleteTask(task.taskid)">
+                  <i class="bi bi-trash"></i> 
+                </button>
+                <button class="btn btn-primary" (click)="onUpdateTask(task.taskid)" style="background-color: #71b6cd; color: #ffffff;">
+                  <i class="bi bi-pencil"></i> 
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-   
-    <div class="d-flex justify-content-center">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
-  </main>
-  
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</main>

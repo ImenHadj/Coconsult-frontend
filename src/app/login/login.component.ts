@@ -45,8 +45,13 @@ export class LoginComponent implements OnInit {
         const roles = this.storageService.getUser().roles;
         if (roles.includes('ROLE_ADMIN')) {
           // Rediriger vers la route admin si l'utilisateur est un administrateur
-          this.router.navigate(['admin']);
-        } else {
+          this.router.navigate(['/admin/homef']);
+        } 
+        if (roles.includes('ROLE_PRODUCT_OWNER')) {
+          // Rediriger vers la route admin si l'utilisateur est un administrateur
+          this.router.navigate(['accueil/Clienthome']);
+        }
+        else {
           // Rediriger vers la route home si l'utilisateur n'est pas un administrateur
           this.router.navigate(['accueil/home']);
         }

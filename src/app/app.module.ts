@@ -171,6 +171,7 @@ import { AddteamComponent } from './BackOffice/Team/addteam/addteam.component';
 import { ListTeamsComponent } from './BackOffice/Team/list-teams/list-teams.component';
 import { UpdateteamComponent } from './BackOffice/Team/updateteam/updateteam.component';
 import { MembersComponent } from './BackOffice/Team/members/members.component';
+import { DescriptionPostesComponent } from './FrontOffice/description-postes/description-postes.component';
 
 
 @NgModule({
@@ -248,6 +249,7 @@ import { MembersComponent } from './BackOffice/Team/members/members.component';
     AddconsultantComponent,
     JoinmeetComponent,
     // ChartComponent,
+    DescriptionPostesComponent,
 
     AddEmployeeComponent,
     AbsenceComponent,

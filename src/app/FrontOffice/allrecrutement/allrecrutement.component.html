@@ -1,22 +1,58 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Liste des Recrutements</h1>
+<div>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offres d'emplois et Demande de Stage</title>
+   
+  
+  <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+<!-- Main container -->
+<div class="row my-4">
+    <div class="col-lg-7 col-12">
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <h3>Offres d'emplois et Demande de Stage</h3>
+          </div>
       </div>
-    </div>
-    <div class="row">
-      <input type="text" [(ngModel)]="searchText" class="input-search" placeholder="Search...">
-      <div class="col" *ngFor="let recrutement of recrutements | searchFilter: searchText">
-     
-      <div class="card mb-3">
-        <div class="card-body">
-          <h1 class="card-text">  {{ recrutement.typeRecrutement }}</h1>
-          <p class="card-title"> {{ recrutement.poste }}</p>
-          <p class="card-text">experience : {{ recrutement.experience }}</p>
-          <p class="card-text"> {{ recrutement.niveauDetude }}</p>
-            <p class="card-text"> {{ recrutement.lieu }}</p>
-            <p class="card-text"> {{ recrutement.salaire }} dt</p>
-            <p class="card-text">postes Vacants : {{ recrutement.postesVacants }}</p>
-            <a [routerLink]="['/accueil/candidat', recrutement.idRec]" class="btn btn-primary">postuler</a>
+      
+      
+      <!-- Search bar -->
+      <div class="row">
+        <div class="search-container">
+            <!-- Icône de recherche -->
+            <i class="search-icon">🔍</i>
+        
+            <!-- Champ de recherche -->
+            <input name="q" type="text" [(ngModel)]="searchText" class="input-search" placeholder="Rechercher...">
         </div>
+        
+          <div class="col-12" *ngFor="let recrutement of recrutements | searchFilter: searchText">
+              <div class="recrutement-item mb-3 p-3 border">
+                  <h4>{{ recrutement.typeRecrutement }}</h4>
+                  <p class="text-orange">{{ recrutement.poste }}</p>
+                  <p>{{ recrutement.niveauDetude }}</p>
+                  <p class="d-flex align-items-center">
+                      <i class="bi bi-geo-alt-fill me-2 text-info"></i>
+                      {{ recrutement.lieu }}
+                  </p>
+                  <p>{{ recrutement.salaire }} dt</p>
+                  <p>Date d'expiration : {{ recrutement.dateCloture | date: 'yyyy/MM/dd' }}</p>
+                  <p>Postes vacants : {{ recrutement.postesVacants }}</p>
+                  <button
+                      [routerLink]="['/accueil/description-postes', recrutement.idRec]"
+                      class="btn btn-secondary"
+                      [disabled]="isButtonDisabled(recrutement.dateCloture, recrutement.postesVacants)"
+                  >Voir plus</button>
+              </div>
+          </div>
       </div>
+  </div>
+
+</div>
+<div class="col-lg-5 col-12">
+    <iframe width="350" height="430" allow="microphone;" bottom="40" src="https://console.dialogflow.com/api-client/demo/embedded/ed17ef60-4e0d-4a06-b374-95409437c8dc"></iframe>
+    </div>
+</div>
+
+</main>

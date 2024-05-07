@@ -31,7 +31,7 @@ export class TasksComponent  implements OnInit{
           this.taskservice.getTasksByProject(this.projectId).subscribe(tasks => {
             console.log('Tasks:', tasks); // Vérifier les données des tâches dans la console
             this.tasks = tasks;
-           
+
           });
         }
       } else {
@@ -40,6 +40,15 @@ export class TasksComponent  implements OnInit{
     });
   }
   
+  sortTasks(): void {
+    this.taskservice.getSortedTasks().subscribe(sortedTasks => {
+      console.log('Sorted Tasks:', sortedTasks);
+      // Assign sorted tasks to your tasks array
+      this.tasks = sortedTasks;
+    });
+  }
+
+
   organizeTasksByStatus(): void {
     this.tasksToDo = this.tasks.filter(task => task.status === 'To Do');
     this.tasksInProgress = this.tasks.filter(task => task.status === 'In Progress');

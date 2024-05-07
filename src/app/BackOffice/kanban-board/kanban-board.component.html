@@ -1,10 +1,9 @@
 <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
-    <ejs-kanban [dataSource]="dataSource" keyField="status" [cardSettings]="cardSettings" [swimlaneSettings]="swimlaneSettings" height="600px" width="1000px">
-        <e-columns>    
-        <e-column headerText="To Do" keyField="TODO" headerTemplate="todoHeaderTemplate" headerCssClass="todo-column" contentCssClass="todo-content"></e-column>
-        <e-column headerText="In Progress" keyField="IN_PROGRESS" headerTemplate="inProgressHeaderTemplate" headerCssClass="in-progress-column" contentCssClass="in-progress-content"></e-column>
-        <e-column headerText="Done" keyField="DONE" headerTemplate="doneHeaderTemplate" headerCssClass="done-column" contentCssClass="done-content"></e-column>  
-      </e-columns>
-    </ejs-kanban>
-  </main>
-  
+  <ejs-kanban [dataSource]="dataSource" keyField="status" [cardSettings]="cardSettings" [swimlaneSettings]="swimlaneSettings" height="600px" width="1000px">
+      <e-columns>    
+      <e-column headerText="To Do" keyField="TODO" headerTemplate="todoHeaderTemplate" headerCssClass="todo-column" contentCssClass="todo-content"></e-column>
+      <e-column headerText="In Progress" keyField="IN_PROGRESS" headerTemplate="inProgressHeaderTemplate" headerCssClass="in-progress-column" contentCssClass="in-progress-content"></e-column>
+      <e-column headerText="Done" keyField="DONE" headerTemplate="doneHeaderTemplate" headerCssClass="done-column" contentCssClass="done-content"></e-column>  
+    </e-columns>
+  </ejs-kanban>
+</main>

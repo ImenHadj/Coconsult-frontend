@@ -144,7 +144,7 @@ export class AddLeaveComponent {
     // if (this.isEditMode) {
     //   this.router.navigate(['admin/listConge']);
     // } else {
-      this.router.navigate(['accueil/homef']);
+      this.router.navigate(['accueil/home']);
     // }
   }
 

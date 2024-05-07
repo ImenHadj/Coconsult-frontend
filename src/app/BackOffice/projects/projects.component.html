@@ -1,6 +1,4 @@
-<main
-  class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-10 px-md-4 border-start"
->
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
   <!-- Main content -->
   <!--begin::Theme mode setup on page load-->
   <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -9,41 +7,34 @@
       <!--begin::Toolbar-->
       <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
         <!--begin::Toolbar container-->
-        <div
-          id="kt_app_toolbar_container"
-          class="app-container container-xxl d-flex flex-stack"
-        >
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
           <!--begin::Page title-->
-          <div
-            class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
-          >
+          <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
             <!--begin::Title-->
-            <h1
-              class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0"
-            >
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
               All Projects
-            </h1>
+            </h1> <br>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
-            <ul
-              class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1"
-            >
-              <!--begin::Item-->
-              <li class="breadcrumb-item text-muted">
-                <a href="/admin/homeb" class="text-muted text-hover-primary"
-                  >Home</a
-                >
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/admin/projects">By default</a>
               </li>
-              <!--end::Item-->
-              <!--begin::Item-->
-              <li class="breadcrumb-item">
-                <span class="bullet bg-gray-500 w-5px h-2px"></span>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/dash">Overview</a>
               </li>
-              <!--end::Item-->
-              <!--begin::Item-->
-              <li class="breadcrumb-item text-muted">Projects</li>
-              <!--end::Item-->
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kanban</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Gant</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/teams">Teams</a>
+              </li>
             </ul>
+            
             <!--end::Breadcrumb-->
           </div>
           <!--end::Page title-->
@@ -56,27 +47,23 @@
   </div>
   <div class="container-fluid py-4">
     <section class="py-3">
-      <div class="row mb-4 mb-md-0">
-        <div class="col-md-8 me-auto my-auto text-left">
-          <h5>Some of Our Awesome Projects</h5>
-          <p>
-            Delve into our repertoire of enterprise-grade projects <br />
-            providing meaningful information.
-          </p>
-        </div>
-        <div class="col-lg-4 col-md-12 my-auto text-end">
-          <button
-            type="button"
-            class="btn bg-gradient-primary mb-0 mt-0 mt-md-n9 mt-lg-0"
-            [routerLink]="['/admin/addProject']"
-          >
-            <i
-              class="material-icons text-white position-relative text-md pe-2"
-            ></i
-            >+ Add New
-          </button>
-        </div>
-      </div>
+        <div class="row mb-4 mb-md-0">
+            <div class="col-md-8 me-auto my-auto text-left">
+                <h5>Some of Our Awesome Projects</h5>
+                <p>Delve into our repertoire of enterprise-grade projects <br> providing meaningful information.</p>
+            </div>
+            <div class="col-lg-4 col-md-12 my-auto text-end">
+                <button type="button" class="btn bg-gradient-primary mb-0 mt-0 mt-md-n9 mt-lg-0" [routerLink]="['/admin/addProject']">
+                    <i class="material-icons text-white position-relative text-md pe-2"></i>+ Add Project
+                </button>
+
+                <button type="button" class="btn bg-gradient-primary mb-0 mt-0 mt-md-n9 mt-lg-0 ms-2" [routerLink]="['/admin/addconsultant']">
+                    <i class="material-icons text-white position-relative text-md pe-2"></i>+ New Consultant
+                </button>
+            </div>
+        </div>  
+    </section>
+</div>
 
       <div class="row my-4" *ngFor="let project of projects">
         <div class="row mt-lg-4 mt-2">
@@ -85,107 +72,73 @@
               <div class="card-body p-3">
                 <div class="d-flex mt-n2">
                   <div class="ms-3 my-auto">
-                    <h6 class="mb-0">
-                      {{ project.projectname }}
-                      <button type="button" class="btn btn-outline-primary">
-                        {{ project.priority }}
-                      </button>
-                    </h6>
+                    <h6 class="mb-0">{{ project.projectname }}<button type="button" class="btn btn-outline-primary">{{project.priority}}</button></h6>
+
+
+                    <span class="progress-label">{{ truncatePercentage(projectProgress[project.projectid]) }}%</span>                         <!-- Ajoutez une barre de progression -->
+                  <div class="progress w-100 mt-3 custom-progress-bar">
+                    <div class="progress-bar bg-info text-dark custom-progress-bar-fill" role="progressbar" 
+                         [style.width.%]="projectProgress[project.projectid]" 
+                         aria-valuemin="0" aria-valuemax="100" 
+                         [style.height.px]="12">
+                       
+                    </div>
+                    
+                </div>
                   </div>
+              
+                
+                
+                  
+                  
+              
                   <div class="ms-auto">
                     <div class="dropdown">
                       <div class="dropdown">
-                        <button
-                          class="btn btn-link text-secondary ps-0 pe-2"
-                          id="navbarDropdownMenuLink"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <i class="fa fa-ellipsis-v text-lg"></i>
-                        </button>
-                        <ul
-                          class="dropdown-menu dropdown-menu-end"
-                          aria-labelledby="dropdownMenuButton"
-                        >
-                          <li>
-                            <button
-                              class="dropdown-item"
-                              (click)="onDeleteProject(project.projectid)"
-                            >
-                              Delete
-                            </button>
+                         <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink"
+                          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bi bi-list"></i>
+                        </button> 
+                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"> 
+                          <li><button class="dropdown-item custom-dropdown-item" (click)="onDeleteProject(project.projectid)">Delete</button>
                           </li>
-                          <li>
-                            <button
-                              class="dropdown-item"
-                              (click)="onUpdateProject(project.projectid)"
-                            >
-                              update
-                            </button>
+                          <li><button class="dropdown-item" (click)="onUpdateProject(project.projectid)">update</button>
                           </li>
-                          <li>
-                            <button
-                              class="dropdown-item"
-                              (click)="goToCalendar(project.projectid)"
-                            >
-                              Tasks Calender
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              class="dropdown-item"
-                              (click)="gotasks(project.projectid)"
-                            >
-                              All Tasks
-                            </button>
-                          </li>
-                        </ul>
+                          <li><button class="dropdown-item" (click)="goToCalendar(project.projectid)">Tasks
+                              Calender</button></li>
+                          <li><button class="dropdown-item" (click)="gotasks(project.projectid)">All Tasks</button></li>
+                        </ul> 
                       </div>
                     </div>
-                  </div>
+                  </div> 
+
                 </div>
-                <p class="text-sm mt-3">{{ project.projectdescription }}</p>
-                <hr class="horizontal dark" />
+                <p class="text-sm mt-3"> {{ project.projectdescription }} </p>
+                <hr class="horizontal dark">
                 <div class="row">
                   <div class="col-6">
-                    <h6 class="text-sm mb-0">{{ project.startDate }}</h6>
-                    <p class="text-secondary text-sm font-weight-normal mb-0">
-                      Start date
-                    </p>
+                    <h6 class="text-sm mb-0"> {{ project.startDate | date}}</h6>
+                    <p class="text-secondary text-sm font-weight-normal mb-0">Start date </p>
                   </div>
-
+              
                   <div class="col-6 text-end">
                     <!-- Bouton pour déclencher le calcul du coût -->
                     <div class="col-lg-4 col-md-12 my-auto text-end">
                       <div class="button-container">
-                        <button
-                          class="button-33"
-                          role="button"
-                          (click)="calculateProjectCost(project.projectid)"
-                        >
+                        <button class="button-33" role="button" (click)="calculateProjectCost(project.projectid)">
                           Calculate Cost
                         </button>
                       </div>
                       <!-- Div pour afficher le coût calculé -->
-                      <div
-                        *ngIf="project.projectCost !== undefined"
-                        class="project-cost"
-                      >
+                      <div *ngIf="project.projectCost !== undefined" class="project-cost">
                         Cost: {{ project.projectCost }} DT
                       </div>
                     </div>
-                    <h6 class="text-sm mb-0">{{ project.endDate }}</h6>
-                    <p class="text-secondary text-sm font-weight-normal mb-0">
-                      End date
-                    </p>
+                    <div>
+                      <h6 class="text-sm mb-0">{{ project.endDate | date}}</h6>
+                      <p class="text-secondary text-sm font-weight-normal mb-0">End date</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
+              
